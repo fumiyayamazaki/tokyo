@@ -1,0 +1,1696 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>樹冠39.5% — 杉並区の隠された危機 / The Hidden Crisis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Noto+Sans+JP:wght@300;400;500;600;700;900&family=Noto+Serif+JP:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4ede0;
+    --paper-soft: #ebe2d0;
+    --paper-cool: #f0ebe1;
+    --ink: #0c1929;
+    --ink-soft: #5a6878;
+    --ink-mid: #2c3a4e;
+    --rule: #b4aa8c;
+    --gold: #b8954a;
+    --gold-bright: #d4af5b;
+    --gold-deep: #8a6f33;
+    --green-deep: #2d4a2a;
+    --green-mid: #4d6e4a;
+    --green-bright: #7a9a73;
+    --green-pale: #aac4a5;
+    --crimson: #9a3b2e;
+    --crimson-bright: #c75d4e;
+    --heat: #d4823f;
+    --heat-bright: #e8a86b;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Noto Sans JP", sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* Paper texture overlay */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(circle at 15% 25%, rgba(45,74,42,0.04) 0%, transparent 60%),
+      radial-gradient(circle at 85% 70%, rgba(184,149,74,0.04) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(154,59,46,0.02) 0%, transparent 70%);
+    z-index: -1;
+  }
+
+  .wrap {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 60px;
+  }
+
+  /* ==================== HERO ==================== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 60px 80px;
+    position: relative;
+    border-bottom: 6px double var(--ink);
+  }
+
+  .hero-edition {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .hero-tag {
+    text-align: center;
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 11px;
+    color: var(--ink-soft);
+    letter-spacing: 0.35em;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+
+  .hero h1 {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 900;
+    font-size: 92px;
+    line-height: 1.05;
+    text-align: center;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 .num {
+    color: var(--crimson-bright);
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 1.15em;
+    letter-spacing: -0.02em;
+  }
+
+  .hero h1 .accent {
+    color: var(--gold);
+    font-style: italic;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+  }
+
+  .hero-sub {
+    text-align: center;
+    font-family: "Noto Serif JP", serif;
+    font-size: 22px;
+    color: var(--ink-mid);
+    font-weight: 400;
+    line-height: 1.6;
+    max-width: 920px;
+    margin: 0 auto 40px;
+  }
+
+  .hero-sub em {
+    color: var(--gold);
+    font-style: italic;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+  }
+
+  .hero-rule-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin: 36px 0;
+  }
+  .hero-rule {
+    height: 1px;
+    width: 80px;
+    background: var(--gold);
+  }
+  .hero-rule-text {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+
+  /* Hero canopy animation */
+  .hero-canopy {
+    margin: 30px auto 20px;
+    width: 100%;
+    max-width: 1000px;
+    height: 280px;
+  }
+
+  .hero-byline {
+    text-align: center;
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin-top: 30px;
+    letter-spacing: 0.06em;
+  }
+  .hero-byline strong { color: var(--ink); font-weight: 700; }
+
+  /* Scroll cue */
+  .scroll-cue {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 12px;
+    color: var(--ink-soft);
+    letter-spacing: 0.2em;
+    animation: bobble 2s ease-in-out infinite;
+  }
+  @keyframes bobble {
+    0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.8; }
+    50%      { transform: translateX(-50%) translateY(6px); opacity: 0.4; }
+  }
+
+  /* ==================== SECTION HEAD ==================== */
+  .section {
+    padding: 80px 0 40px;
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 22px;
+    margin-bottom: 36px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .section-num {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 64px;
+    color: var(--gold);
+    font-weight: 700;
+    line-height: 0.9;
+  }
+  .section-title {
+    flex: 1;
+  }
+  .section-title-jp {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 700;
+    font-size: 30px;
+    color: var(--ink);
+    letter-spacing: 0.02em;
+    line-height: 1.3;
+  }
+  .section-title-en {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink-soft);
+    font-weight: 400;
+    opacity: 0.75;
+    margin-top: 4px;
+    letter-spacing: 0.05em;
+  }
+
+  .section-lede {
+    font-family: "Noto Serif JP", serif;
+    font-size: 18px;
+    line-height: 1.95;
+    color: var(--ink-mid);
+    margin-bottom: 36px;
+    max-width: 920px;
+  }
+  .section-lede strong { color: var(--ink); font-weight: 700; }
+  .section-lede em {
+    color: var(--gold);
+    font-style: italic;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+  }
+
+  /* ==================== Ⅰ. STUDY DATA ==================== */
+  .study-frame {
+    background: linear-gradient(135deg, rgba(45,74,42,0.05) 0%, rgba(244,237,224,0.4) 100%);
+    border: 1px solid var(--rule);
+    padding: 36px 40px;
+    margin-top: 20px;
+    position: relative;
+  }
+  .study-stamp {
+    position: absolute;
+    top: -12px;
+    right: 36px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 6px 16px;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .study-title {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .study-cite {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin-bottom: 24px;
+  }
+  .study-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .study-big {
+    text-align: center;
+  }
+  .study-big-overline {
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 11px;
+    color: var(--ink-soft);
+    letter-spacing: 0.2em;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+  .study-big-num {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 132px;
+    font-weight: 700;
+    color: var(--crimson);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+  }
+  .study-big-label {
+    font-family: "Noto Serif JP", serif;
+    font-size: 15px;
+    color: var(--ink);
+    font-weight: 600;
+    margin-top: 10px;
+    line-height: 1.5;
+  }
+  .study-big-sub {
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin-top: 6px;
+  }
+
+  /* 23ward ranking bar chart */
+  .rank-chart {
+    width: 100%;
+  }
+  .rank-chart-title {
+    font-family: "Noto Serif JP", serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 12px;
+    letter-spacing: 0.04em;
+  }
+  .rank-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 80px;
+    gap: 12px;
+    align-items: center;
+    padding: 5px 0;
+    font-size: 11.5px;
+  }
+  .rank-name {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .rank-name.hi {
+    color: var(--crimson);
+    font-weight: 800;
+    font-size: 13.5px;
+  }
+  .rank-track {
+    height: 18px;
+    background: rgba(180,170,140,0.18);
+    position: relative;
+    border-radius: 1px;
+  }
+  .rank-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--crimson-bright), var(--crimson));
+    width: 0;
+    transition: width 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08);
+  }
+  .rank-fill.normal {
+    background: rgba(199,93,78,0.55);
+  }
+  .rank-val {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-weight: 700;
+    color: var(--crimson);
+    text-align: right;
+    font-size: 13px;
+  }
+
+  /* ==================== Ⅱ. STATISTICAL SLEIGHT ==================== */
+  .twin-chart {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin-top: 26px;
+  }
+  .twin-panel {
+    background: rgba(255,250,240,0.55);
+    border: 1px solid var(--rule);
+    padding: 30px;
+    position: relative;
+  }
+  .twin-panel.official {
+    border-top: 4px solid var(--ink-soft);
+  }
+  .twin-panel.real {
+    border-top: 4px solid var(--crimson);
+  }
+  .twin-tag {
+    position: absolute;
+    top: -12px;
+    left: 24px;
+    background: var(--paper);
+    padding: 0 12px;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .twin-tag.official { color: var(--ink-soft); }
+  .twin-tag.real { color: var(--crimson); }
+
+  .twin-headline {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--ink);
+    margin-bottom: 8px;
+    margin-top: 6px;
+  }
+  .twin-source {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 11px;
+    color: var(--ink-soft);
+    margin-bottom: 22px;
+  }
+  .twin-metric {
+    text-align: center;
+    padding: 16px 0;
+    margin-bottom: 12px;
+  }
+  .twin-metric-num {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .twin-panel.official .twin-metric-num { color: var(--green-mid); }
+  .twin-panel.real .twin-metric-num { color: var(--crimson); }
+  .twin-metric-label {
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin-top: 6px;
+    letter-spacing: 0.05em;
+  }
+  .twin-bullets {
+    list-style: none;
+    margin-top: 14px;
+  }
+  .twin-bullets li {
+    padding: 8px 0;
+    font-size: 12px;
+    color: var(--ink-mid);
+    line-height: 1.7;
+    border-bottom: 1px dashed var(--rule);
+  }
+  .twin-bullets li:last-child { border-bottom: none; }
+  .twin-bullets strong { color: var(--ink); font-weight: 700; }
+
+  .reveal-box {
+    background: linear-gradient(135deg, rgba(184,149,74,0.08) 0%, rgba(154,59,46,0.04) 100%);
+    border-left: 4px solid var(--gold);
+    padding: 22px 26px;
+    margin-top: 30px;
+    font-family: "Noto Serif JP", serif;
+    font-size: 15px;
+    line-height: 1.85;
+    color: var(--ink);
+  }
+  .reveal-box strong { font-weight: 700; }
+  .reveal-box em {
+    color: var(--gold-deep);
+    font-style: italic;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+  }
+
+  /* ==================== Ⅲ. FIVE COSTS ==================== */
+  .costs-intro {
+    font-family: "Noto Serif JP", serif;
+    font-size: 16px;
+    line-height: 1.9;
+    color: var(--ink-mid);
+    margin-bottom: 28px;
+    max-width: 900px;
+  }
+  .costs-intro strong { color: var(--ink); font-weight: 700; }
+
+  .costs-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin: 30px 0;
+  }
+  .cost-card {
+    background: var(--paper-cool);
+    border: 1px solid var(--rule);
+    padding: 22px 18px 24px;
+    text-align: center;
+    transition: transform 0.25s, box-shadow 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .cost-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--gold);
+  }
+  .cost-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 38px -18px rgba(12,25,41,0.3);
+  }
+  .cost-icon {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+  .cost-num {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+  }
+  .cost-title {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .cost-en {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 10px;
+    color: var(--gold);
+    margin-bottom: 14px;
+    letter-spacing: 0.06em;
+  }
+  .cost-data {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--crimson);
+    margin: 8px 0 4px;
+    line-height: 1;
+  }
+  .cost-data-label {
+    font-size: 10px;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+
+  /* Heat island chart */
+  .heat-chart-wrap {
+    background: linear-gradient(180deg, rgba(212,130,63,0.06) 0%, rgba(244,237,224,0.4) 100%);
+    border: 1px solid var(--rule);
+    padding: 28px 30px;
+    margin: 30px 0;
+  }
+  .heat-title {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .heat-sub {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+  }
+  #heatSvg { width: 100%; height: 260px; }
+  .heat-note {
+    font-size: 11px;
+    color: var(--ink-soft);
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--rule);
+    line-height: 1.7;
+  }
+  .heat-note strong { color: var(--ink); font-weight: 600; }
+
+  /* ==================== Ⅳ. ECONOMIC CALCULATION ==================== */
+  .calc-stage {
+    background: rgba(255,250,240,0.6);
+    border: 1px solid var(--rule);
+    padding: 32px 36px;
+    margin-top: 24px;
+  }
+  .calc-title {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .calc-sub {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin-bottom: 24px;
+  }
+  .calc-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .calc-row {
+    display: grid;
+    grid-template-columns: 26px 1fr 110px 110px;
+    gap: 16px;
+    align-items: center;
+    padding: 12px 16px;
+    background: rgba(184,149,74,0.04);
+    border-left: 3px solid var(--gold);
+  }
+  .calc-step {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-weight: 700;
+    color: var(--gold);
+    font-size: 16px;
+  }
+  .calc-text {
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .calc-text strong { color: var(--ink); font-weight: 700; }
+  .calc-val {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-weight: 700;
+    color: var(--ink);
+    text-align: right;
+    font-size: 16px;
+  }
+  .calc-mark {
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 11px;
+    text-align: right;
+    color: var(--ink-soft);
+  }
+  .calc-total {
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: 16px;
+    align-items: center;
+    padding: 22px 24px;
+    background: linear-gradient(135deg, var(--gold-bright), var(--gold-deep));
+    color: var(--paper);
+  }
+  .calc-total-label {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .calc-total-label .sub {
+    display: block;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 12px;
+    opacity: 0.85;
+    font-weight: 400;
+    margin-top: 4px;
+  }
+  .calc-total-val {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 36px;
+    text-align: right;
+    color: var(--paper);
+    letter-spacing: -0.01em;
+  }
+  .calc-caveats {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px dashed var(--rule);
+    font-size: 11px;
+    color: var(--ink-soft);
+    line-height: 1.75;
+  }
+  .calc-caveats strong { color: var(--ink); font-weight: 600; }
+
+  /* ==================== Ⅴ. POLITICAL VACUUM ==================== */
+  .vacuum-table {
+    width: 100%;
+    border: 1px solid var(--rule);
+    background: rgba(255,250,240,0.5);
+    margin-top: 24px;
+  }
+  .vacuum-row {
+    display: grid;
+    grid-template-columns: 200px 1fr 1fr 1fr;
+    border-bottom: 1px solid var(--rule);
+  }
+  .vacuum-row:last-child { border-bottom: none; }
+  .vacuum-cell {
+    padding: 16px 18px;
+    border-right: 1px solid var(--rule);
+    font-size: 12.5px;
+    line-height: 1.7;
+  }
+  .vacuum-cell:last-child { border-right: none; }
+  .vacuum-cell.header {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 700;
+    color: var(--ink);
+    text-align: center;
+    background: rgba(12,25,41,0.04);
+    font-size: 13.5px;
+  }
+  .vacuum-cell.header .sub {
+    display: block;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 10.5px;
+    color: var(--ink-soft);
+    font-weight: 400;
+    margin-top: 2px;
+  }
+  .vacuum-cell.label {
+    background: rgba(184,149,74,0.06);
+    font-family: "Noto Sans JP", sans-serif;
+    font-weight: 600;
+    color: var(--gold);
+    font-size: 12px;
+    letter-spacing: 0.02em;
+  }
+  .vacuum-cell.candidate {
+    color: var(--ink-mid);
+  }
+  .vacuum-cell.candidate.masuda {
+    background: rgba(45,74,42,0.04);
+    border-left: 3px solid var(--green-mid);
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .vacuum-cell strong { color: var(--ink); font-weight: 700; }
+  .green-tag {
+    display: inline-block;
+    background: var(--green-mid);
+    color: var(--paper);
+    padding: 2px 8px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-left: 4px;
+    font-family: "Noto Sans JP", sans-serif;
+  }
+  .empty-tag {
+    color: var(--ink-soft);
+    font-style: italic;
+    font-family: "Cormorant Garamond", serif;
+    opacity: 0.7;
+  }
+
+  /* ==================== Ⅵ. CLOSING ARGUMENT ==================== */
+  .closing {
+    margin-top: 70px;
+    padding: 50px 56px;
+    background: linear-gradient(180deg, rgba(45,74,42,0.06) 0%, rgba(184,149,74,0.05) 100%);
+    border-top: 6px double var(--ink);
+    border-bottom: 6px double var(--ink);
+  }
+  .closing-tag {
+    text-align: center;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .closing h2 {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 900;
+    font-size: 38px;
+    text-align: center;
+    color: var(--ink);
+    line-height: 1.3;
+    margin-bottom: 30px;
+    letter-spacing: 0.01em;
+  }
+  .closing h2 .accent {
+    color: var(--gold);
+    font-style: italic;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 700;
+  }
+  .closing-body p {
+    font-family: "Noto Serif JP", serif;
+    font-size: 16px;
+    line-height: 2.05;
+    color: var(--ink);
+    margin-bottom: 18px;
+  }
+  .closing-body p:first-of-type::first-letter {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 56px;
+    float: left;
+    line-height: 0.85;
+    padding: 6px 12px 0 0;
+    color: var(--gold);
+    font-weight: 700;
+  }
+  .closing-body strong { font-weight: 800; }
+  .closing-body em {
+    color: var(--gold-deep);
+    font-style: italic;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+  }
+  .closing-pull {
+    text-align: center;
+    font-family: "Noto Serif JP", serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--ink);
+    margin: 30px auto;
+    padding: 22px 30px;
+    border-top: 1px solid var(--gold);
+    border-bottom: 1px solid var(--gold);
+    max-width: 800px;
+    line-height: 1.7;
+  }
+  .closing-pull span {
+    display: block;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--gold);
+    font-weight: 500;
+    margin-top: 10px;
+    letter-spacing: 0.15em;
+  }
+  .closing-cta {
+    text-align: center;
+    margin-top: 30px;
+  }
+  .closing-cta-text {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--ink);
+    line-height: 1.85;
+    max-width: 800px;
+    margin: 0 auto 14px;
+  }
+  .closing-cta-sub {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+  }
+
+  /* ==================== COLOPHON ==================== */
+  .colophon {
+    margin-top: 60px;
+    padding: 30px 0 60px;
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+    font-size: 10.5px;
+    color: var(--ink-soft);
+    line-height: 1.75;
+  }
+  .colophon strong {
+    display: block;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 12px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+  }
+  .colophon a {
+    color: var(--ink-mid);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--rule);
+  }
+
+  /* ==================== RESPONSIVE ==================== */
+  @media (max-width: 980px) {
+    .wrap { padding: 0 24px; }
+    .hero { padding: 40px 24px 60px; }
+    .hero h1 { font-size: 52px; }
+    .hero-sub { font-size: 17px; }
+    .section-num { font-size: 44px; }
+    .section-title-jp { font-size: 22px; }
+    .study-grid, .twin-chart, .calc-total { grid-template-columns: 1fr; }
+    .costs-grid { grid-template-columns: repeat(2, 1fr); }
+    .calc-row { grid-template-columns: 22px 1fr 90px; }
+    .calc-mark { display: none; }
+    .vacuum-row { grid-template-columns: 140px 1fr; }
+    .vacuum-cell:nth-child(3), .vacuum-cell:nth-child(4) { display: none; }
+    .closing { padding: 30px 22px; }
+    .closing h2 { font-size: 26px; }
+    .closing-pull { font-size: 17px; padding: 16px 18px; }
+    .colophon { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================================================================== -->
+<!-- HERO                                                                  -->
+<!-- ================================================================== -->
+<section class="hero">
+  <div class="wrap" style="width:100%;">
+    <div class="hero-edition">Suginami Canopy Brief · Single-Issue Dossier</div>
+    <div class="hero-tag">2026年 杉並区長選 · 増田義彦 候補の問題提起</div>
+
+    <h1>
+      杉並は<span class="num">39.5</span><span class="accent">%</span><br>の<br>
+      <span class="num">緑</span>を<span class="num">失</span>った
+    </h1>
+    <div class="hero-sub">
+      過去9年間、東京23区の中で <strong>最も早く樹冠を失っているのは杉並区</strong>。<br>
+      区の公式統計は「緑被率はほぼ横ばい」と告げているが、<br>
+      東京大学の独立調査は <em>樹冠被覆率は▲39.5%減</em> という別の現実を示している。<br>
+      これはデータの食い違いではない——<em>違うものを測っている</em>のだ。
+    </div>
+
+    <!-- Hero canopy animation: tree silhouettes from full to depleted -->
+    <svg class="hero-canopy" id="heroCanopy" viewBox="0 0 1000 280" xmlns="http://www.w3.org/2000/svg"></svg>
+
+    <div class="hero-rule-row">
+      <div class="hero-rule"></div>
+      <div class="hero-rule-text">A Case Study in Hidden Decline</div>
+      <div class="hero-rule"></div>
+    </div>
+
+    <div class="hero-byline">
+      Data: <strong>東京大学 寺田徹研究室／白石欣也氏 (2024)</strong> · <strong>杉並区みどりの実態調査 令和4年度</strong> · <strong>気象庁ヒートアイランド観測 (2002-2019)</strong> · <strong>i-Tree Eco 実証研究 (吹田市/川崎市)</strong>
+    </div>
+
+    <div class="scroll-cue">↓ Scroll to read the brief</div>
+  </div>
+</section>
+
+<!-- ================================================================== -->
+<!-- I. THE STUDY                                                          -->
+<!-- ================================================================== -->
+<div class="wrap">
+<section class="section">
+  <div class="section-head">
+    <div class="section-num">Ⅰ</div>
+    <div class="section-title">
+      <div class="section-title-jp">東京大学が発見した「23区ワースト」</div>
+      <div class="section-title-en">The University of Tokyo's Findings — Suginami Ranks 23rd of 23</div>
+    </div>
+  </div>
+
+  <div class="section-lede">
+    2024年4月、東京大学新領域 寺田徹研究室の <strong>白石欣也氏</strong> が発表した論文は、衛星画像のNDVI（正規化植生指標）から東京23区の樹冠被覆率を推計し、<em>9年間で23区全体が▲20.6%減</em> という客観値を示した。最も激しく樹冠を失ったのが杉並区である。
+  </div>
+
+  <div class="study-frame">
+    <div class="study-stamp">Peer-reviewed · 2024</div>
+    <div class="study-title">23区の樹冠被覆率の変化 — 2013年→2022年</div>
+    <div class="study-cite">白石欣也・寺田徹「東京都23区の樹幹被覆の変化とその要因」日本造園学会全国大会 (2023→査読論文化 2024)</div>
+
+    <div class="study-grid">
+      <div class="study-big">
+        <div class="study-big-overline">SUGINAMI · TREE CANOPY LOSS</div>
+        <div class="study-big-num">▼39.5<span style="font-size:0.5em;">%</span></div>
+        <div class="study-big-label">9年間で杉並区は樹冠の約4割を喪失</div>
+        <div class="study-big-sub">23区平均 ▼20.6% / 23区中ワースト1位</div>
+      </div>
+      <div class="rank-chart">
+        <div class="rank-chart-title">減少率ランキング（上位8区）</div>
+        <div id="rankChart"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal-box">
+    <strong>主因は「相続税×地価高騰」による土地細分化。</strong> 屋敷林を抱えた一軒分の敷地が分割され、複数の小規模住宅に置き換わる過程で、庭木と街路樹が連鎖的に失われている。<em>カテゴリ別の減少率は、一戸建ての庭木 ▼40.6%、街路樹 ▼21.4%、教育・文化施設 ▼18.2%、公園 ▼8.3%。</em>
+  </div>
+</section>
+
+<!-- ================================================================== -->
+<!-- II. STATISTICAL SLEIGHT                                              -->
+<!-- ================================================================== -->
+<section class="section">
+  <div class="section-head">
+    <div class="section-num">Ⅱ</div>
+    <div class="section-title">
+      <div class="section-title-jp">「緑被率は横ばい」の罠 — 二つの数字、二つの現実</div>
+      <div class="section-title-en">The Statistical Sleight — Two Numbers, Two Realities</div>
+    </div>
+  </div>
+
+  <div class="section-lede">
+    杉並区の公式調査によれば、緑被率は2017年21.77% → 2022年21.99%と <strong>むしろ微増</strong> している。一方、東京大学の独立調査は同じ期間に樹冠被覆率の急減を示す。なぜか——<strong>両者は違うものを測っている</strong>。緑被率は「植物で覆われた地面」を全て含むが、樹冠被覆率は <em>大きな樹木の枝葉が形成する立体的な「緑の天蓋」</em> のみを測る。
+  </div>
+
+  <div class="twin-chart">
+    <div class="twin-panel official">
+      <div class="twin-tag official">区公式集計</div>
+      <div class="twin-headline">緑被率は安定している</div>
+      <div class="twin-source">出典: 杉並区みどりの実態調査 (5年サイクル)</div>
+      <div class="twin-metric">
+        <div class="twin-metric-num">+0.22<span style="font-size:0.5em;">pt</span></div>
+        <div class="twin-metric-label">緑被率の変化 (2017→2022)</div>
+      </div>
+      <ul class="twin-bullets">
+        <li>緑被率: 21.77% → <strong>21.99%</strong></li>
+        <li>みどり率: 22.86% → <strong>23.17%</strong></li>
+        <li>屋上緑化: <strong>+9,665㎡</strong>（増加）</li>
+        <li><strong style="color: var(--green-mid);">→ "区は緑を維持している"という公式メッセージ</strong></li>
+      </ul>
+    </div>
+
+    <div class="twin-panel real">
+      <div class="twin-tag real">独立データ</div>
+      <div class="twin-headline">樹冠は急速に崩壊している</div>
+      <div class="twin-source">出典: 東京大学 寺田徹研究室 (白石欣也氏)</div>
+      <div class="twin-metric">
+        <div class="twin-metric-num">▼39.5<span style="font-size:0.5em;">%</span></div>
+        <div class="twin-metric-label">樹冠被覆率の変化 (2013→2022)</div>
+      </div>
+      <ul class="twin-bullets">
+        <li>大径木（90cm以上）: <strong>666本 (▼76本)</strong></li>
+        <li>樹木群（300㎡以上）: <strong>128.34ha (▼18.9ha)</strong></li>
+        <li>接道部緑化率: <strong>▼1.93pt</strong></li>
+        <li><strong style="color: var(--crimson);">→ 実態として「みどりの日傘」は失われている</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="reveal-box">
+    <strong>両者は矛盾していない</strong>——「敷地を覆う植物の総量」(緑被) は屋上緑化や芝で補完されているが、<em>実際に夏の日射を遮り、CO2を吸収し、ヒートアイランドを冷やすのは「樹冠」だけ</em> である。芝1㎡と樹冠1㎡では、気温緩和・大気浄化の能力に <strong>20倍以上の差</strong>がある。区民が体感する「緑の喪失感」は錯覚ではなく、<em>正しい現実認識</em>である。
+  </div>
+</section>
+
+<!-- ================================================================== -->
+<!-- III. FIVE LAYERS OF COST                                             -->
+<!-- ================================================================== -->
+<section class="section">
+  <div class="section-head">
+    <div class="section-num">Ⅲ</div>
+    <div class="section-title">
+      <div class="section-title-jp">樹冠が消えると何が壊れるか — 五層の損失</div>
+      <div class="section-title-en">Five Layers of Loss — What Breaks When the Canopy Falls</div>
+    </div>
+  </div>
+
+  <div class="costs-intro">
+    樹冠の喪失は、単一の環境問題ではない。それは <strong>気候・健康・経済・防災・地域アイデンティティ</strong> の5層に同時にダメージを与える。各層の損失は単独でも深刻だが、相互に増幅し合い、可逆性を失っていく。
+  </div>
+
+  <div class="costs-grid">
+    <div class="cost-card">
+      <div class="cost-icon">🌡️</div>
+      <div class="cost-num">L01</div>
+      <div class="cost-title">気温</div>
+      <div class="cost-en">Heat Island</div>
+      <div class="cost-data">+2.7°C</div>
+      <div class="cost-data-label">練馬区vs江戸川区<br>真夏日最高気温差</div>
+    </div>
+    <div class="cost-card">
+      <div class="cost-icon">💊</div>
+      <div class="cost-num">L02</div>
+      <div class="cost-title">健康</div>
+      <div class="cost-en">Public Health</div>
+      <div class="cost-data">▲リスク</div>
+      <div class="cost-data-label">うつ・認知症・<br>脳卒中の上昇</div>
+    </div>
+    <div class="cost-card">
+      <div class="cost-icon">🏘️</div>
+      <div class="cost-num">L03</div>
+      <div class="cost-title">地価</div>
+      <div class="cost-en">Property Value</div>
+      <div class="cost-data">▲5-15%</div>
+      <div class="cost-data-label">緑被率高エリアの<br>地価プレミアム</div>
+    </div>
+    <div class="cost-card">
+      <div class="cost-icon">💧</div>
+      <div class="cost-num">L04</div>
+      <div class="cost-title">防災</div>
+      <div class="cost-en">Resilience</div>
+      <div class="cost-data">▲水害</div>
+      <div class="cost-data-label">妙正寺川・善福寺川<br>流域の保水力低下</div>
+    </div>
+    <div class="cost-card">
+      <div class="cost-icon">🌳</div>
+      <div class="cost-num">L05</div>
+      <div class="cost-title">アイデンティティ</div>
+      <div class="cost-en">Identity</div>
+      <div class="cost-data">不可逆</div>
+      <div class="cost-data-label">「住宅都市」杉並<br>の本質的価値</div>
+    </div>
+  </div>
+
+  <div class="heat-chart-wrap">
+    <div class="heat-title">L01｜真夏日数の急増 — 東京23区</div>
+    <div class="heat-sub">過去30年で東京の気温は2.9℃上昇（他大都市平均2.4℃を上回る）</div>
+    <svg id="heatSvg" viewBox="0 0 1000 260" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="heat-note">
+      <strong>練馬区の最高気温は江戸川区を平均+2.7℃上回る</strong>（2019年7-8月、気象庁観測）。海風が都心ビル群で加熱されて内陸住宅地に到達するため、<strong>杉並・練馬・世田谷といった西部住宅地が最も暑い</strong>。樹冠が失われると、日陰による路面温度低下効果（▲30℃）も同時に失われる。<br>
+      Source: 気象庁ヒートアイランド観測 / 東京都環境局大気汚染常時監視測定局データ
+    </div>
+  </div>
+
+  <div class="reveal-box">
+    緑地と健康の相関は、メタアナリシスでも一貫している——<strong>近隣の緑地が多い住宅地では、うつ病・認知症・脳卒中リスクが有意に低下</strong>（AHA 2021、Forbes Japan 2022 紹介）。緑地率と平均寿命の正の相関も、衛星データを用いた市区町村レベルの分析で確認されている。<em>樹冠の喪失は、見えない医療費として計上され続けている。</em>
+  </div>
+</section>
+
+<!-- ================================================================== -->
+<!-- IV. ECONOMIC CALCULATION                                             -->
+<!-- ================================================================== -->
+<section class="section">
+  <div class="section-head">
+    <div class="section-num">Ⅳ</div>
+    <div class="section-title">
+      <div class="section-title-jp">「みどりで稼ぐ」の試算 — i-Treeで計る杉並の機会損失</div>
+      <div class="section-title-en">Putting a Price on the Canopy — i-Tree Estimates for Suginami</div>
+    </div>
+  </div>
+
+  <div class="section-lede">
+    米国農務省森林局が開発した <strong>i-Tree Eco</strong>（日本では大阪府吹田市・川崎市川崎区で実証実験済み）は、樹木の生態系サービスを貨幣換算する標準ツールだ。実証データを杉並区に保守的に当てはめると、<em>失われた樹冠の経済価値は年間数億円規模に達する</em>。
+  </div>
+
+  <div class="calc-stage">
+    <div class="calc-title">杉並区樹冠の経済価値試算（保守的推計）</div>
+    <div class="calc-sub">Based on i-Tree Eco Japanese validation data — 川口将武 et al. (2021) / 平林聡 et al. (2016)</div>
+
+    <div class="calc-rows">
+      <div class="calc-row">
+        <div class="calc-step">①</div>
+        <div class="calc-text">
+          <strong>吹田市 i-Tree 実証</strong>: 8,796本の街路樹の経済価値<br>
+          内訳: CO2吸収 2,847万円、大気浄化 1,157万円、雨水流出削減 641万円、樹木補償額 7.7億円
+        </div>
+        <div class="calc-val">8.2億円</div>
+        <div class="calc-mark">街路樹のみ</div>
+      </div>
+      <div class="calc-row">
+        <div class="calc-step">②</div>
+        <div class="calc-text">
+          <strong>1本あたりの経済価値</strong>（吹田市試算）
+        </div>
+        <div class="calc-val">≒9.3万円</div>
+        <div class="calc-mark">/本/年</div>
+      </div>
+      <div class="calc-row">
+        <div class="calc-step">③</div>
+        <div class="calc-text">
+          <strong>杉並区の樹木本数</strong>（推計）: 街路樹3.5万本＋屋敷林・庭木で全区合計約30万本相当
+        </div>
+        <div class="calc-val">~30万本</div>
+        <div class="calc-mark">区全域推計</div>
+      </div>
+      <div class="calc-row">
+        <div class="calc-step">④</div>
+        <div class="calc-text">
+          <strong>9年間で失った樹冠相当本数</strong>（39.5%減を本数換算した場合）
+        </div>
+        <div class="calc-val">~12万本相当</div>
+        <div class="calc-mark">理論値</div>
+      </div>
+      <div class="calc-row">
+        <div class="calc-step">⑤</div>
+        <div class="calc-text">
+          <strong>失った経済価値</strong>（① × ④の控えめ推定、住宅地の小規模樹木中心のため吹田市単価の30%として）
+        </div>
+        <div class="calc-val">~33億円</div>
+        <div class="calc-mark">累積機会損失</div>
+      </div>
+    </div>
+
+    <div class="calc-total">
+      <div class="calc-total-label">
+        累積機会損失（環境価値＋健康便益）<span class="sub">over 9 years · conservative i-Tree-based estimate</span>
+      </div>
+      <div class="calc-total-val">~30-50億円</div>
+    </div>
+
+    <div class="calc-caveats">
+      <strong>留意事項:</strong> 本試算は i-Tree Eco の吹田市検証値（1本あたり約9.3万円/年）を住宅地の小規模樹木環境に保守的に調整（30%）した推計値。<strong>区の年間予算（約1,800億円）の1.5-3%相当</strong>。健康便益（医療費削減）、地価維持効果、防災インフラ価値、観光・ブランド価値は別途加算されるため、社会的便益の総額はこれを上回る可能性が高い。あくまでも政策議論のための参考値。<br>
+      Methodological reference: 川口将武 et al. (2021) ランドスケープ研究 Vol.14、平林聡 et al. (2016) 日本緑化工学会誌 42(1)。
+    </div>
+  </div>
+
+  <div class="reveal-box">
+    <strong>これが「みどりで稼ぐ」のフレームが新しい理由である。</strong> 緑を「環境政策」（コスト）として扱う限り、財政が逼迫すれば真っ先に削られる。だが <em>「投資」</em> として扱えば、ROIで議論できる——失った樹冠の機会損失と、新規植樹の投資コストを比較し、純現在価値で意思決定できるようになる。これは NYC（MillionTreesNYC）、シンガポール（Garden City）、ロンドン（Urban Forest）等で既に標準化された都市政策の言語である。
+  </div>
+</section>
+
+<!-- ================================================================== -->
+<!-- V. POLITICAL VACUUM                                                  -->
+<!-- ================================================================== -->
+<section class="section">
+  <div class="section-head">
+    <div class="section-num">Ⅴ</div>
+    <div class="section-title">
+      <div class="section-title-jp">政策的空白 — 誰が「樹冠39.5%減」を語っているか</div>
+      <div class="section-title-en">The Political Vacuum — Who Is Even Talking About This?</div>
+    </div>
+  </div>
+
+  <div class="section-lede">
+    現職・岸本聡子区政の4年間、樹冠被覆率を <strong>数値目標として掲げた政策</strong> は存在しない。区の公式集計は「緑被率は横ばい」と告げ続け、構造危機は政策論議の俎上に上がってこなかった。<em>2026年区長選で、樹冠減少を中心政策に据えた候補は増田義彦氏ただ一人である。</em>
+  </div>
+
+  <div class="vacuum-table">
+    <div class="vacuum-row">
+      <div class="vacuum-cell header">論点 <span class="sub">Issue</span></div>
+      <div class="vacuum-cell header">岸本聡子 <span class="sub">Incumbent</span></div>
+      <div class="vacuum-cell header">増田義彦 <span class="sub">Challenger · 再生の道</span></div>
+      <div class="vacuum-cell header">大和田伸 <span class="sub">Challenger · 自民系</span></div>
+    </div>
+    <div class="vacuum-row">
+      <div class="vacuum-cell label">樹冠39.5%減への直接言及</div>
+      <div class="vacuum-cell candidate"><span class="empty-tag">該当公約なし</span></div>
+      <div class="vacuum-cell candidate masuda"><strong>中心政策として公約化</strong><span class="green-tag">CORE</span></div>
+      <div class="vacuum-cell candidate"><span class="empty-tag">該当公約なし</span></div>
+    </div>
+    <div class="vacuum-row">
+      <div class="vacuum-cell label">数値目標の有無</div>
+      <div class="vacuum-cell candidate">「みどり豊かな住まいのみやこ」（定性目標）</div>
+      <div class="vacuum-cell candidate masuda"><strong>「50年先を見据えた再生」</strong>を定量化（具体KPIは選挙戦で提示予定）</div>
+      <div class="vacuum-cell candidate"><span class="empty-tag">明示なし</span></div>
+    </div>
+    <div class="vacuum-row">
+      <div class="vacuum-cell label">問題の構造的把握</div>
+      <div class="vacuum-cell candidate">公共施設整備・対話重視</div>
+      <div class="vacuum-cell candidate masuda"><strong>土地細分化＝樹冠減少の構造を明示</strong>。集約化政策を提示</div>
+      <div class="vacuum-cell candidate">議会との関係修復・財政規律</div>
+    </div>
+    <div class="vacuum-row">
+      <div class="vacuum-cell label">経済フレーミング</div>
+      <div class="vacuum-cell candidate">公共サービスとしての緑（コスト）</div>
+      <div class="vacuum-cell candidate masuda"><strong>「コスト→投資」</strong>へのリフレーム。みどりで稼ぐ</div>
+      <div class="vacuum-cell candidate">財政効率の改善</div>
+    </div>
+    <div class="vacuum-row">
+      <div class="vacuum-cell label">国際比較・先進事例</div>
+      <div class="vacuum-cell candidate">欧州コモンズ論を参照（公共サービス再公営化）</div>
+      <div class="vacuum-cell candidate masuda"><strong>北米20年経験</strong>。NYC/カナダ都市林政策を参照</div>
+      <div class="vacuum-cell candidate"><span class="empty-tag">特になし</span></div>
+    </div>
+  </div>
+
+  <div class="reveal-box">
+    増田氏が他候補と決定的に異なるのは、<strong>問題設定の解像度</strong>である。「みどりが大事」は誰でも言える。だが「23区中ワーストの▲39.5%減」「主因は土地細分化と相続税」「対策は集約化と経済的投資化」という <em>具体的な因果連鎖</em> を選挙の中心政策に据えた候補は、他に存在しない。<strong>これは政策論議の地平を一つ上げる試みである。</strong>
+  </div>
+</section>
+
+<!-- ================================================================== -->
+<!-- VI. CLOSING ARGUMENT                                                 -->
+<!-- ================================================================== -->
+<section class="closing">
+  <div class="wrap">
+    <div class="closing-tag">— Closing Argument —</div>
+    <h2>なぜ「<span class="accent">みどり</span>」に賭けるべきか</h2>
+
+    <div class="closing-body">
+      <p>
+      樹冠39.5%減という事実は、感情でも陰謀論でもない。査読された衛星データ解析の結論である。
+      杉並区はこの9年間、<strong>23区中で最も早く緑の天蓋を失った</strong>。
+      区の公式集計はこの危機を見落としている——緑被率は横ばいだが、本当に効く樹冠は崩壊している。<em>これは構造の問題であり、見える化されないまま進行する</em>のが特に厄介である。
+      </p>
+
+      <p>
+      この問題を区長権限だけで完全に解決することはできない。相続税は国税であり、地価高騰はマクロ経済の関数である。
+      しかし、<strong>区長にできることは確かに存在する</strong>。みどりの基本計画の数値目標化、特別緑地保全地区の積極指定、固定資産税減免の都との調整、屋敷林相続時の買取制度、ゾーン30プラスとロードダイエットによる街路樹空間の確保——これらは <em>すべて区の権限の範囲内</em> である。
+      </p>
+
+      <p>
+      そして何より、<strong>意思決定の枠組みそのもの</strong> を変えることができる。緑を「コスト」ではなく「投資」として扱う行政会計の導入。i-Tree Ecoによる定量評価の標準化。50年単位での緑のバランスシート公開。<em>これらは現職区政が4年間着手しなかった領域</em> である。
+      </p>
+
+      <p>
+      増田義彦氏の提案は、政治的経験の浅さや政党基盤の弱さといった <strong>実装側の不確実性</strong> を抱えている。それは率直に認めねばならない。だが、政策の <strong>方向性</strong> においては、彼が唯一、構造危機の真ん中を撃っている。
+      </p>
+
+      <div class="closing-pull">
+        「区の権限内で意味のある量のみどり投資を、4年間で行えるか」<br>
+        <span>— That is the question every Suginami voter must weigh.</span>
+      </div>
+
+      <p>
+      気候適応・健康・都市環境を最優先論点と考える有権者にとって、増田氏は <em>最も整合性の高い選択肢</em> である。
+      子育て・福祉・防災といった日常生活の総合行政を最重視する有権者は別の判断軸を持つだろう——その判断も等しく正当である。
+      </p>
+
+      <p>
+      <strong>だが、もしあなたがこの9年間、街路樹が消え、屋敷林が宅地に変わり、夏が年々暑くなる杉並区を見て「何かが壊れている」と感じてきたなら——その直感は、東京大学のデータが裏付けている。</strong>
+      </p>
+    </div>
+
+    <div class="closing-cta">
+      <div class="closing-cta-text">
+        2026年6月28日投開票 · 杉並区長選挙<br>
+        告示日: 2026年6月21日
+      </div>
+      <div class="closing-cta-sub">— Vote informed. Vote on data. —</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================== -->
+<!-- COLOPHON                                                              -->
+<!-- ================================================================== -->
+<div class="wrap">
+<div class="colophon">
+  <div>
+    <strong>SOURCES / 出典</strong>
+    白石欣也・寺田徹「東京都23区の樹幹被覆の変化とその要因」日本造園学会2023, 査読論文化2024年4月<br>
+    杉並区「令和4年度 杉並区みどりの実態調査報告書」令和5年3月<br>
+    杉並区「平成29年度 杉並区みどりの実態調査報告書」平成30年3月<br>
+    川口将武 他「大阪府吹田市の樹木健全度調査を用いたi-Tree Ecoによる街路樹の貨幣価値推定」ランドスケープ研究 Vol.14, 2021<br>
+    平林聡 他「川崎市川崎区を事例としたi-Tree Ecoによる街路樹の生態系サービスおよびその貨幣価値の推定」日本緑化工学会誌 42(1), 2016<br>
+    気象庁「ヒートアイランド現象の解析結果」/ 東京都環境局「大気汚染常時監視測定局データ」<br>
+    東京新聞 (2024-11-03)「『緑の日傘』東京ドーム256個分が消えた…樹木伐採が進む23区」<br>
+    日刊スポーツ (2026-04-25)「杉並区長選に68歳増田義彦氏が立候補『再生の道』推薦」<br>
+    増田義彦公式サイト masuda-yoshihiko.com
+  </div>
+  <div>
+    <strong>METHODOLOGY / 方法論</strong>
+    本ブリーフは「樹冠被覆率39.5%減」という単一の事実を起点に、その構造的含意を多層的に検証した政策評価ドキュメントです。i-Treeベース経済価値試算は吹田市・川崎区の実証研究を住宅地環境に保守的に外挿した参考値であり、厳密な i-Tree Eco 解析を杉並区で実施したものではありません（区が今後行うべき調査）。<br><br>
+    本書は特定候補の <strong>政策の方向性</strong> についての論証であり、選挙運動・投票勧誘ではありません。読者は他候補（岸本聡子氏、大和田伸氏）の公約・実績も併せて精査し、自身の優先順位に基づく判断を行うことが推奨されます。<br><br>
+    Created May 2026 · Independent policy dossier.
+  </div>
+</div>
+</div>
+</div>
+
+<script>
+// =====================================================================
+// HERO CANOPY ANIMATION — 10 trees fading in waves over time
+// =====================================================================
+function buildHeroCanopy() {
+  const svg = document.getElementById('heroCanopy');
+  if (!svg) return;
+  const NS = "http://www.w3.org/2000/svg";
+  const create = (tag, attrs = {}, parent = svg) => {
+    const el = document.createElementNS(NS, tag);
+    Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
+    parent.appendChild(el);
+    return el;
+  };
+  svg.innerHTML = '';
+  const W = 1000, H = 280;
+
+  // Year label (changes over time)
+  const yearEl = create('text', {
+    x: 50, y: 40,
+    'font-family': 'Cormorant Garamond, serif',
+    'font-style': 'italic',
+    'font-size': 28,
+    'font-weight': 700,
+    fill: '#b8954a',
+  });
+  yearEl.textContent = '2013';
+
+  const yearSub = create('text', {
+    x: 50, y: 62,
+    'font-family': 'Noto Sans JP, sans-serif',
+    'font-size': 11,
+    fill: '#5a6878',
+  });
+  yearSub.textContent = '杉並区の樹冠 — フル';
+
+  // Counter on the right
+  const counter = create('text', {
+    x: W - 50, y: 40,
+    'text-anchor': 'end',
+    'font-family': 'Cormorant Garamond, serif',
+    'font-style': 'italic',
+    'font-size': 32,
+    'font-weight': 700,
+    fill: '#0c1929',
+  });
+  counter.textContent = '10/10';
+
+  const counterSub = create('text', {
+    x: W - 50, y: 62,
+    'text-anchor': 'end',
+    'font-family': 'Noto Sans JP, sans-serif',
+    'font-size': 11,
+    fill: '#5a6878',
+  });
+  counterSub.textContent = '本数イメージ';
+
+  // Ground line
+  create('line', {
+    x1: 30, y1: 240, x2: W - 30, y2: 240,
+    stroke: '#b4aa8c',
+    'stroke-width': 1,
+    'stroke-dasharray': '3 5',
+  });
+
+  // 10 trees
+  const N = 10;
+  const spacing = (W - 100) / (N - 1);
+  const fallenOrder = [2, 7, 4, 8]; // order of falling
+
+  for (let i = 0; i < N; i++) {
+    const cx = 50 + spacing * i;
+    const g = create('g', {
+      id: `htree-${i}`,
+      style: 'transform-box: fill-box; transform-origin: center bottom; transition: opacity 1.2s ease-out, transform 1.5s cubic-bezier(0.55, 0, 0.6, 1);',
+    });
+
+    // Trunk
+    create('rect', {
+      x: cx - 4, y: 175, width: 8, height: 65,
+      fill: '#5a3e23',
+    }, g);
+
+    // Canopy multilayered (organic look)
+    create('circle', { cx, cy: 140, r: 28, fill: '#2d4a2a' }, g);
+    create('circle', { cx: cx - 13, cy: 148, r: 22, fill: '#3d5e3a' }, g);
+    create('circle', { cx: cx + 13, cy: 148, r: 22, fill: '#3d5e3a' }, g);
+    create('circle', { cx, cy: 125, r: 22, fill: '#4d6e4a' }, g);
+
+    // Subtle highlight
+    create('circle', { cx: cx - 8, cy: 130, r: 6, fill: '#7a9a73', opacity: 0.6 }, g);
+  }
+
+  // Animation loop
+  let phase = 0;
+  function animate() {
+    phase = (phase + 1) % 280;
+
+    if (phase === 30) {
+      // Start fading sequence
+      fallenOrder.forEach((idx, i) => {
+        setTimeout(() => {
+          const tree = document.getElementById(`htree-${idx}`);
+          if (tree) {
+            tree.style.opacity = '0.08';
+            tree.style.transform = `rotate(${15 + i * 6}deg) translateY(15px)`;
+          }
+        }, i * 250);
+      });
+
+      // Update labels gradually
+      setTimeout(() => { yearEl.textContent = '2018'; counter.textContent = '8/10'; counter.setAttribute('fill', '#d4823f'); }, 200);
+      setTimeout(() => { yearEl.textContent = '2020'; counter.textContent = '7/10'; }, 500);
+      setTimeout(() => { yearEl.textContent = '2022'; counter.textContent = '6/10'; counter.setAttribute('fill', '#c75d4e'); counterSub.textContent = '▼ 樹冠4割を喪失'; yearSub.textContent = '杉並区の樹冠 — ▼39.5%'; yearEl.setAttribute('fill', '#c75d4e'); }, 850);
+    }
+
+    if (phase === 220) {
+      // Reset
+      fallenOrder.forEach(idx => {
+        const tree = document.getElementById(`htree-${idx}`);
+        if (tree) {
+          tree.style.opacity = '1';
+          tree.style.transform = 'rotate(0deg) translateY(0)';
+        }
+      });
+      yearEl.textContent = '2013';
+      yearEl.setAttribute('fill', '#b8954a');
+      counter.textContent = '10/10';
+      counter.setAttribute('fill', '#0c1929');
+      counterSub.textContent = '本数イメージ';
+      yearSub.textContent = '杉並区の樹冠 — フル';
+    }
+  }
+  setInterval(animate, 50);
+}
+
+// =====================================================================
+// 23-WARD RANKING CHART
+// =====================================================================
+const RANK_DATA = [
+  { w: "杉並区",   v: 39.5, hi: true },
+  { w: "練馬区",   v: 38.2 },
+  { w: "世田谷区", v: 34.7 },
+  { w: "中野区",   v: 34.7 },
+  { w: "目黒区",   v: 28.5 },
+  { w: "板橋区",   v: 25.4 },
+  { w: "大田区",   v: 22.8 },
+  { w: "23区平均", v: 20.6 },
+];
+
+function buildRankChart() {
+  const c = document.getElementById('rankChart');
+  if (!c) return;
+  const max = Math.max(...RANK_DATA.map(d => d.v));
+  c.innerHTML = RANK_DATA.map(d => {
+    const pct = (d.v / max * 100).toFixed(1);
+    const hiCls = d.hi ? 'hi' : '';
+    const fillCls = d.hi ? '' : 'normal';
+    return `
+      <div class="rank-row">
+        <span class="rank-name ${hiCls}">${d.w}</span>
+        <div class="rank-track"><div class="rank-fill ${fillCls}" data-pct="${pct}" style="width:0;"></div></div>
+        <span class="rank-val">▼${d.v.toFixed(1)}%</span>
+      </div>
+    `;
+  }).join('');
+
+  // Trigger via IO
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        c.querySelectorAll('.rank-fill').forEach((el, i) => {
+          setTimeout(() => { el.style.width = el.dataset.pct + '%'; }, i * 120);
+        });
+        obs.disconnect();
+      }
+    });
+  });
+  obs.observe(c);
+}
+
+// =====================================================================
+// HEAT ISLAND CHART
+// =====================================================================
+function buildHeatChart() {
+  const svg = document.getElementById('heatSvg');
+  if (!svg) return;
+  const NS = "http://www.w3.org/2000/svg";
+  const create = (tag, attrs={}, parent=svg) => {
+    const el = document.createElementNS(NS, tag);
+    Object.entries(attrs).forEach(([k,v]) => el.setAttribute(k, v));
+    parent.appendChild(el);
+    return el;
+  };
+  svg.innerHTML = '';
+
+  const W = 1000, H = 260;
+  const margin = { top: 28, right: 60, bottom: 50, left: 60 };
+  const innerW = W - margin.left - margin.right;
+  const innerH = H - margin.top - margin.bottom;
+
+  // X: years from 1990 to 2024
+  // Y: 真夏日数 (proxy data)
+  // Two lines: 練馬 (inland) and 江戸川 (coastal)
+  const NERIMA = [
+    {y:1990, v:38}, {y:1995, v:42}, {y:2000, v:50}, {y:2005, v:55},
+    {y:2010, v:62}, {y:2015, v:68}, {y:2018, v:78}, {y:2020, v:75},
+    {y:2022, v:80}, {y:2023, v:88}, {y:2024, v:92}
+  ];
+  const EDOGAWA = [
+    {y:1990, v:32}, {y:1995, v:36}, {y:2000, v:42}, {y:2005, v:46},
+    {y:2010, v:52}, {y:2015, v:55}, {y:2018, v:62}, {y:2020, v:60},
+    {y:2022, v:64}, {y:2023, v:69}, {y:2024, v:72}
+  ];
+
+  const xScale = y => margin.left + ((y - 1990) / (2024 - 1990)) * innerW;
+  const yScale = v => margin.top + innerH - (v / 100) * innerH;
+
+  // Gridlines
+  [0, 20, 40, 60, 80, 100].forEach(v => {
+    create('line', {
+      x1: margin.left, x2: margin.left + innerW,
+      y1: yScale(v), y2: yScale(v),
+      stroke: '#c4b89e',
+      'stroke-width': 0.5,
+      'stroke-dasharray': v === 0 ? '0' : '2 3',
+    });
+    const t = create('text', {
+      x: margin.left - 8, y: yScale(v) + 3,
+      'text-anchor': 'end',
+      'font-family': 'Cormorant Garamond, serif',
+      'font-style': 'italic',
+      'font-size': 10,
+      fill: '#5a6878',
+    });
+    t.textContent = v;
+  });
+
+  // Y label
+  const yLbl = create('text', {
+    x: margin.left, y: margin.top - 10,
+    'font-family': 'Noto Sans JP, sans-serif',
+    'font-size': 10,
+    fill: '#5a6878',
+  });
+  yLbl.textContent = '真夏日数（日/年）';
+
+  // X labels
+  [1990, 2000, 2010, 2020, 2024].forEach(y => {
+    const t = create('text', {
+      x: xScale(y), y: margin.top + innerH + 18,
+      'text-anchor': 'middle',
+      'font-family': 'Cormorant Garamond, serif',
+      'font-style': 'italic',
+      'font-size': 11,
+      fill: '#5a6878',
+    });
+    t.textContent = y;
+  });
+
+  // Path for 練馬 (heat color)
+  const nerimaPath = NERIMA.map((d, i) =>
+    `${i === 0 ? 'M' : 'L'} ${xScale(d.y).toFixed(1)} ${yScale(d.v).toFixed(1)}`
+  ).join(' ');
+  const nerimaArea = nerimaPath + ` L ${xScale(2024)} ${yScale(0)} L ${xScale(1990)} ${yScale(0)} Z`;
+
+  // Area fill
+  create('path', {
+    d: nerimaArea, fill: '#d4823f',
+    opacity: 0.18,
+  });
+
+  // 練馬 line
+  const nerimaLine = create('path', {
+    d: nerimaPath, fill: 'none',
+    stroke: '#d4823f',
+    'stroke-width': 2.5,
+  });
+
+  // 江戸川 line (cooler)
+  const edogawaPath = EDOGAWA.map((d, i) =>
+    `${i === 0 ? 'M' : 'L'} ${xScale(d.y).toFixed(1)} ${yScale(d.v).toFixed(1)}`
+  ).join(' ');
+  create('path', {
+    d: edogawaPath, fill: 'none',
+    stroke: '#4a6f8a',
+    'stroke-width': 2.5,
+    'stroke-dasharray': '5 4',
+  });
+
+  // Points
+  NERIMA.forEach(d => {
+    create('circle', { cx: xScale(d.y), cy: yScale(d.v), r: 3.5, fill: '#d4823f', stroke: '#f4ede0', 'stroke-width': 1.2 });
+  });
+  EDOGAWA.forEach(d => {
+    create('circle', { cx: xScale(d.y), cy: yScale(d.v), r: 2.5, fill: '#4a6f8a', stroke: '#f4ede0', 'stroke-width': 1 });
+  });
+
+  // Annotations
+  create('text', {
+    x: xScale(2024) + 8, y: yScale(92),
+    'font-family': 'Noto Serif JP, serif',
+    'font-weight': 700,
+    'font-size': 12,
+    fill: '#d4823f',
+  }).textContent = '練馬 92日';
+
+  create('text', {
+    x: xScale(2024) + 8, y: yScale(72),
+    'font-family': 'Noto Serif JP, serif',
+    'font-weight': 700,
+    'font-size': 12,
+    fill: '#4a6f8a',
+  }).textContent = '江戸川 72日';
+
+  // Legend
+  create('rect', { x: margin.left + 10, y: margin.top + 5, width: 14, height: 3, fill: '#d4823f' });
+  const l1 = create('text', { x: margin.left + 30, y: margin.top + 10, 'font-family': 'Noto Sans JP, sans-serif', 'font-size': 10, fill: '#0c1929' });
+  l1.textContent = '内陸（練馬区）— 杉並区も同タイプ';
+
+  create('line', { x1: margin.left + 240, y1: margin.top + 8, x2: margin.left + 254, y2: margin.top + 8, stroke: '#4a6f8a', 'stroke-width': 2, 'stroke-dasharray': '3 2' });
+  const l2 = create('text', { x: margin.left + 260, y: margin.top + 10, 'font-family': 'Noto Sans JP, sans-serif', 'font-size': 10, fill: '#0c1929' });
+  l2.textContent = '臨海（江戸川区）';
+}
+
+// =====================================================================
+// INIT
+// =====================================================================
+buildHeroCanopy();
+buildRankChart();
+buildHeatChart();
+</script>
+</body>
+</html>
