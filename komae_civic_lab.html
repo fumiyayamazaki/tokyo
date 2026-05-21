@@ -1,0 +1,1864 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>狛江 6.39km² — 日本最小の実験場 / Komae as Tokyo's Civic Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500;600;700;900&family=Noto+Serif+JP:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4ede0;
+    --paper-soft: #ebe2d0;
+    --paper-cool: #eff0e8;
+    --ink: #0c1929;
+    --ink-soft: #5a6878;
+    --ink-mid: #2c3a4e;
+    --rule: #b4aa8c;
+    --gold: #b8954a;
+    --gold-bright: #d4af5b;
+    --gold-deep: #8a6f33;
+    --teal-deep: #1d4f56;
+    --teal-mid: #357a82;
+    --teal-bright: #5a9aa3;
+    --teal-pale: #a4c8cd;
+    --coral: #c75d4e;
+    --rust: #9a3b2e;
+    --grid: #4a5560;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Noto Sans JP", sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(circle at 25% 15%, rgba(29,79,86,0.04) 0%, transparent 60%),
+      radial-gradient(circle at 75% 75%, rgba(184,149,74,0.04) 0%, transparent 55%);
+    z-index: -1;
+  }
+
+  .wrap {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 60px;
+  }
+
+  /* ==================== HERO ==================== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 60px 80px;
+    position: relative;
+    border-bottom: 6px double var(--ink);
+  }
+
+  .hero-edition {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    margin-bottom: 26px;
+    text-align: center;
+  }
+
+  .hero-tag {
+    text-align: center;
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 11px;
+    color: var(--ink-soft);
+    letter-spacing: 0.35em;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+
+  .hero h1 {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 900;
+    font-size: 84px;
+    line-height: 1.08;
+    text-align: center;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 .num {
+    color: var(--teal-deep);
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 1.1em;
+    letter-spacing: -0.02em;
+  }
+
+  .hero h1 .accent {
+    color: var(--gold);
+    font-style: italic;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+  }
+
+  .hero-sub {
+    text-align: center;
+    font-family: "Noto Serif JP", serif;
+    font-size: 21px;
+    color: var(--ink-mid);
+    font-weight: 400;
+    line-height: 1.65;
+    max-width: 940px;
+    margin: 0 auto 40px;
+  }
+
+  .hero-sub em {
+    color: var(--teal-deep);
+    font-style: italic;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+  }
+  .hero-sub strong { font-weight: 700; color: var(--ink); }
+
+  /* Hero map animation */
+  .hero-map {
+    margin: 30px auto 16px;
+    width: 100%;
+    max-width: 980px;
+    height: 320px;
+  }
+
+  .hero-rule-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 26px;
+    margin: 32px 0 18px;
+  }
+  .hero-rule {
+    height: 1px;
+    width: 80px;
+    background: var(--gold);
+  }
+  .hero-rule-text {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+
+  .hero-byline {
+    text-align: center;
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    margin-top: 26px;
+    letter-spacing: 0.05em;
+    line-height: 1.8;
+  }
+  .hero-byline strong { color: var(--ink); font-weight: 700; }
+
+  .scroll-cue {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 12px;
+    color: var(--ink-soft);
+    letter-spacing: 0.2em;
+    animation: bobble 2.2s ease-in-out infinite;
+  }
+  @keyframes bobble {
+    0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.8; }
+    50%      { transform: translateX(-50%) translateY(6px); opacity: 0.4; }
+  }
+
+  /* ==================== SECTION ==================== */
+  .section {
+    padding: 80px 0 40px;
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 22px;
+    margin-bottom: 36px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .section-num {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 64px;
+    color: var(--gold);
+    font-weight: 700;
+    line-height: 0.9;
+  }
+  .section-title { flex: 1; }
+  .section-title-jp {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 700;
+    font-size: 30px;
+    color: var(--ink);
+    letter-spacing: 0.02em;
+    line-height: 1.35;
+  }
+  .section-title-en {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink-soft);
+    font-weight: 400;
+    opacity: 0.75;
+    margin-top: 4px;
+    letter-spacing: 0.05em;
+  }
+
+  .section-lede {
+    font-family: "Noto Serif JP", serif;
+    font-size: 17.5px;
+    line-height: 1.95;
+    color: var(--ink-mid);
+    margin-bottom: 30px;
+    max-width: 940px;
+  }
+  .section-lede strong { color: var(--ink); font-weight: 700; }
+  .section-lede em {
+    color: var(--teal-deep);
+    font-style: italic;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+  }
+
+  /* ==================== FACT STRIP (Komae snapshot) ==================== */
+  .fact-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin: 26px 0 16px;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    background: rgba(255,250,240,0.5);
+  }
+  .fact-cell {
+    padding: 24px 22px;
+    border-right: 1px solid var(--rule);
+    text-align: center;
+  }
+  .fact-cell:last-child { border-right: none; }
+  .fact-overline {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 10.5px;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .fact-num {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--teal-deep);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .fact-num .unit {
+    font-size: 18px;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin-left: 4px;
+  }
+  .fact-label {
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 12px;
+    color: var(--ink);
+    margin-top: 8px;
+    line-height: 1.5;
+    font-weight: 500;
+  }
+  .fact-sub {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 10.5px;
+    color: var(--ink-soft);
+    margin-top: 2px;
+  }
+
+  /* ==================== SCALE COMPARISON ==================== */
+  .scale-frame {
+    background: linear-gradient(135deg, rgba(29,79,86,0.04) 0%, rgba(244,237,224,0.4) 100%);
+    border: 1px solid var(--rule);
+    padding: 32px 36px;
+    margin: 26px 0;
+    position: relative;
+  }
+  .scale-stamp {
+    position: absolute;
+    top: -12px;
+    right: 32px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 6px 16px;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .scale-title {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .scale-cite {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    margin-bottom: 22px;
+  }
+  #scaleSvg { width: 100%; height: 230px; }
+  .scale-note {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--rule);
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    line-height: 1.75;
+  }
+  .scale-note strong { color: var(--ink); font-weight: 600; }
+
+  /* ==================== AGING CRISIS ==================== */
+  .aging-frame {
+    background: rgba(255,250,240,0.55);
+    border: 1px solid var(--rule);
+    padding: 28px 32px;
+    margin: 28px 0;
+  }
+  .aging-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 16px;
+  }
+  .aging-title {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--ink);
+  }
+  .aging-cite {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 11px;
+    color: var(--ink-soft);
+  }
+  #agingSvg { width: 100%; height: 290px; }
+  .aging-note {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--rule);
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    line-height: 1.75;
+  }
+  .aging-note strong { color: var(--ink); font-weight: 600; }
+
+  /* ==================== BEDROOM TWIST ==================== */
+  .bedroom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 26px;
+    margin: 26px 0;
+  }
+  .bedroom-panel {
+    background: rgba(255,250,240,0.55);
+    border: 1px solid var(--rule);
+    padding: 26px 28px;
+    position: relative;
+  }
+  .bedroom-tag {
+    position: absolute;
+    top: -10px;
+    left: 22px;
+    background: var(--paper);
+    padding: 0 12px;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 11.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--gold);
+  }
+  .bedroom-headline {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--ink);
+    margin: 4px 0 8px;
+  }
+  .bedroom-num {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 48px;
+    color: var(--teal-deep);
+    line-height: 1;
+    margin: 14px 0 8px;
+  }
+  .bedroom-num.warn { color: var(--coral); }
+  .bedroom-desc {
+    font-size: 12.5px;
+    color: var(--ink-mid);
+    line-height: 1.8;
+    margin-top: 10px;
+  }
+  .bedroom-desc strong { color: var(--ink); font-weight: 700; }
+
+  /* ==================== ONGOING DX ==================== */
+  .dx-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .dx-card {
+    background: var(--paper-cool);
+    border: 1px solid var(--rule);
+    padding: 22px 20px 24px;
+    position: relative;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .dx-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--teal-mid);
+  }
+  .dx-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 32px -16px rgba(12,25,41,0.25);
+  }
+  .dx-icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+  .dx-name {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 700;
+    font-size: 13.5px;
+    color: var(--ink);
+    margin-bottom: 4px;
+    line-height: 1.4;
+  }
+  .dx-en {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 10.5px;
+    color: var(--teal-mid);
+    margin-bottom: 12px;
+    letter-spacing: 0.05em;
+  }
+  .dx-status {
+    display: inline-block;
+    background: var(--teal-deep);
+    color: var(--paper);
+    padding: 2px 8px;
+    font-size: 9.5px;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .dx-desc {
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+  .dx-desc strong { color: var(--ink); }
+
+  /* ==================== OKUMURA PROFILE ==================== */
+  .profile {
+    display: grid;
+    grid-template-columns: 230px 1fr;
+    gap: 32px;
+    background: linear-gradient(135deg, rgba(29,79,86,0.04) 0%, rgba(244,237,224,0.4) 100%);
+    border: 1px solid var(--rule);
+    padding: 32px 34px;
+    margin-top: 24px;
+  }
+  .profile-portrait {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 12px;
+    border-right: 1px solid var(--rule);
+  }
+  .portrait-svg {
+    width: 140px;
+    height: 140px;
+    margin-bottom: 18px;
+  }
+  .portrait-name {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 700;
+    font-size: 19px;
+    color: var(--ink);
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  .portrait-en {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 11px;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+    text-align: center;
+  }
+  .portrait-tag {
+    background: var(--teal-deep);
+    color: var(--paper);
+    padding: 5px 14px;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    font-weight: 600;
+  }
+  .portrait-age {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-top: 14px;
+    line-height: 1;
+  }
+  .portrait-age-lbl {
+    font-size: 10.5px;
+    color: var(--ink-soft);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .profile-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px 28px;
+  }
+  .pinfo {
+    border-bottom: 1px dashed var(--rule);
+    padding-bottom: 8px;
+  }
+  .pinfo-label {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+  .pinfo-value {
+    font-family: "Noto Serif JP", serif;
+    font-size: 13px;
+    color: var(--ink);
+    font-weight: 500;
+    line-height: 1.55;
+  }
+
+  /* ==================== PRECEDENT BENCHMARK ==================== */
+  .precedent-stage {
+    background: rgba(255,250,240,0.55);
+    border: 1px solid var(--rule);
+    padding: 28px 32px;
+    margin-top: 26px;
+  }
+  .precedent-title {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .precedent-cite {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin-bottom: 22px;
+  }
+  .precedent-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .prec-card {
+    border: 1px solid var(--rule);
+    padding: 18px 20px;
+    background: rgba(244,237,224,0.5);
+    border-left: 3px solid var(--gold);
+  }
+  .prec-age {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .prec-name {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+  .prec-role {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 11px;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+  }
+  .prec-bullet {
+    font-size: 11.5px;
+    color: var(--ink-mid);
+    line-height: 1.65;
+  }
+  .prec-bullet strong { color: var(--ink); font-weight: 600; }
+
+  /* ==================== THE FIVE-WHY CASE ==================== */
+  .case-stage {
+    margin-top: 24px;
+  }
+  .case-row {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 24px;
+    padding: 24px 0;
+    border-bottom: 1px dashed var(--rule);
+  }
+  .case-row:last-child { border-bottom: none; }
+  .case-step {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    text-align: right;
+  }
+  .case-step-label {
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-top: 4px;
+    text-align: right;
+  }
+  .case-q {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .case-q em {
+    color: var(--teal-deep);
+    font-style: italic;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+  }
+  .case-a {
+    font-family: "Noto Serif JP", serif;
+    font-size: 14px;
+    color: var(--ink-mid);
+    line-height: 1.9;
+  }
+  .case-a strong { color: var(--ink); font-weight: 700; }
+  .case-a em {
+    font-style: italic;
+    color: var(--teal-deep);
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+  }
+  .case-evidence {
+    margin-top: 10px;
+    padding: 10px 16px;
+    background: rgba(184,149,74,0.06);
+    border-left: 3px solid var(--gold);
+    font-size: 11.5px;
+    color: var(--ink-mid);
+    line-height: 1.7;
+  }
+  .case-evidence strong { color: var(--ink); font-weight: 600; }
+
+  /* ==================== CLOSING ==================== */
+  .closing {
+    margin-top: 70px;
+    padding: 50px 56px;
+    background: linear-gradient(180deg, rgba(29,79,86,0.06) 0%, rgba(184,149,74,0.05) 100%);
+    border-top: 6px double var(--ink);
+    border-bottom: 6px double var(--ink);
+  }
+  .closing-tag {
+    text-align: center;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .closing h2 {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 900;
+    font-size: 36px;
+    text-align: center;
+    color: var(--ink);
+    line-height: 1.35;
+    margin-bottom: 30px;
+    letter-spacing: 0.01em;
+  }
+  .closing h2 .accent {
+    color: var(--gold);
+    font-style: italic;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 700;
+  }
+  .closing-body p {
+    font-family: "Noto Serif JP", serif;
+    font-size: 16px;
+    line-height: 2.05;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+  .closing-body p:first-of-type::first-letter {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 56px;
+    float: left;
+    line-height: 0.85;
+    padding: 6px 12px 0 0;
+    color: var(--gold);
+    font-weight: 700;
+  }
+  .closing-body strong { font-weight: 800; }
+  .closing-body em {
+    color: var(--teal-deep);
+    font-style: italic;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+  }
+  .closing-pull {
+    text-align: center;
+    font-family: "Noto Serif JP", serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--ink);
+    margin: 28px auto;
+    padding: 22px 30px;
+    border-top: 1px solid var(--teal-mid);
+    border-bottom: 1px solid var(--teal-mid);
+    max-width: 820px;
+    line-height: 1.7;
+  }
+  .closing-pull span {
+    display: block;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--teal-deep);
+    font-weight: 500;
+    margin-top: 10px;
+    letter-spacing: 0.15em;
+  }
+  .closing-cta {
+    text-align: center;
+    margin-top: 28px;
+  }
+  .closing-cta-text {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--ink);
+    line-height: 1.85;
+    max-width: 820px;
+    margin: 0 auto 12px;
+  }
+  .closing-cta-sub {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 13.5px;
+    color: var(--gold);
+    letter-spacing: 0.22em;
+  }
+
+  /* ==================== COLOPHON ==================== */
+  .colophon {
+    margin-top: 60px;
+    padding: 30px 0 60px;
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+    font-size: 10.5px;
+    color: var(--ink-soft);
+    line-height: 1.75;
+  }
+  .colophon strong {
+    display: block;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 12px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+  }
+  .colophon a {
+    color: var(--ink-mid);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--rule);
+  }
+
+  /* ==================== RESPONSIVE ==================== */
+  @media (max-width: 980px) {
+    .wrap { padding: 0 24px; }
+    .hero { padding: 40px 24px 60px; }
+    .hero h1 { font-size: 46px; }
+    .hero-sub { font-size: 16px; }
+    .section-num { font-size: 44px; }
+    .section-title-jp { font-size: 22px; }
+    .fact-strip { grid-template-columns: repeat(2, 1fr); }
+    .fact-cell:nth-child(2) { border-right: none; }
+    .fact-cell:nth-child(1), .fact-cell:nth-child(2) { border-bottom: 1px solid var(--rule); }
+    .bedroom, .profile { grid-template-columns: 1fr; }
+    .profile-portrait { border-right: none; border-bottom: 1px solid var(--rule); padding-bottom: 20px; }
+    .dx-grid { grid-template-columns: repeat(2, 1fr); }
+    .precedent-list { grid-template-columns: 1fr; }
+    .case-row { grid-template-columns: 50px 1fr; gap: 14px; }
+    .case-step { font-size: 28px; }
+    .closing { padding: 30px 22px; }
+    .closing h2 { font-size: 24px; }
+    .colophon { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================================================================== -->
+<!-- HERO                                                                -->
+<!-- ================================================================== -->
+<section class="hero">
+  <div class="wrap" style="width:100%;">
+    <div class="hero-edition">Komae Civic Lab Brief · Single-Issue Dossier</div>
+    <div class="hero-tag">2026年 狛江市長選 · 奥村光貴 候補の最強の論点</div>
+
+    <h1>
+      狛江は<span class="num">6.39</span>km<sup style="font-size: 0.5em;">2</sup>。<br>
+      <span class="accent">日本最小の</span>実験場<span class="accent">.</span>
+    </h1>
+
+    <div class="hero-sub">
+      狛江市は <strong>東京都内で唯一、全国でも2番目に小さい市</strong>。<br>
+      人口8.2万人、面積6.39km²、人口密度12,558人/km²。<br>
+      <em>そのサイズは欠点ではなく、データ駆動の自治体経営を実証する最良の規模</em> である。<br>
+      26歳の教育情報学研究者・奥村光貴が、その実証の主導役になりうる理由を検証する。
+    </div>
+
+    <!-- Hero map: animated dots representing 8.2万 people in 6.39km² -->
+    <svg class="hero-map" id="heroMap" viewBox="0 0 980 320" xmlns="http://www.w3.org/2000/svg"></svg>
+
+    <div class="hero-rule-row">
+      <div class="hero-rule"></div>
+      <div class="hero-rule-text">The Smallest City Can Move Fastest</div>
+      <div class="hero-rule"></div>
+    </div>
+
+    <div class="hero-byline">
+      Data: <strong>総務省「住民基本台帳人口・世帯数」(2025)</strong> · <strong>狛江市第6次行財政改革推進計画 (2025)</strong> · <strong>狛江市DX戦略2.0</strong> · <strong>狛江市令和8年度所信表明 (2026年2月)</strong> · <strong>KPMG×宇都宮市 AI政策シミュレーション (2024)</strong>
+    </div>
+
+    <div class="scroll-cue">↓ Scroll to read the brief</div>
+  </div>
+</section>
+
+<!-- ================================================================== -->
+<!-- I. KOMAE SNAPSHOT                                                   -->
+<!-- ================================================================== -->
+<div class="wrap">
+<section class="section">
+  <div class="section-head">
+    <div class="section-num">Ⅰ</div>
+    <div class="section-title">
+      <div class="section-title-jp">狛江市の解剖 — 4つの数字</div>
+      <div class="section-title-en">Komae by the Numbers — Four Defining Facts</div>
+    </div>
+  </div>
+
+  <div class="section-lede">
+    狛江市は、神奈川との県境・多摩川左岸に位置する <strong>全国の市で2番目に小さい都市</strong> である。北を野川、南を多摩川が流れ、世田谷区・調布市・川崎市に隣接する。新宿から南西へ電車で約20分。昭和初期の小田急線開通で発展した戦後郊外住宅都市の典型——だが、その「典型」さの中に <em>特異な構造</em> が潜んでいる。
+  </div>
+
+  <div class="fact-strip">
+    <div class="fact-cell">
+      <div class="fact-overline">Population · 人口</div>
+      <div class="fact-num">82,048<span class="unit">人</span></div>
+      <div class="fact-label">外国人含む（2025年1月）</div>
+      <div class="fact-sub">vs. 杉並区58万人</div>
+    </div>
+    <div class="fact-cell">
+      <div class="fact-overline">Area · 面積</div>
+      <div class="fact-num">6.39<span class="unit">km²</span></div>
+      <div class="fact-label">全国の市で2番目に小さい</div>
+      <div class="fact-sub">vs. 杉並区34km²</div>
+    </div>
+    <div class="fact-cell">
+      <div class="fact-overline">Density · 人口密度</div>
+      <div class="fact-num">12,558<span class="unit">/km²</span></div>
+      <div class="fact-label">超高密度（東京23区平均級）</div>
+      <div class="fact-sub">23区平均 ≈ 15,500/km²</div>
+    </div>
+    <div class="fact-cell">
+      <div class="fact-overline">Aging Rate · 高齢化率</div>
+      <div class="fact-num">24.3<span class="unit">%</span></div>
+      <div class="fact-label">4.1人に1人が65歳以上</div>
+      <div class="fact-sub">急速上昇中</div>
+    </div>
+  </div>
+
+  <!-- Scale comparison SVG: Komae vs other Tokyo districts -->
+  <div class="scale-frame">
+    <div class="scale-stamp">Scale Reference</div>
+    <div class="scale-title">面積比較 — 狛江市は東京の自治体の中で「どれくらい小さい」か</div>
+    <div class="scale-cite">出典: 国土地理院 全国都道府県市区町村別面積調 · 各自治体面積</div>
+    <svg id="scaleSvg" viewBox="0 0 1000 230" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="scale-note">
+      <strong>狛江市の面積6.39km²は、世田谷区(58km²)の1/9、府中市(30km²)の1/5、千代田区(12km²)の半分にすぎない。</strong>
+      この小ささは、行政組織のコンパクトさと意思決定速度に直結する。市役所と全市民との物理的距離が小さいため、データ収集・施策実証・住民フィードバックのループが他都市より圧倒的に速く回せる。
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================== -->
+<!-- II. THE AGING ACCELERATION                                          -->
+<!-- ================================================================== -->
+<section class="section">
+  <div class="section-head">
+    <div class="section-num">Ⅱ</div>
+    <div class="section-title">
+      <div class="section-title-jp">急速高齢化 — 35年で2.6倍</div>
+      <div class="section-title-en">The Aging Acceleration — A Crisis Hidden in Plain Sight</div>
+    </div>
+  </div>
+
+  <div class="section-lede">
+    狛江の高齢化率は、平成2年(1990)の<strong>9.2%</strong>から令和7年(2025)の<strong>24.3%</strong>へ。35年で<em>約2.6倍</em>に上昇した。一方、出生数は1995年以降3,000人前後で<strong>横ばい</strong>。これは「人口減少」ではない——<em>新陳代謝の停止</em>である。生産年齢人口に依存する個人市民税(歳入の約20%)への影響は、これから本格化する。
+  </div>
+
+  <div class="aging-frame">
+    <div class="aging-title-row">
+      <div class="aging-title">狛江市 高齢化率の推移 (1990→2025、35年間)</div>
+      <div class="aging-cite">Source: 狛江市人口ビジョン・総合戦略 / 住民基本台帳</div>
+    </div>
+    <svg id="agingSvg" viewBox="0 0 1000 290" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="aging-note">
+      <strong>1990年:</strong> 高齢化率9.2% — 全国平均(12.0%)を下回る若い都市<br>
+      <strong>2010年:</strong> 21.8% — 全国平均(23.0%)に追いつく<br>
+      <strong>2025年:</strong> 24.3% — 4.1人に1人が65歳以上、7.4人に1人が75歳以上<br>
+      <strong>2040年予測:</strong> 30%超 — 生産年齢人口の縮小が市財政に直撃<br>
+      Source: 狛江市基本構想 / 国立社会保障・人口問題研究所「日本の地域別将来推計人口」
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================== -->
+<!-- III. THE BEDROOM-COMMUNITY TWIST                                    -->
+<!-- ================================================================== -->
+<section class="section">
+  <div class="section-head">
+    <div class="section-num">Ⅲ</div>
+    <div class="section-title">
+      <div class="section-title-jp">構造のねじれ — 8万人が住み、6万人が働く街</div>
+      <div class="section-title-en">The Bedroom-Community Twist — Living Here, Working Elsewhere</div>
+    </div>
+  </div>
+
+  <div class="section-lede">
+    狛江市の <strong>夜間人口は84,772人、昼間人口は62,979人</strong>（2020年国勢調査）。昼夜間人口比 0.74 ——日中は人口の26%が他自治体へ流出する完全なベッドタウン構造である。市内には大規模事業所が少なく、税収の柱は <em>個人市民税</em>。生産年齢人口の減少は、市財政に直接的な打撃となる。
+  </div>
+
+  <div class="bedroom">
+    <div class="bedroom-panel">
+      <div class="bedroom-tag">夜間 NIGHT</div>
+      <div class="bedroom-headline">住む街、寝る街、子育てする街</div>
+      <div class="bedroom-num">84,772<span style="font-size:0.4em; color: var(--ink-soft);">人</span></div>
+      <div class="bedroom-desc">
+        <strong>夜間人口</strong>: 狛江市内に居住する人口。市民として行政サービスを受け、住民税を払う層。
+        <br>個人市民税が歳入の約20%を占めるという <strong>税構造の脆弱性</strong> がここに見える。
+      </div>
+    </div>
+    <div class="bedroom-panel">
+      <div class="bedroom-tag">昼間 DAY</div>
+      <div class="bedroom-headline">通勤・通学で外へ流れる経済</div>
+      <div class="bedroom-num warn">62,979<span style="font-size:0.4em; color: var(--ink-soft);">人</span></div>
+      <div class="bedroom-desc">
+        <strong>昼間人口</strong>: 日中に狛江市内に滞在する人口。<strong>夜間比0.74</strong>。
+        市内から市外へ通勤する人 27,165人 vs 市外から市内へ通勤する人 18,937人 = <strong>純流出 8,228人</strong>。
+        市内の経済活動は構造的に薄い。
+      </div>
+    </div>
+  </div>
+
+  <div class="section-lede" style="margin-top: 20px; max-width: none; font-size: 16px;">
+    つまり、狛江市は <em>「住む街」としては優秀だが、「働く街・稼ぐ街」としては構造的に弱い</em>。
+    この構造のままでは、高齢化が進むにつれて税基盤が侵食され、公共サービスを維持できなくなる。
+    だからこそ、<strong>限られた歳入を最も効率的に配分する技術——EBPM(Evidence-Based Policy Making)——が、他のどの自治体よりも切実に必要となる</strong>。
+  </div>
+</section>
+
+<!-- ================================================================== -->
+<!-- IV. ALREADY-IN-PROGRESS DX                                          -->
+<!-- ================================================================== -->
+<section class="section">
+  <div class="section-head">
+    <div class="section-num">Ⅳ</div>
+    <div class="section-title">
+      <div class="section-title-jp">すでに走り始めている — 狛江の自治体DX</div>
+      <div class="section-title-en">Komae's DX Initiatives — A Lab Already Running</div>
+    </div>
+  </div>
+
+  <div class="section-lede">
+    狛江市は、自治体DXのフロンティアでも目立った動きを既に始めている。<strong>「狛江市DX戦略2.0」</strong>、<strong>自動運転バスの実証事業</strong>、<strong>デマンド交通の実証運行</strong>——いずれも、人口規模8万人台の小さな自治体だからこそ低リスクで挑戦できる施策である。<em>必要なのは、これらをさらに加速できるリーダーである</em>。
+  </div>
+
+  <div class="dx-grid">
+    <div class="dx-card">
+      <div class="dx-icon">⚙️</div>
+      <div class="dx-name">狛江市DX戦略2.0</div>
+      <div class="dx-en">Digital Transformation Strategy</div>
+      <div class="dx-status">運用中</div>
+      <div class="dx-desc">
+        LINEを活用した情報発信・手続き受付、スマートフォン経由の<strong>各種行政サービス</strong>を整備済み。データ収集基盤は既に存在する。
+      </div>
+    </div>
+    <div class="dx-card">
+      <div class="dx-icon">🚌</div>
+      <div class="dx-name">自動運転バス 実証事業</div>
+      <div class="dx-en">Autonomous Bus Pilot</div>
+      <div class="dx-status">実証中</div>
+      <div class="dx-desc">
+        路線バス減便の喫緊課題に対応。<strong>市域6.39km²の小ささ</strong>こそが、自動運転バス検証に最適なフィールド。
+      </div>
+    </div>
+    <div class="dx-card">
+      <div class="dx-icon">📱</div>
+      <div class="dx-name">デマンド交通 実証運行</div>
+      <div class="dx-en">On-Demand Transit Trial</div>
+      <div class="dx-status">令和8年度開始</div>
+      <div class="dx-desc">
+        高齢者の移動支援にもなりうるオンデマンド型の交通サービス。<strong>需要データ分析と最適配車</strong>が成否を決める。
+      </div>
+    </div>
+    <div class="dx-card">
+      <div class="dx-icon">🏛️</div>
+      <div class="dx-name">第6次行財政改革</div>
+      <div class="dx-en">Fiscal Reform · 2020-2024</div>
+      <div class="dx-status">継続中</div>
+      <div class="dx-desc">
+        50項目超の取組（公共施設老朽化対策、国保赤字削減、職員多様な働き方）。<strong>定量管理が必要な改革プロジェクト</strong>群。
+      </div>
+    </div>
+  </div>
+
+  <div class="section-lede" style="margin-top: 24px; max-width: none; font-size: 16px;">
+    これらの施策に共通する成功要件は <em>「データの整備・分析・意思決定への連結」</em> である。
+    狛江市は<strong>既にデータを集める仕組みは持っている</strong>。
+    だが、それを <em>政策の意思決定に組み込んでROIで議論する文化</em> は、まだ十分でない。
+    ここに、奥村氏のバックグラウンドが直接機能しうる。
+  </div>
+</section>
+
+<!-- ================================================================== -->
+<!-- V. OKUMURA PROFILE                                                  -->
+<!-- ================================================================== -->
+<section class="section">
+  <div class="section-head">
+    <div class="section-num">Ⅴ</div>
+    <div class="section-title">
+      <div class="section-title-jp">奥村光貴の「狛江適性」</div>
+      <div class="section-title-en">Okumura's Fit — A Profile Built for a Civic Lab</div>
+    </div>
+  </div>
+
+  <div class="profile">
+    <div class="profile-portrait">
+      <svg class="portrait-svg" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="tealGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#5a9aa3"/>
+            <stop offset="100%" stop-color="#1d4f56"/>
+          </linearGradient>
+        </defs>
+        <circle cx="70" cy="70" r="66" fill="none" stroke="#0c1929" stroke-width="2"/>
+        <circle cx="70" cy="70" r="60" fill="none" stroke="url(#tealGrad)" stroke-width="0.8" opacity="0.6"/>
+        <text x="70" y="64" text-anchor="middle" font-family="Noto Serif JP" font-weight="700" font-size="34" fill="#0c1929">奥村</text>
+        <text x="70" y="98" text-anchor="middle" font-family="Cormorant Garamond" font-style="italic" font-size="13" fill="#1d4f56">K. OKUMURA</text>
+        <line x1="42" y1="108" x2="98" y2="108" stroke="#1d4f56" stroke-width="0.8"/>
+      </svg>
+      <div class="portrait-name">奥村 光貴</div>
+      <div class="portrait-en">KOKI OKUMURA</div>
+      <div class="portrait-tag">再生の道 推薦</div>
+      <div class="portrait-age">26</div>
+      <div class="portrait-age-lbl">at election</div>
+    </div>
+    <div class="profile-info">
+      <div class="pinfo">
+        <div class="pinfo-label">Education</div>
+        <div class="pinfo-value">大阪桐蔭高校 → 京都大学 工学部情報学科 → 京都大学大学院（教育情報学・博士課程在籍）</div>
+      </div>
+      <div class="pinfo">
+        <div class="pinfo-label">Research</div>
+        <div class="pinfo-value">教育に関するビッグデータをAI・統計手法で分析。EBPM（証拠に基づく政策立案）の専門領域</div>
+      </div>
+      <div class="pinfo">
+        <div class="pinfo-label">Entrepreneurship</div>
+        <div class="pinfo-value">オンライン塾を創業（卒業生→在校生支援）。SFI株式会社 取締役（革新的ソフトウェア開発ツール）</div>
+      </div>
+      <div class="pinfo">
+        <div class="pinfo-label">Civic Track</div>
+        <div class="pinfo-value">2025年6月 都議選・島部選挙区（再生の道公認）→ 落選<br>2025年9月 再生の道 第2代代表 就任（25歳）<br>2026年5月1日 狛江市長選 出馬表明（代表退任予定）</div>
+      </div>
+      <div class="pinfo">
+        <div class="pinfo-label">Original Spark</div>
+        <div class="pinfo-value">高校時代に校長による裏金問題に直面、仲間と生徒会を創設して初代会長に就任。<strong>「理不尽には声を上げ、行動する」</strong></div>
+      </div>
+      <div class="pinfo">
+        <div class="pinfo-label">Komae Pledge</div>
+        <div class="pinfo-value" style="color: var(--teal-deep); font-weight: 700;">「30年後にも誇れる持続可能な狛江を、次世代に残したい」<br>「若者が集い、シルバー世代とともに支え合う街」</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Precedents -->
+  <div class="precedent-stage">
+    <div class="precedent-title">20代市長の前例 — 日本でも既に成立している</div>
+    <div class="precedent-cite">「20代で市長は無理」は事実ではない。直近の3例だけで、すでに証明済みの選択肢</div>
+    <div class="precedent-list">
+      <div class="prec-card">
+        <div class="prec-age">28</div>
+        <div class="prec-name">東 修平</div>
+        <div class="prec-role">大阪府四條畷市長（2017〜 / 2期目）</div>
+        <div class="prec-bullet">
+          京大工学部→外務省→野村総研インド経由。<strong>働き方改革・行政DX</strong>で実績。2期目当選。「20代で市長は不可能」を覆した最初の人物。
+        </div>
+      </div>
+      <div class="prec-card">
+        <div class="prec-age">26</div>
+        <div class="prec-name">髙島 崚輔</div>
+        <div class="prec-role">兵庫県芦屋市長（2023〜）</div>
+        <div class="prec-bullet">
+          ハーバード卒。<strong>対話を中心としたまちづくり</strong>と<strong>公立学校教育の質向上</strong>を柱に。史上最年少市長として注目を集める。
+        </div>
+      </div>
+      <div class="prec-card">
+        <div class="prec-age">36</div>
+        <div class="prec-name">内藤 佐和子</div>
+        <div class="prec-role">徳島市長（2020〜）</div>
+        <div class="prec-bullet">
+          東大法学部。難病を抱えながら<strong>スタートアップ・若者支援</strong>で県都を動かす。若手首長が一過性のブームでないことを示す。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================== -->
+<!-- VI. THE FIVE-WHY CASE                                               -->
+<!-- ================================================================== -->
+<section class="section">
+  <div class="section-head">
+    <div class="section-num">Ⅵ</div>
+    <div class="section-title">
+      <div class="section-title-jp">なぜ狛江で、なぜ今、なぜ奥村か — 5段階の論証</div>
+      <div class="section-title-en">Why Komae, Why Now, Why Okumura — The Five-Step Case</div>
+    </div>
+  </div>
+
+  <div class="section-lede">
+    奥村光貴氏の <strong>狛江市長選への適性</strong> は、感覚論ではない。狛江市の構造的特性（小ささ・密度・高齢化・既存DX基盤）と、奥村氏のスキルセット（教育情報学・AI・起業経験・若さ）が、5段階の論理連鎖で接続される。
+  </div>
+
+  <div class="case-stage">
+    <div class="case-row">
+      <div>
+        <div class="case-step">①</div>
+        <div class="case-step-label">問題</div>
+      </div>
+      <div>
+        <div class="case-q">狛江は<em>限られた歳入</em>で<em>増え続ける高齢化</em>に対応せねばならない。</div>
+        <div class="case-a">
+          個人市民税(歳入20%)に依存する税構造、生産年齢人口の縮小、公共施設の一斉老朽化。
+          <strong>「予算を増やす」選択肢は事実上存在しない</strong>ため、<em>限られた予算をどう最適配分するか</em>が中心問題となる。
+        </div>
+        <div class="case-evidence">
+          <strong>裏付け:</strong> 狛江市第6次行財政改革推進計画は、50項目超の改革取組を「持続可能な自治体経営」のために実施中。市は既に「やるべきこと」のリスト化は終えている。
+        </div>
+      </div>
+    </div>
+
+    <div class="case-row">
+      <div>
+        <div class="case-step">②</div>
+        <div class="case-step-label">解決の方向</div>
+      </div>
+      <div>
+        <div class="case-q">解決の鍵は<em>EBPM</em>——証拠に基づく政策立案。</div>
+        <div class="case-a">
+          国は2017年から、地方自治体は近年、EBPMを基本方針として採用している。
+          だが実装は道半ば——多くの自治体は<strong>データを集める仕組みは作ったが、意思決定に直結させる文化が薄い</strong>。
+          狛江市のDX戦略2.0は基盤整備フェーズで止まっている。
+        </div>
+        <div class="case-evidence">
+          <strong>裏付け:</strong> KPMG×宇都宮市の共同研究では、市の総合計画から<strong>358の指標を抽出し、約2万通りのAIシミュレーション</strong>を実施、2050年の市の姿を7シナリオに収束させた。これは中規模都市での実装事例だが、狛江規模なら<em>より低コストで実装可能</em>。
+        </div>
+      </div>
+    </div>
+
+    <div class="case-row">
+      <div>
+        <div class="case-step">③</div>
+        <div class="case-step-label">なぜ狛江</div>
+      </div>
+      <div>
+        <div class="case-q">EBPM実装に<em>狛江は構造的に最適</em>な都市である。</div>
+        <div class="case-a">
+          <strong>面積6.39km²、人口8万人</strong>という規模は、データ収集・施策実証・住民フィードバックのループを最短距離で回せるサイズ。
+          世田谷区(91万人)や横浜市(376万人)では官僚機構の層が厚く、データ→政策→効果検証のサイクルが年単位になる。
+          狛江ではそれを<em>四半期単位</em>で回せる可能性がある。
+        </div>
+        <div class="case-evidence">
+          <strong>裏付け:</strong> 自動運転バス実証、デマンド交通実証はすでに開始されている。これらは「市内に新規施策を一斉導入→効果計測→改善」を最短距離で行える狛江の特性を活かしている。
+        </div>
+      </div>
+    </div>
+
+    <div class="case-row">
+      <div>
+        <div class="case-step">④</div>
+        <div class="case-step-label">なぜ奥村</div>
+      </div>
+      <div>
+        <div class="case-q">奥村氏の専門は<em>教育ビッグデータ×AI</em>——EBPM実装そのものである。</div>
+        <div class="case-a">
+          京都大学大学院で「教育情報学」を専攻し、教育に関するビッグデータを統計手法・AIで分析する研究をしている。
+          これは <strong>「数値を集めて意思決定に変換する」技術</strong> そのもの。
+          加えて、オンライン塾を創業しSFI株式会社の取締役も務めており、<em>研究を実装に落とす経験</em>を持つ。
+          このスキルセットを8万人の街全体に適用する機会は、稀である。
+        </div>
+        <div class="case-evidence">
+          <strong>裏付け:</strong> 教育情報学は近年「ラーニング・アナリティクス」として急速に発展中。学生のログデータから学習成果を予測・改善する技術であり、これを自治体行政に転用すれば<strong>市民の各種サービス利用ログから施策効果を測定する仕組み</strong>に直結する。
+        </div>
+      </div>
+    </div>
+
+    <div class="case-row">
+      <div>
+        <div class="case-step">⑤</div>
+        <div class="case-step-label">なぜ今</div>
+      </div>
+      <div>
+        <div class="case-q">26歳市長は<em>もう特殊事例ではない</em>——日本に複数の前例がある。</div>
+        <div class="case-a">
+          四條畷市・東修平氏（28歳で初当選、2期目）、芦屋市・髙島崚輔氏（26歳）——20代市長は既に複数自治体で成立している。
+          <strong>若さは欠点でなく、変化の速度</strong>である。
+          AGI到来期に、AIネイティブ世代の市長がデータ駆動の自治体経営をゼロから設計する都市は、日本のロールモデルになる可能性を持つ。
+        </div>
+        <div class="case-evidence">
+          <strong>裏付け:</strong> 東修平市長（四條畷市）の第1期は<strong>働き方改革・行政DX</strong>で全国モデルとなり、企業からの注目度も上がった。<strong>2期目当選</strong>は、若さが「実績で塗り替えられる」ことの証左。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================== -->
+<!-- VII. CLOSING                                                        -->
+<!-- ================================================================== -->
+<section class="closing">
+  <div class="wrap">
+    <div class="closing-tag">— Closing Argument —</div>
+    <h2>8万人の街は、<span class="accent">データ</span>で動かせる</h2>
+
+    <div class="closing-body">
+      <p>
+        狛江市長選は、構図として「現職松原氏（2期8年）の後継候補 vs 既存政治の刷新を訴える挑戦者」になりつつある。
+        奥村光貴氏は <strong>26歳</strong>、政治経験ゼロ、議会基盤ゼロ——形式的なハンディキャップは確かに存在する。
+        だが、視点を変えれば、彼が背負っているのは <strong>形式ではなく構造の最適性</strong> である。
+      </p>
+
+      <p>
+        狛江市は、東京で最も小さい市である。だがその小ささは、政治的な扱いにくさではなく、<em>政策実証における圧倒的なアジリティ</em> を意味する。
+        DX戦略2.0、自動運転バス、デマンド交通——市は既にデータ駆動行政の道具立てを揃え始めている。
+        足りないのは、<strong>その道具を「使い切る」司令塔</strong> である。
+      </p>
+
+      <p>
+        奥村氏は、京都大学大学院で教育ビッグデータをAIで分析してきた専門家であり、起業を通じて<strong>研究を実装に変換した経験</strong>を持つ。彼の専門領域である「ラーニング・アナリティクス」は、まさにEBPMの実装技術そのものである。
+        加えて、20代市長は <em>すでに日本で証明された選択肢</em>——四條畷市・東修平氏は2期目を務め、芦屋市・髙島崚輔氏は史上最年少市長として就任した。
+      </p>
+
+      <p>
+        もちろん、若さと専門性だけで市長は務まらない。<strong>議会との関係構築、職員との協働、市民との対話</strong>——これらすべてに学習曲線がある。
+        奥村氏に投票するということは、<em>その学習コストを引き受けてでも、新しい自治体経営モデルへの挑戦を選ぶ</em>ということを意味する。
+        これは政治的賭けである。だが、その賭けには明確な根拠がある。
+      </p>
+
+      <div class="closing-pull">
+        「8万人・6.39km²の街で、データ駆動の自治体経営を実証できないなら、<br>日本のどこでも実証できない」<br>
+        <span>— That is the wager Okumura's candidacy proposes.</span>
+      </div>
+
+      <p>
+        高齢化、税基盤の脆弱性、ベッドタウン構造——これらは「徐々に進行する慢性疾患」である。
+        従来型の市政運営でも対応できないわけではない。だが、<strong>30年後を見据えた構造変革</strong>を仕掛けるなら、その時間軸を生きる世代の人物に任せる選択肢が、合理的でないとは言えない。
+      </p>
+
+      <p>
+        <strong>狛江は日本最小の市である。だからこそ、日本最初の「データ駆動・若手主導」自治体になりうる。</strong>
+        この可能性に賭けるか、賭けないか——それが、2026年6月28日の有権者の判断軸である。
+      </p>
+    </div>
+
+    <div class="closing-cta">
+      <div class="closing-cta-text">
+        2026年6月28日投開票 · 狛江市長選挙<br>
+        告示日: 2026年6月21日
+      </div>
+      <div class="closing-cta-sub">— A small city. A young mayor. A big experiment. —</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================== -->
+<!-- COLOPHON                                                            -->
+<!-- ================================================================== -->
+<div class="wrap">
+<div class="colophon">
+  <div>
+    <strong>SOURCES / 出典</strong>
+    朝日新聞 (2026-05-01)「『再生の道』の奥村代表、東京・狛江市長選に立候補表明」<br>
+    東京新聞 (2026-05-01)「狛江市長選挙、『再生の道』代表の奥村光貴さんが立候補へ」<br>
+    日本経済新聞 (2025-09-16)「『再生の道』代表に京大院生25歳の奥村光貴氏」<br>
+    選挙ドットコム「奥村こうき（オクムラコウキ）」政治家情報ページ<br>
+    狛江市「人口と世帯数」「令和8年度所信表明」「第6次行財政改革推進計画 令和6年度進捗状況報告書」<br>
+    総務省「住民基本台帳人口・世帯数」2025年1月1日現在<br>
+    国土地理院「全国都道府県市区町村別面積調」<br>
+    国立社会保障・人口問題研究所「日本の地域別将来推計人口」<br>
+    KPMGコンサルティング×宇都宮市×日立システムズ「AIを活用した政策シミュレーション 共同研究」(2024)<br>
+    HOLG「四條畷市長 東修平氏 インタビュー」/ LOCAL LETTER「最年少市長たちの挑戦」
+  </div>
+  <div>
+    <strong>METHODOLOGY / 方法論</strong>
+    本ブリーフは奥村光貴氏の <strong>政策的適性</strong> に焦点を当てた単一論点の検証ドキュメントです。<br><br>
+    奥村氏は2026年5月1日に出馬表明したばかりで、詳細な政策パッケージは選挙戦の中で具体化される段階にあります。本書では、彼の<strong>バックグラウンドと狛江市の構造特性の整合性</strong>を中心に論じています。<br><br>
+    本書は特定候補の <strong>適性</strong> についての論証であり、選挙運動・投票勧誘ではありません。読者は他候補（現職・松原俊雄氏の3期目の意向、他の挑戦者）の公約・実績も併せて精査し、自身の優先順位に基づく判断を行うことが推奨されます。<br><br>
+    Created May 2026 · Independent policy dossier · Companion to the Suginami Canopy Brief.
+  </div>
+</div>
+</div>
+</div>
+
+<script>
+// =====================================================================
+// HERO MAP — Animated "8万人 in 6.39km²" visualization
+// Show a grid representing Komae's compact size with citizen dots
+// =====================================================================
+function buildHeroMap() {
+  const svg = document.getElementById('heroMap');
+  if (!svg) return;
+  const NS = "http://www.w3.org/2000/svg";
+  const create = (tag, attrs = {}, parent = svg) => {
+    const el = document.createElementNS(NS, tag);
+    Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
+    parent.appendChild(el);
+    return el;
+  };
+  svg.innerHTML = '';
+  const W = 980, H = 320;
+
+  // Center box representing Komae (6.39km² scale)
+  const boxW = 360, boxH = 220;
+  const boxX = (W - boxW) / 2;
+  const boxY = (H - boxH) / 2 - 10;
+
+  // Komae outline (organic shape - rough river-bounded)
+  // Komae is roughly a parallelogram bordered by Tamagawa River (south) and Nogawa (north)
+  const path = `
+    M ${boxX + 30} ${boxY + 10}
+    L ${boxX + boxW - 20} ${boxY + 30}
+    L ${boxX + boxW - 10} ${boxY + boxH - 50}
+    L ${boxX + boxW - 80} ${boxY + boxH - 10}
+    L ${boxX + 20} ${boxY + boxH - 30}
+    L ${boxX + 10} ${boxY + 80}
+    Z
+  `;
+
+  // Shadow
+  create('path', {
+    d: path,
+    fill: '#0c1929',
+    opacity: 0.05,
+    transform: 'translate(4, 4)',
+  });
+  // Box fill
+  create('path', {
+    d: path,
+    fill: '#eff0e8',
+    stroke: '#1d4f56',
+    'stroke-width': 1.5,
+  });
+
+  // River lines
+  create('path', {
+    d: `M ${boxX + 30} ${boxY + 8} Q ${boxX + 100} ${boxY + 5} ${boxX + 200} ${boxY + 14} T ${boxX + boxW - 20} ${boxY + 30}`,
+    fill: 'none',
+    stroke: '#5a9aa3',
+    'stroke-width': 2,
+    'stroke-linecap': 'round',
+  });
+  create('text', {
+    x: boxX + 60, y: boxY - 4,
+    'font-family': 'Cormorant Garamond, serif',
+    'font-style': 'italic',
+    'font-size': 10.5,
+    fill: '#5a9aa3',
+  }).textContent = '野川 (Nogawa)';
+
+  // South river (Tamagawa)
+  create('path', {
+    d: `M ${boxX + 20} ${boxY + boxH - 30} Q ${boxX + 130} ${boxY + boxH - 8} ${boxX + 270} ${boxY + boxH - 18} T ${boxX + boxW - 80} ${boxY + boxH - 10}`,
+    fill: 'none',
+    stroke: '#5a9aa3',
+    'stroke-width': 3,
+    'stroke-linecap': 'round',
+  });
+  create('text', {
+    x: boxX + boxW - 60, y: boxY + boxH + 14,
+    'text-anchor': 'end',
+    'font-family': 'Cormorant Garamond, serif',
+    'font-style': 'italic',
+    'font-size': 11.5,
+    fill: '#5a9aa3',
+  }).textContent = '多摩川 (Tamagawa)';
+
+  // Komae label at center
+  create('text', {
+    x: boxX + boxW / 2, y: boxY + boxH / 2 + 4,
+    'text-anchor': 'middle',
+    'font-family': 'Noto Serif JP, serif',
+    'font-weight': 700,
+    'font-size': 32,
+    fill: '#0c1929',
+  }).textContent = '狛江';
+  create('text', {
+    x: boxX + boxW / 2, y: boxY + boxH / 2 + 28,
+    'text-anchor': 'middle',
+    'font-family': 'Cormorant Garamond, serif',
+    'font-style': 'italic',
+    'font-size': 14,
+    fill: '#1d4f56',
+  }).textContent = 'Komae · 6.39 km²';
+
+  // Citizen dots floating in/around Komae (represents the density)
+  // Will animate them subtly
+  const N_DOTS = 120;
+  const dotPositions = [];
+  for (let i = 0; i < N_DOTS; i++) {
+    // Random position inside Komae shape (approximate)
+    const px = boxX + 20 + Math.random() * (boxW - 50);
+    const py = boxY + 30 + Math.random() * (boxH - 70);
+    dotPositions.push({ x: px, y: py });
+    create('circle', {
+      cx: px, cy: py, r: 2,
+      fill: '#1d4f56',
+      opacity: 0.6,
+      class: 'citizen-dot',
+    });
+  }
+
+  // Side labels
+  // LEFT: comparison with bigger cities
+  create('text', {
+    x: 40, y: 50,
+    'font-family': 'Noto Serif JP, serif',
+    'font-weight': 700,
+    'font-size': 14,
+    fill: '#0c1929',
+  }).textContent = '面積比較';
+  create('text', {
+    x: 40, y: 68,
+    'font-family': 'Cormorant Garamond, serif',
+    'font-style': 'italic',
+    'font-size': 11,
+    fill: '#5a6878',
+  }).textContent = 'Scale Reference';
+
+  // World/Tokyo silhouettes for comparison
+  // World city block — small
+  create('rect', { x: 40, y: 90, width: 60, height: 40, fill: 'none', stroke: '#b4aa8c', 'stroke-width': 1 });
+  create('text', { x: 70, y: 115, 'text-anchor': 'middle', 'font-family': 'Noto Sans JP', 'font-size': 11, fill: '#0c1929' }).textContent = '狛江';
+  create('text', { x: 70, y: 145, 'text-anchor': 'middle', 'font-family': 'Cormorant Garamond, serif', 'font-style': 'italic', 'font-size': 10, fill: '#5a6878' }).textContent = '6.39 km²';
+
+  // World city block — big (Setagaya)
+  create('rect', { x: 40, y: 170, width: 120, height: 80, fill: 'none', stroke: '#b4aa8c', 'stroke-width': 1, 'stroke-dasharray': '3 3' });
+  create('text', { x: 100, y: 205, 'text-anchor': 'middle', 'font-family': 'Noto Sans JP', 'font-size': 11, fill: '#0c1929' }).textContent = '世田谷区';
+  create('text', { x: 100, y: 265, 'text-anchor': 'middle', 'font-family': 'Cormorant Garamond, serif', 'font-style': 'italic', 'font-size': 10, fill: '#5a6878' }).textContent = '58 km² (9倍)';
+
+  // RIGHT: population highlight
+  create('text', {
+    x: W - 40, y: 50, 'text-anchor': 'end',
+    'font-family': 'Noto Serif JP, serif',
+    'font-weight': 700,
+    'font-size': 14,
+    fill: '#0c1929',
+  }).textContent = '人口密度';
+  create('text', {
+    x: W - 40, y: 68, 'text-anchor': 'end',
+    'font-family': 'Cormorant Garamond, serif',
+    'font-style': 'italic',
+    'font-size': 11,
+    fill: '#5a6878',
+  }).textContent = 'Density';
+
+  create('text', {
+    x: W - 40, y: 120, 'text-anchor': 'end',
+    'font-family': 'Cormorant Garamond, serif',
+    'font-style': 'italic',
+    'font-size': 38,
+    'font-weight': 700,
+    fill: '#1d4f56',
+  }).textContent = '12,558';
+  create('text', {
+    x: W - 40, y: 138, 'text-anchor': 'end',
+    'font-family': 'Noto Sans JP', 'font-size': 11,
+    fill: '#5a6878',
+  }).textContent = '人 / km²';
+
+  create('text', {
+    x: W - 40, y: 175, 'text-anchor': 'end',
+    'font-family': 'Cormorant Garamond, serif',
+    'font-style': 'italic',
+    'font-size': 38,
+    'font-weight': 700,
+    fill: '#b8954a',
+  }).textContent = '82,048';
+  create('text', {
+    x: W - 40, y: 193, 'text-anchor': 'end',
+    'font-family': 'Noto Sans JP', 'font-size': 11,
+    fill: '#5a6878',
+  }).textContent = '人 (2025/1)';
+
+  create('text', {
+    x: W - 40, y: 235, 'text-anchor': 'end',
+    'font-family': 'Cormorant Garamond, serif',
+    'font-style': 'italic',
+    'font-size': 26,
+    'font-weight': 700,
+    fill: '#0c1929',
+  }).textContent = '24.3%';
+  create('text', {
+    x: W - 40, y: 252, 'text-anchor': 'end',
+    'font-family': 'Noto Sans JP', 'font-size': 11,
+    fill: '#5a6878',
+  }).textContent = '高齢化率';
+
+  // Animate dots pulsing
+  let phase = 0;
+  function animate() {
+    phase = (phase + 1) % 100;
+    const dots = svg.querySelectorAll('.citizen-dot');
+    dots.forEach((dot, i) => {
+      const offsetPhase = (phase + i * 3) % 100;
+      const opacity = 0.3 + Math.sin(offsetPhase / 100 * Math.PI * 2) * 0.3 + 0.3;
+      dot.setAttribute('opacity', opacity.toFixed(2));
+    });
+  }
+  setInterval(animate, 80);
+}
+
+// =====================================================================
+// SCALE COMPARISON SVG — Tokyo cities by area
+// =====================================================================
+function buildScaleSvg() {
+  const svg = document.getElementById('scaleSvg');
+  if (!svg) return;
+  const NS = "http://www.w3.org/2000/svg";
+  const create = (tag, attrs = {}, parent = svg) => {
+    const el = document.createElementNS(NS, tag);
+    Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
+    parent.appendChild(el);
+    return el;
+  };
+  svg.innerHTML = '';
+  const W = 1000, H = 230;
+
+  // Tokyo cities sized by area, all centered
+  const cities = [
+    { name: '世田谷区', area: 58, color: '#b4aa8c', textColor: '#5a6878' },
+    { name: '練馬区',   area: 48, color: '#b4aa8c', textColor: '#5a6878' },
+    { name: '杉並区',   area: 34, color: '#b4aa8c', textColor: '#5a6878' },
+    { name: '府中市',   area: 29, color: '#b4aa8c', textColor: '#5a6878' },
+    { name: '千代田区', area: 12, color: '#b4aa8c', textColor: '#5a6878' },
+    { name: '狛江市',   area: 6.39, color: '#1d4f56', textColor: '#0c1929', highlight: true },
+  ];
+
+  // Area scale: max area = 58 km² => width 350px
+  const maxArea = 58;
+  const scale = 350 / maxArea;
+
+  cities.forEach((c, i) => {
+    const w = Math.sqrt(c.area) * Math.sqrt(scale) * 16;  // pseudo-square sizing
+    const h = w * 0.7;
+    const cx = 130 + i * 145;
+    const cy = H / 2;
+    create('rect', {
+      x: cx - w / 2, y: cy - h / 2,
+      width: w, height: h,
+      fill: c.highlight ? '#1d4f56' : 'rgba(180,170,140,0.3)',
+      stroke: c.highlight ? '#0c1929' : '#b4aa8c',
+      'stroke-width': c.highlight ? 2 : 1,
+      rx: 2,
+    });
+    // City name
+    create('text', {
+      x: cx, y: cy - h / 2 - 12,
+      'text-anchor': 'middle',
+      'font-family': 'Noto Serif JP, serif',
+      'font-weight': c.highlight ? 700 : 600,
+      'font-size': c.highlight ? 14 : 12,
+      fill: c.highlight ? '#1d4f56' : '#0c1929',
+    }).textContent = c.name;
+    // Area number
+    create('text', {
+      x: cx, y: cy + h / 2 + 18,
+      'text-anchor': 'middle',
+      'font-family': 'Cormorant Garamond, serif',
+      'font-style': 'italic',
+      'font-size': c.highlight ? 14 : 11.5,
+      'font-weight': c.highlight ? 700 : 500,
+      fill: c.highlight ? '#1d4f56' : '#5a6878',
+    }).textContent = c.area + ' km²';
+
+    if (c.highlight) {
+      create('text', {
+        x: cx, y: cy + h / 2 + 35,
+        'text-anchor': 'middle',
+        'font-family': 'Cormorant Garamond, serif',
+        'font-style': 'italic',
+        'font-size': 10.5,
+        fill: '#b8954a',
+      }).textContent = '全国の市で2番目に小さい';
+    }
+  });
+
+  // Title at top
+  create('text', {
+    x: 40, y: 30,
+    'font-family': 'Noto Sans JP, sans-serif',
+    'font-size': 11,
+    fill: '#5a6878',
+    'letter-spacing': '0.05em',
+  }).textContent = '面積 (km²) — 同縮尺';
+}
+
+// =====================================================================
+// AGING TIMELINE SVG
+// =====================================================================
+function buildAgingSvg() {
+  const svg = document.getElementById('agingSvg');
+  if (!svg) return;
+  const NS = "http://www.w3.org/2000/svg";
+  const create = (tag, attrs={}, parent=svg) => {
+    const el = document.createElementNS(NS, tag);
+    Object.entries(attrs).forEach(([k,v]) => el.setAttribute(k, v));
+    parent.appendChild(el);
+    return el;
+  };
+  svg.innerHTML = '';
+
+  const W = 1000, H = 290;
+  const margin = { top: 30, right: 80, bottom: 50, left: 60 };
+  const innerW = W - margin.left - margin.right;
+  const innerH = H - margin.top - margin.bottom;
+
+  // Komae aging rate data (approximate, based on multiple sources)
+  // 1990: 9.2%, 2000: 14%, 2010: 21.8%, 2020: 23.7%, 2025: 24.3%, 2030 proj: 26.5%, 2040 proj: 30.5%
+  const KOMAE = [
+    {y:1990, v:9.2},   {y:2000, v:14.0}, {y:2010, v:21.8},
+    {y:2020, v:23.7},  {y:2025, v:24.3},
+    {y:2030, v:26.5, proj:true}, {y:2040, v:30.5, proj:true},
+  ];
+
+  const xScale = (y) => margin.left + ((y - 1990) / (2040 - 1990)) * innerW;
+  const yScale = (v) => margin.top + innerH - (v / 35) * innerH;
+
+  // Gridlines
+  [0, 10, 20, 30].forEach(v => {
+    create('line', {
+      x1: margin.left, x2: margin.left + innerW,
+      y1: yScale(v), y2: yScale(v),
+      stroke: '#c4b89e',
+      'stroke-width': 0.5,
+      'stroke-dasharray': v === 0 ? '0' : '2 3',
+    });
+    const t = create('text', {
+      x: margin.left - 8, y: yScale(v) + 3,
+      'text-anchor': 'end',
+      'font-family': 'Cormorant Garamond, serif',
+      'font-style': 'italic',
+      'font-size': 10.5,
+      fill: '#5a6878',
+    });
+    t.textContent = v + '%';
+  });
+
+  // Y label
+  create('text', {
+    x: margin.left, y: margin.top - 12,
+    'font-family': 'Noto Sans JP, sans-serif',
+    'font-size': 11,
+    fill: '#5a6878',
+  }).textContent = '高齢化率 (65歳以上人口の割合)';
+
+  // X labels
+  [1990, 2000, 2010, 2020, 2030, 2040].forEach(y => {
+    const t = create('text', {
+      x: xScale(y), y: margin.top + innerH + 20,
+      'text-anchor': 'middle',
+      'font-family': 'Cormorant Garamond, serif',
+      'font-style': 'italic',
+      'font-size': 11.5,
+      fill: '#5a6878',
+    });
+    t.textContent = y;
+  });
+
+  // Line path
+  const realPoints = KOMAE.filter(d => !d.proj);
+  const projPoints = KOMAE.filter(d => d.proj);
+  // Real line
+  const realPath = realPoints.map((d, i) =>
+    `${i === 0 ? 'M' : 'L'} ${xScale(d.y).toFixed(1)} ${yScale(d.v).toFixed(1)}`
+  ).join(' ');
+  const realArea = realPath + ` L ${xScale(realPoints[realPoints.length-1].y)} ${yScale(0)} L ${xScale(realPoints[0].y)} ${yScale(0)} Z`;
+  create('path', { d: realArea, fill: '#1d4f56', opacity: 0.12 });
+  create('path', { d: realPath, fill: 'none', stroke: '#1d4f56', 'stroke-width': 2.5 });
+
+  // Projected line
+  const lastReal = realPoints[realPoints.length-1];
+  const projWithStart = [lastReal, ...projPoints];
+  const projPath = projWithStart.map((d, i) =>
+    `${i === 0 ? 'M' : 'L'} ${xScale(d.y).toFixed(1)} ${yScale(d.v).toFixed(1)}`
+  ).join(' ');
+  create('path', { d: projPath, fill: 'none', stroke: '#c75d4e', 'stroke-width': 2, 'stroke-dasharray': '6 4' });
+
+  // Points
+  realPoints.forEach(d => {
+    create('circle', { cx: xScale(d.y), cy: yScale(d.v), r: 4, fill: '#1d4f56', stroke: '#f4ede0', 'stroke-width': 1.5 });
+  });
+  projPoints.forEach(d => {
+    create('circle', { cx: xScale(d.y), cy: yScale(d.v), r: 3.5, fill: '#c75d4e', stroke: '#f4ede0', 'stroke-width': 1.5 });
+  });
+
+  // Annotations
+  // 1990
+  create('text', {
+    x: xScale(1990), y: yScale(9.2) - 14,
+    'text-anchor': 'middle',
+    'font-family': 'Noto Serif JP, serif',
+    'font-weight': 700, 'font-size': 13,
+    fill: '#1d4f56',
+  }).textContent = '9.2%';
+
+  // 2025
+  create('text', {
+    x: xScale(2025), y: yScale(24.3) - 14,
+    'text-anchor': 'middle',
+    'font-family': 'Noto Serif JP, serif',
+    'font-weight': 700, 'font-size': 14,
+    fill: '#b8954a',
+  }).textContent = '24.3%';
+  create('text', {
+    x: xScale(2025), y: yScale(24.3) - 28,
+    'text-anchor': 'middle',
+    'font-family': 'Cormorant Garamond, serif',
+    'font-style': 'italic', 'font-size': 10.5,
+    fill: '#b8954a',
+  }).textContent = 'NOW';
+
+  // 2040
+  create('text', {
+    x: xScale(2040), y: yScale(30.5) - 14,
+    'text-anchor': 'middle',
+    'font-family': 'Noto Serif JP, serif',
+    'font-weight': 700, 'font-size': 13,
+    fill: '#c75d4e',
+  }).textContent = '30.5%';
+  create('text', {
+    x: xScale(2040), y: yScale(30.5) - 28,
+    'text-anchor': 'middle',
+    'font-family': 'Cormorant Garamond, serif',
+    'font-style': 'italic', 'font-size': 10.5,
+    fill: '#c75d4e',
+  }).textContent = '予測';
+
+  // Annotation arrow showing acceleration
+  const startY = yScale(9.2);
+  const endY = yScale(24.3);
+  // Annotation line
+  create('text', {
+    x: xScale(2007), y: yScale(17) - 4,
+    'text-anchor': 'middle',
+    'font-family': 'Noto Serif JP, serif',
+    'font-weight': 700, 'font-size': 12,
+    fill: '#0c1929',
+  }).textContent = '35年で約2.6倍';
+}
+
+// =====================================================================
+// INIT
+// =====================================================================
+buildHeroMap();
+buildScaleSvg();
+buildAgingSvg();
+</script>
+</body>
+</html>
