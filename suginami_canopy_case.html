@@ -134,7 +134,7 @@
   .hero-sub em {
     color: var(--gold);
     font-style: italic;
-    font-family: "Cormorant Garamond", serif;
+    font-family: "Cormorant Garamond", "Noto Serif JP", serif;
     font-weight: 600;
   }
 
@@ -249,7 +249,7 @@
   .section-lede em {
     color: var(--gold);
     font-style: italic;
-    font-family: "Cormorant Garamond", serif;
+    font-family: "Cormorant Garamond", "Noto Serif JP", serif;
     font-weight: 600;
   }
 
@@ -482,12 +482,70 @@
     color: var(--ink);
   }
   .reveal-box strong { font-weight: 700; }
-  .reveal-box em {
+  .reveal-box em,
+  .study-frame em,
+  .calc-stage em,
+  .calc-caveats em {
     color: var(--gold-deep);
-    font-style: italic;
-    font-family: "Cormorant Garamond", serif;
+    font-style: normal;
+    font-family: inherit;
     font-weight: 600;
   }
+
+  /* Inventory table for Suginami tree distribution */
+  .inventory-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 18px 0;
+    font-size: 12.5px;
+    font-family: "Noto Sans JP", sans-serif;
+  }
+  .inventory-table th, .inventory-table td {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--rule);
+    text-align: left;
+    vertical-align: top;
+  }
+  .inventory-table th {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 700;
+    color: var(--gold);
+    font-size: 11.5px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: rgba(184, 149, 74, 0.05);
+  }
+  .inventory-table td.cat {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .inventory-table td.num {
+    font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+    font-style: italic;
+    font-weight: 700;
+    color: var(--ink);
+    text-align: right;
+    font-size: 14px;
+  }
+  .inventory-table td.pct {
+    text-align: right;
+    font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 600;
+  }
+  .inventory-table td.method {
+    color: var(--ink-mid);
+    font-size: 11.5px;
+    line-height: 1.55;
+  }
+  .inventory-table tr.total {
+    background: rgba(45, 74, 42, 0.05);
+    border-top: 2px solid var(--gold);
+  }
+  .inventory-table tr.total td { font-weight: 700; color: var(--ink); }
+  .inventory-table tr.total td.num { color: var(--gold-deep); }
 
   /* ==================== Ⅲ. FIVE COSTS ==================== */
   .costs-intro {
@@ -835,7 +893,7 @@
   .closing-body em {
     color: var(--gold-deep);
     font-style: italic;
-    font-family: "Cormorant Garamond", serif;
+    font-family: "Cormorant Garamond", "Noto Serif JP", serif;
     font-weight: 600;
   }
   .closing-pull {
