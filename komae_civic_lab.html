@@ -131,7 +131,7 @@
   .hero-sub em {
     color: var(--teal-deep);
     font-style: italic;
-    font-family: "Cormorant Garamond", serif;
+    font-family: "Cormorant Garamond", "Noto Serif JP", serif;
     font-weight: 600;
   }
   .hero-sub strong { font-weight: 700; color: var(--ink); }
@@ -193,6 +193,15 @@
     50%      { transform: translateX(-50%) translateY(6px); opacity: 0.4; }
   }
 
+  .reveal-box em,
+  .scale-frame em,
+  .calc-caveats em {
+    font-style: normal;
+    color: var(--gold-deep);
+    font-weight: 600;
+    font-family: inherit;
+  }
+
   /* ==================== SECTION ==================== */
   .section {
     padding: 80px 0 40px;
@@ -245,7 +254,7 @@
   .section-lede em {
     color: var(--teal-deep);
     font-style: italic;
-    font-family: "Cormorant Garamond", serif;
+    font-family: "Cormorant Garamond", "Noto Serif JP", serif;
     font-weight: 600;
   }
 
@@ -691,7 +700,7 @@
   .case-q em {
     color: var(--teal-deep);
     font-style: italic;
-    font-family: "Cormorant Garamond", serif;
+    font-family: "Cormorant Garamond", "Noto Serif JP", serif;
     font-weight: 600;
   }
   .case-a {
@@ -704,7 +713,7 @@
   .case-a em {
     font-style: italic;
     color: var(--teal-deep);
-    font-family: "Cormorant Garamond", serif;
+    font-family: "Cormorant Garamond", "Noto Serif JP", serif;
     font-weight: 600;
   }
   .case-evidence {
@@ -773,7 +782,7 @@
   .closing-body em {
     color: var(--teal-deep);
     font-style: italic;
-    font-family: "Cormorant Garamond", serif;
+    font-family: "Cormorant Garamond", "Noto Serif JP", serif;
     font-weight: 600;
   }
   .closing-pull {
@@ -1326,19 +1335,16 @@
   </div>
 
   <!-- Incumbent profile -->
-  <div class="study-frame">
-    <div class="study-stamp">Incumbent · 現職市政</div>
-    <div class="study-title">松原俊雄市長 (74歳・3期目を目指す) — 実績と組織基盤</div>
-    <div class="study-cite">出典: 狛江市公式 / Wikipedia「松原俊雄」「狛江市長」/ 2022年市長選結果</div>
+  <div class="scale-frame">
+    <div class="scale-stamp">Incumbent · 現職市政</div>
+    <div class="scale-title">松原俊雄市長 (74歳・3期目を目指す) — 実績と組織基盤</div>
+    <div class="scale-cite">出典: 狛江市公式 / Wikipedia「松原俊雄」「狛江市長」/ 2022年市長選結果</div>
 
-    <div style="font-family: 'Noto Serif JP', serif; font-size: 14px; line-height: 1.95; color: var(--ink-mid); margin-bottom: 16px;">
+    <div style="font-size: 14px; line-height: 1.95; color: var(--ink-mid); margin-bottom: 16px;">
       <p style="margin-bottom: 12px;">
       松原俊雄氏は、狛江市役所に <strong>38年勤め (1974-2012年、副市長・企画財政部長を経験)</strong>、2018年に前市長のセクハラ問題に伴う出直し選で初当選、2022年に再選した。<strong>2022年市長選では得票率72.8%で圧勝</strong> しており、自民・公明の組織推薦に加えて行政運営者としての実務経験が支持基盤となっている。
       </p>
     </div>
-
-    <table class="dx-grid" style="margin: 14px 0; display: none;">
-    </table>
 
     <div class="dx-grid">
       <div class="dx-card">
@@ -1390,12 +1396,12 @@
   </div>
 
   <!-- Realistic outlook -->
-  <div class="study-frame" style="margin-top: 28px;">
-    <div class="study-stamp">Realistic Outlook · 構図分析</div>
-    <div class="study-title">構図の現実と、勝負を分ける論点</div>
-    <div class="study-cite">出典: 過去の狛江市長選結果・投票率分析・地方選における無党派票の動向</div>
+  <div class="scale-frame" style="margin-top: 28px;">
+    <div class="scale-stamp">Realistic Outlook · 構図分析</div>
+    <div class="scale-title">構図の現実と、勝負を分ける論点</div>
+    <div class="scale-cite">出典: 過去の狛江市長選結果・投票率分析・地方選における無党派票の動向</div>
 
-    <div style="font-family: 'Noto Serif JP', serif; font-size: 14.5px; line-height: 1.95; color: var(--ink-mid);">
+    <div style="font-size: 14.5px; line-height: 1.95; color: var(--ink-mid);">
       <p style="margin-bottom: 12px;">
       <strong>構図の現実</strong>: 現職松原氏は組織基盤・実績・前回得票で優位に立つ。ただし<em>2022年の投票率は43.26%と低く</em>、6万8千人の有権者のうち実際に投票したのは3万人程度。<strong>組織票で固まる現職票は2万票前後で、残り1万票超は浮動的</strong> な構造である。
       </p>
@@ -1499,7 +1505,7 @@
     本ブリーフは、狛江市長選 (2026年6月28日投開票) における <strong>挑戦者・奥村光貴氏の立候補の政策的意義と構図上の論点</strong> を分析する政策評価ドキュメントです。<br><br>
     奥村氏は2026年5月1日に出馬表明したばかりで、詳細な政策パッケージは選挙戦の中で具体化される段階にあります。本書は、狛江市の構造課題と奥村氏のスキルセットの整合性を論じる一方で、<strong>現職松原俊雄市長 (3期目を目指す) の実績と組織基盤、および2022年市長選の投票率・浮動票分析</strong> も併せて整理しています。<br><br>
     本書は特定候補への投票を勧奨するものではありません。読者は <strong>現職松原氏の公約・実績</strong> と挑戦者・奥村氏の政策提起の両方を精査し、自身の優先順位 (市政の安定継続を重視するか、30年後を見据えた構造変革に関心を持つか) に基づき判断することが推奨されます。<br><br>
-    Created May 2026 · Independent policy dossier.
+    Created May 2026 · Independent policy dossier · Companion to the Suginami Canopy Brief.
   </div>
 </div>
 </div>
