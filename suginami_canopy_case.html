@@ -1006,7 +1006,7 @@
       過去9年間、東京23区の中で <strong>最も早く樹冠を失っているのは杉並区</strong>。<br>
       区の公式統計は「緑被率はほぼ横ばい」を伝える一方、<br>
       東京大学の独立調査は <em>樹冠被覆率は▲39.5%減</em> という別の側面を可視化した。<br>
-      これはデータの食い違いではなく——<em>違うものを測った二つの視点が同時に存在している</em>のだ。
+      <em>NY 23.4% · パリ 17.6% · シドニー 19.8%</em> ——世界の主要都市が樹冠を増やすなか、<strong>東京 7.3% は逆方向に進んでいる</strong>。
     </div>
 
     <!-- Hero canopy animation: tree silhouettes from full to depleted -->
@@ -1064,6 +1064,25 @@
 
   <div class="reveal-box">
     <strong>主因は「相続税×地価高騰」による土地細分化。</strong> 屋敷林を抱えた一軒分の敷地が分割され、複数の小規模住宅に置き換わる過程で、庭木と街路樹が連鎖的に失われている。<em>カテゴリ別の減少率は、一戸建ての庭木 ▼40.6%、街路樹 ▼21.4%、教育・文化施設 ▼18.2%、公園 ▼8.3%。</em>
+  </div>
+
+  <!-- Global Comparison: Tokyo vs world -->
+  <div class="study-frame" style="margin-top: 28px;">
+    <div class="study-stamp">Global Context · 2025-2026</div>
+    <div class="study-title">国際比較 — 東京は世界の主要都市と逆行している</div>
+    <div class="study-cite">日本経済新聞「チャートは語る」(2026-05-24) / 各都市の公表資料に基づく</div>
+
+    <div style="font-size: 14px; line-height: 1.9; color: var(--ink-mid); margin-bottom: 16px;">
+      <p style="margin-bottom: 10px;">
+      杉並区 (および東京) の樹冠減少は、国内の特殊事情ではなく <strong>「世界の主要都市の動きに逆行している」</strong> 現象である。日経が2026年5月24日に公表した国際比較によれば、東京以外の主要都市はいずれも直近10-15年で <em>樹冠被覆率を増やしている</em>。
+      </p>
+    </div>
+
+    <svg id="globalCmpChart" viewBox="0 0 1000 360" style="width:100%; height:auto; max-height:360px;"></svg>
+
+    <div class="reveal-box" style="margin-top: 16px;">
+      最も注目すべきは <strong>米アリゾナ州フェニックス (砂漠都市) ですら樹冠被覆率は11% (2024)</strong>であり、東京の7.3%を上回ること。<em>砂漠の中で意図的にみどりを作る都市が、温帯モンスーン気候の東京を超えている</em>のは、政策意志の差以外で説明がつかない。パリは2030年までに市内3割を緑地に、ニューヨークは2040年までに樹冠被覆率30%へという <strong>明示的な数値目標</strong> を持つ。
+    </div>
   </div>
 </section>
 
@@ -1186,8 +1205,8 @@
     <div class="heat-sub">過去30年で東京の気温は2.9℃上昇（他大都市平均2.4℃を上回る）</div>
     <svg id="heatSvg" viewBox="0 0 1000 260" xmlns="http://www.w3.org/2000/svg"></svg>
     <div class="heat-note">
-      <strong>練馬区の最高気温は江戸川区を平均+2.7℃上回る</strong>（2019年7-8月、気象庁観測）。海風が都心ビル群で加熱されて内陸住宅地に到達するため、<strong>杉並・練馬・世田谷といった西部住宅地が最も暑い</strong>。<strong>Armson et al. (2012, Urban Forestry &amp; Urban Greening)</strong>の実測研究によれば、樹冠のシェードは歩行者の体感温度(globe temperature)を5-7℃低下させる——樹冠が失われると、この体感温度の低減効果が同時に失われる。<br>
-      Source: 気象庁ヒートアイランド観測 / 東京都環境局大気汚染常時監視測定局データ / Armson et al. (2012)
+      <strong>練馬区の最高気温は江戸川区を平均+2.7℃上回る</strong>（2019年7-8月、気象庁観測）。海風が都心ビル群で加熱されて内陸住宅地に到達するため、<strong>杉並・練馬・世田谷といった西部住宅地が最も暑い</strong>。樹冠の冷却効果は最新の定量研究で具体的に示されている: <strong>カルガリー大学 (2025年)</strong> の衛星画像解析では、市内の気温29℃超地点で <em>樹冠を現状比+10%増やすと平均▼0.8℃、+20%で▼1.1℃、+30%で▼1.5℃</em> の冷却効果が確認された。<strong>Armson et al. (2012)</strong> の英国実測でも、樹冠のシェードは歩行者の体感温度を5-7℃低下させることが示されている。樹冠を失えばこれらの冷却インフラを失うことになる。<br>
+      Source: 気象庁ヒートアイランド観測 / 東京都環境局大気汚染常時監視測定局データ / Armson et al. (2012) Urban Forestry &amp; Urban Greening / カルガリー大学 (2025) 衛星画像解析、日経「チャートは語る」(2026-05-24) 引用
     </div>
   </div>
 
@@ -1401,6 +1420,27 @@
     </div>
   </div>
 
+  <!-- 5-2.5: National context — Japan is regressing too -->
+  <div class="study-frame" style="margin-top: 30px;">
+    <div class="study-stamp">National Context · 全国動向</div>
+    <div class="study-title">杉並だけの問題ではない — 全国で街路樹は20年間で50万本減</div>
+    <div class="study-cite">出典: 国土技術政策総合研究所 (22年調査) / 日経「チャートは語る」(2026-05-24)</div>
+
+    <div style="font-size: 14px; line-height: 1.9; color: var(--ink-mid); margin-bottom: 16px;">
+      <p style="margin-bottom: 12px;">
+      杉並区の樹冠減少は、全国で進行している現象の一部である。国土技術政策総合研究所のデータでは、<strong>国内の街路樹 (高さ3m以上) は2002年の679万本をピークに、2022年は629万本へ ▲50万本減少</strong>。さいたま市は街路樹管理に年9億円かかり「予算の都合で伐採しても植え替えないことがある」と公表している。都立砧公園 (世田谷区) では2026年3-4月に倒木が相次いだ。
+      </p>
+
+      <p style="margin-bottom: 12px;">
+      <strong>更に深刻なのは、街路樹の「ダウンサイジング」が進んでいること</strong>。落ち葉・倒木の管理コスト削減のため、自治体は <em>枝葉が広がらない小型品種</em> への植え替えを進めている。代表例が<strong>ハナミズキ</strong>で、過去30年間で街路樹本数が約3倍に増えた一方、<em>木陰の総量は減少</em> している (地域緑花技術普及協会データ)。本数だけ見れば「植えている」ように見えるが、機能としての樹冠は痩せ細っている。
+      </p>
+
+      <p>
+      この全国動向の駆動力こそ、<strong>多死社会の到来と相続増加</strong> である。地価・家賃高騰と組み合わさることで、相続した土地は細分化売却または集合住宅化されやすく、いずれの場合でも庭木が伐られる。<em>これは杉並区が「政策意志」だけで止められる現象ではない</em>が、同時に、政策的に介入できる余地もまた存在する。
+      </p>
+    </div>
+  </div>
+
   <!-- 5-3: Realistic reframe of Masuda's policy -->
   <div class="reveal-box" style="margin-top: 30px;">
     <strong>増田氏政策の現実的な再解釈</strong>: 以上のスケール感とトレードオフを直視すると、「みどりで稼ぐ杉並」「グリーンビレッジ構想」は <em>樹冠減少を完全に止める呪文ではない</em>。それは以下の限定された、しかし重要な意味を持つ:
@@ -1472,6 +1512,30 @@
   <div class="reveal-box">
     増田氏が他候補と決定的に異なるのは、<strong>問題設定の解像度</strong>である。「みどりが大事」は誰でも言える。だが「23区中ワーストの▲39.5%減」「主因は土地細分化と相続税」「対策は集約化と経済的投資化」という <em>具体的な因果連鎖</em> を選挙の中心政策に据えた候補は、他に存在しない。<strong>これは政策論議の地平を一つ上げる試みである。</strong>
   </div>
+
+  <!-- Expert endorsement frame -->
+  <div class="study-frame" style="margin-top: 28px;">
+    <div class="study-stamp">Expert View · 専門家視点</div>
+    <div class="study-title">研究者自身が「データ駆動の樹冠政策」を提唱している</div>
+    <div class="study-cite">出典: 日経「チャートは語る」(2026-05-24) — 寺田徹 東京大学准教授コメント</div>
+
+    <div style="font-size: 14.5px; line-height: 1.95; color: var(--ink-mid); margin-bottom: 12px;">
+      <p style="margin-bottom: 12px;">
+      樹冠減少39.5%という数値の元となる研究を主導した <strong>東京大学 寺田徹准教授</strong> は、2026年5月の日経インタビューで、自治体が取るべき政策的方向性について明確に述べている:
+      </p>
+      <blockquote style="margin: 14px 0 14px 16px; padding: 12px 18px; border-left: 4px solid var(--gold); background: rgba(184,149,74,0.06); font-family: 'Noto Serif JP', serif; font-size: 15px; line-height: 1.9; color: var(--ink); font-style: italic;">
+        「自治体はデータを公開して企業などに活用を促すとともに、<strong>樹木を増やした場合の効果を市民に定量的に伝える工夫が必要だ</strong>」<br>
+        <span style="font-style: normal; font-size: 12.5px; color: var(--ink-soft); font-family: 'Cormorant Garamond', 'Noto Serif JP', serif;">— 寺田徹 東京大学准教授（都市緑化）/ 日経 2026-05-24</span>
+      </blockquote>
+      <p>
+      これは <em>増田氏が掲げる「データ駆動による樹冠政策」「みどりの経済価値の貨幣換算」</em> の方向性を、原典の研究者自身が公的に提唱していることを意味する。「世界的標準のフレーム」を「現場の研究者の提唱」が後押しする、稀有な政策の整合性である。
+      </p>
+
+      <p style="margin-top: 12px;">
+      なお、海外主要都市は既に数値目標を持つ: <strong>パリは2030年までに市内3割を緑地化</strong>、<strong>ニューヨークは2040年までに樹冠被覆率30%</strong>への引き上げ。土木学会の2024年調査によれば、ロンドンの幅員5.5m以上の道路は98%を占めるが、東京は3割以下——<em>街路樹を植える物理的余裕が東京には少ないため、屋敷林・公共用地・公園での植栽が一段と重要</em>になる。
+      </p>
+    </div>
+  </div>
 </section>
 
 <!-- ================================================================== -->
@@ -1535,21 +1599,28 @@
   <div>
     <strong>SOURCES / 出典</strong>
     白石欣也・寺田徹「東京都23区の樹幹被覆の変化とその要因」日本造園学会2023, 査読論文化2024年4月<br>
+    <strong>日本経済新聞「チャートは語る — 消える木陰、世界と逆行 / 日本の街路樹50万本減、庭木も相続で伐採」(田中健斗, 2026-05-24)</strong> — 国際比較データ・寺田准教授コメント・全国街路樹動向<br>
     杉並区「令和4年度 杉並区みどりの実態調査報告書」令和5年3月<br>
     杉並区「平成29年度 杉並区みどりの実態調査報告書」平成30年3月<br>
+    国土技術政策総合研究所「街路樹の本数推移」(2022年調査) — 全国街路樹本数の長期データ<br>
+    各都市公表資料: NY DPR, City of Sydney, Mairie de Paris, City of Phoenix, Shanghai Greening Bureau ほか<br>
+    <strong>カルガリー大学 (2025)</strong> 衛星画像解析による樹冠と気温の関係研究 — 日経 2026-05-24 引用<br>
     Rojas-Rueda D, Nieuwenhuijsen MJ, Gascon M, et al. "Green spaces and mortality: a systematic review and meta-analysis of cohort studies." <em>Lancet Planet Health</em> 2019; 3:e469-e477<br>
     Mueller N, Rojas-Rueda D, et al. "A health impact assessment of progress towards urban nature targets in the 96 C40 cities." <em>Lancet Planet Health</em> 2025<br>
     Armson D, Stringer P, Ennos AR. "The effect of tree shade and grass on surface and globe temperatures in an urban area." <em>Urban Forestry &amp; Urban Greening</em> 2012; 11(3):245-255<br>
     川口将武 他「大阪府吹田市の樹木健全度調査を用いたi-Tree Ecoによる街路樹の貨幣価値推定」ランドスケープ研究 Vol.14, 2021<br>
     平林聡 他「川崎市川崎区を事例としたi-Tree Ecoによる街路樹の生態系サービスおよびその貨幣価値の推定」日本緑化工学会誌 42(1), 2016<br>
     気象庁「ヒートアイランド現象の解析結果」/ 東京都環境局「大気汚染常時監視測定局データ」<br>
+    土木学会「都市道路の幅員調査」(2024) — ロンドン・東京・大阪の道路幅員比較<br>
+    地域緑花技術普及協会「街路樹品種の変遷データ」 — ハナミズキ植栽トレンド<br>
     東京新聞 (2024-11-03)「『緑の日傘』東京ドーム256個分が消えた…樹木伐採が進む23区」<br>
     日刊スポーツ (2026-04-25)「杉並区長選に68歳増田義彦氏が立候補『再生の道』推薦」<br>
     増田義彦公式サイト masuda-yoshihiko.com
   </div>
   <div>
     <strong>METHODOLOGY / 方法論</strong>
-    本ブリーフは「樹冠被覆率39.5%減」という単一の事実を起点に、その構造的含意を多層的に検証した政策評価ドキュメントです。i-Tree類推による経済価値試算は<strong>吹田市・川崎区の街路樹研究と同質性が高い杉並区の街路樹3,408本に限定した下限値</strong>であり、樹木全体 (約28,000本) の精密試算は杉並区によるカテゴリ別 i-Tree calibration を必要とします。<br><br>
+    本ブリーフは「樹冠被覆率39.5%減」という単一の事実を起点に、その構造的含意 — 経済・健康・気温・国際比較・全国動向 — を多層的に検証した政策評価ドキュメントです。i-Tree類推による経済価値試算は<strong>吹田市・川崎区の街路樹研究と同質性が高い杉並区の街路樹3,408本に限定した下限値</strong>であり、樹木全体 (約28,000本) の精密試算は杉並区によるカテゴリ別 i-Tree calibration を必要とします。<br><br>
+    国際比較・全国街路樹動向・カルガリー大学冷却研究については、日経「チャートは語る」(2026-05-24, 田中健斗記者) の集約データを参照しています。寺田准教授の方向性コメントは同記事から引用。<br><br>
     本書は特定候補の <strong>政策の方向性</strong> についての論証であり、選挙運動・投票勧誘ではありません。読者は他候補（岸本聡子氏、大和田伸氏）の公約・実績も併せて精査し、自身の優先順位に基づく判断を行うことが推奨されます。<br><br>
     Created May 2026 · Independent policy dossier.
   </div>
@@ -1883,11 +1954,174 @@ function buildHeatChart() {
 }
 
 // =====================================================================
+// GLOBAL COMPARISON CHART — Tokyo vs world major cities
+// =====================================================================
+function buildGlobalCmpChart() {
+  const svg = document.getElementById('globalCmpChart');
+  if (!svg) return;
+  const NS = "http://www.w3.org/2000/svg";
+  const create = (tag, attrs = {}, parent = svg) => {
+    const el = document.createElementNS(NS, tag);
+    Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
+    parent.appendChild(el);
+    return el;
+  };
+  svg.innerHTML = '';
+  const W = 1000, H = 360;
+
+  // Cities data: (name_jp, name_en, earlier_year, earlier_val, recent_year, recent_val)
+  // Data from Nikkei "Chart Tell" 2026-05-24
+  const cities = [
+    { jp: '東京',      en: 'Tokyo',     y1: 2013, v1: 9.2,  y2: 2022, v2: 7.3,  trend: 'down', isTokyo: true },
+    { jp: 'ニューヨーク', en: 'New York',  y1: 2017, v1: 21.0, y2: 2021, v2: 23.4, trend: 'up' },
+    { jp: 'フェニックス',  en: 'Phoenix',   y1: 2010, v1: 9.5,  y2: 2024, v2: 11.0, trend: 'up' },
+    { jp: 'パリ',       en: 'Paris',     y1: 2015, v1: 14.5, y2: 2025, v2: 17.6, trend: 'up' },
+    { jp: 'シドニー',    en: 'Sydney',    y1: 2008, v1: 16.5, y2: 2022, v2: 19.8, trend: 'up' },
+    { jp: '上海',       en: 'Shanghai',  y1: 2010, v1: 14.5, y2: 2023, v2: 17.0, trend: 'up' },
+  ];
+
+  const margin = { top: 40, right: 80, bottom: 40, left: 110 };
+  const innerW = W - margin.left - margin.right;
+  const innerH = H - margin.top - margin.bottom;
+
+  const xMax = 26;
+  const xScale = (v) => margin.left + (v / xMax) * innerW;
+
+  // Title
+  create('text', {
+    x: margin.left, y: 24,
+    'font-family': 'Noto Serif JP, serif',
+    'font-weight': 700, 'font-size': 13,
+    fill: '#0c1929', 'letter-spacing': '0.02em',
+  }).textContent = '主要都市の樹冠被覆率の変化';
+  create('text', {
+    x: margin.left + 250, y: 24,
+    'font-family': 'Cormorant Garamond, serif',
+    'font-style': 'italic', 'font-size': 12,
+    fill: '#5a6878', 'letter-spacing': '0.05em',
+  }).textContent = '(canopy coverage ratio, %)';
+
+  // X axis
+  const xTicks = [0, 5, 10, 15, 20, 25];
+  xTicks.forEach(t => {
+    const x = xScale(t);
+    create('line', {
+      x1: x, y1: margin.top, x2: x, y2: margin.top + innerH,
+      stroke: '#c4b89e', 'stroke-width': 0.5,
+      'stroke-dasharray': t === 0 ? '0' : '2 3',
+    });
+    create('text', {
+      x: x, y: margin.top + innerH + 18,
+      'text-anchor': 'middle',
+      'font-family': 'Cormorant Garamond, serif',
+      'font-style': 'italic', 'font-size': 11,
+      fill: '#5a6878',
+    }).textContent = t + '%';
+  });
+
+  // City rows
+  const rowH = innerH / cities.length;
+  cities.forEach((c, i) => {
+    const y = margin.top + rowH * i + rowH / 2;
+
+    // Highlight Tokyo row with subtle background
+    if (c.isTokyo) {
+      create('rect', {
+        x: margin.left - 100, y: y - rowH / 2 + 4,
+        width: innerW + 110, height: rowH - 8,
+        fill: 'rgba(154,59,46,0.05)',
+        stroke: '#9a3b2e', 'stroke-width': 0.6,
+      });
+    }
+
+    // City name (Japanese)
+    create('text', {
+      x: margin.left - 14, y: y - 2, 'text-anchor': 'end',
+      'font-family': 'Noto Serif JP, serif',
+      'font-weight': c.isTokyo ? 700 : 600,
+      'font-size': c.isTokyo ? 14 : 12.5,
+      fill: c.isTokyo ? '#9a3b2e' : '#0c1929',
+    }).textContent = c.jp;
+    // City name (English subtitle)
+    create('text', {
+      x: margin.left - 14, y: y + 12, 'text-anchor': 'end',
+      'font-family': 'Cormorant Garamond, serif',
+      'font-style': 'italic', 'font-size': 10,
+      fill: '#5a6878',
+    }).textContent = c.en;
+
+    // Earlier point (smaller, lighter)
+    const x1 = xScale(c.v1);
+    const x2 = xScale(c.v2);
+    const isDown = c.trend === 'down';
+    const accent = isDown ? '#9a3b2e' : '#4d6e4a';
+    const accentBright = isDown ? '#c75d4e' : '#7a9a73';
+
+    // Connector arrow line
+    create('line', {
+      x1: x1 + 6, y1: y,
+      x2: x2 - 6, y2: y,
+      stroke: '#8a8472', 'stroke-width': 1.4, opacity: 0.65,
+    });
+    // Arrow head
+    const arrowDir = isDown ? -1 : 1;
+    const arrowX = isDown ? x2 - 4 : x2 - 4;
+    create('path', {
+      d: 'M ' + arrowX + ' ' + (y - 5) + ' L ' + (arrowX + 6) + ' ' + y + ' L ' + arrowX + ' ' + (y + 5) + ' Z',
+      fill: '#8a8472', opacity: 0.7,
+    });
+
+    // Earlier dot
+    create('circle', {
+      cx: x1, cy: y, r: 5,
+      fill: '#5a6878', stroke: '#f4ede0', 'stroke-width': 1.2,
+      opacity: 0.7,
+    });
+    // Earlier year label
+    create('text', {
+      x: x1, y: y + 22, 'text-anchor': 'middle',
+      'font-family': 'Cormorant Garamond, serif',
+      'font-style': 'italic', 'font-size': 10.5,
+      fill: '#5a6878',
+    }).textContent = c.y1;
+
+    // Recent square
+    create('rect', {
+      x: x2 - 6, y: y - 6, width: 12, height: 12,
+      fill: accent,
+      stroke: '#f4ede0', 'stroke-width': 1.2,
+    });
+    // Recent year + value label
+    create('text', {
+      x: x2 + 12, y: y - 4,
+      'font-family': 'Cormorant Garamond, serif',
+      'font-style': 'italic', 'font-size': 11,
+      fill: '#5a6878',
+    }).textContent = "'" + (c.y2 % 100);
+    create('text', {
+      x: x2 + 12, y: y + 10,
+      'font-family': 'Cormorant Garamond, serif',
+      'font-style': 'italic', 'font-size': 12,
+      'font-weight': 700,
+      fill: accent,
+    }).textContent = c.v2.toFixed(1) + '%';
+  });
+
+  // Footer note
+  create('text', {
+    x: margin.left, y: H - 8,
+    'font-family': 'Noto Sans JP, sans-serif',
+    'font-size': 10, fill: '#5a6878',
+  }).textContent = '注: 東京は東京大学研究 (寺田研)、他は各都市公表資料 / 日経 2026-05-24 編集';
+}
+
+// =====================================================================
 // INIT
 // =====================================================================
 buildHeroCanopy();
 buildRankChart();
 buildHeatChart();
+buildGlobalCmpChart();
 </script>
 </body>
 </html>
