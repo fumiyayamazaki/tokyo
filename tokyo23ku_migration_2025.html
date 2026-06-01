@@ -1,0 +1,2725 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>東京23区 人口フロー解剖 ｜ 2025年 — 頂点の転換点</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700;900&family=Noto+Sans+JP:wght@300;400;500;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0c1929;
+    --ink-soft: #1a2a3e;
+    --ink-line: #2a3c54;
+    --paper: #f4ede0;
+    --paper-soft: #ebe4d7;
+    --rule: #c4b89e;
+    --in-color: #4a6fa5;       /* inflow blue */
+    --in-bright: #6b94c9;
+    --out-color: #c75d4e;      /* outflow coral */
+    --out-bright: #e0826e;
+    --gold: #b8954a;
+    --gold-bright: #d4a85e;
+    --highlight: #f0d878;
+    --shadow: rgba(12,25,41,0.35);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Noto Sans JP", sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* Subtle paper texture using SVG noise */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: multiply;
+  }
+
+  .wrap {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 60px 50px 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ---------- Masthead ---------- */
+  .masthead {
+    border-top: 6px double var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 24px 0 18px;
+    margin-bottom: 6px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: end;
+    gap: 24px;
+  }
+
+  .masthead-mark {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink);
+    line-height: 1.2;
+    border-left: 2px solid var(--ink);
+    padding-left: 14px;
+  }
+  .masthead-mark small {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    margin-top: 4px;
+    font-style: normal;
+  }
+
+  .masthead-issue {
+    text-align: center;
+    font-family: "Noto Serif JP", serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+  }
+  .masthead-issue span {
+    display: inline-block;
+    padding: 0 10px;
+  }
+  .masthead-issue .dot { color: var(--gold); }
+
+  .masthead-date {
+    text-align: right;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- Title block ---------- */
+  .titlebar {
+    border-bottom: 1px solid var(--ink);
+    padding: 30px 0 36px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 60px;
+    align-items: end;
+  }
+
+  h1.title {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 900;
+    font-size: clamp(38px, 5.5vw, 76px);
+    line-height: 1.0;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  h1.title .accent {
+    color: var(--gold);
+    font-style: italic;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    font-size: 0.85em;
+    margin-left: 0.1em;
+  }
+  h1.title .small {
+    display: block;
+    font-size: 0.42em;
+    font-weight: 500;
+    color: var(--ink-soft);
+    margin-top: 14px;
+    letter-spacing: 0.02em;
+    line-height: 1.45;
+  }
+
+  .titlebar-meta {
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 12px;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    text-align: right;
+    border-left: 1px solid var(--rule);
+    padding-left: 24px;
+    min-width: 240px;
+  }
+  .titlebar-meta strong {
+    display: block;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+
+  /* ---------- KPI strip ---------- */
+  .kpi-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 30px 0 50px;
+    border-bottom: 1px solid var(--ink);
+  }
+  .kpi {
+    padding: 22px 24px 20px;
+    border-right: 1px solid var(--rule);
+    position: relative;
+  }
+  .kpi:last-child { border-right: none; }
+  .kpi-label {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .kpi-jp {
+    font-size: 12px;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin-bottom: 14px;
+    letter-spacing: 0.04em;
+  }
+  .kpi-num {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    font-size: 52px;
+    line-height: 1;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+  .kpi-num.in { color: var(--in-color); }
+  .kpi-num.out { color: var(--out-color); }
+  .kpi-num.gold { color: var(--gold); }
+  .kpi-unit {
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    margin-left: 6px;
+    letter-spacing: 0.02em;
+  }
+  .kpi-note {
+    font-size: 10.5px;
+    color: var(--ink-soft);
+    margin-top: 12px;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+  /* ---------- Section common ---------- */
+  .section-head {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 20px;
+    align-items: baseline;
+    margin: 60px 0 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .section-num {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 36px;
+    font-weight: 500;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .section-title {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .section-title .en {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-left: 12px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ---------- Main viz: flow map ---------- */
+  .viz-shell {
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 0;
+    margin: 28px 0;
+    overflow: hidden;
+    box-shadow: 0 24px 60px -20px rgba(12,25,41,0.4);
+    position: relative;
+  }
+
+  .viz-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 30px;
+    background: var(--ink-soft);
+    border-bottom: 1px solid var(--ink-line);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+  }
+  .viz-bar-left { color: var(--paper-soft); }
+  .viz-bar-left strong { color: var(--gold-bright); font-weight: 700; }
+  .viz-controls {
+    display: flex;
+    gap: 6px;
+  }
+  .viz-btn {
+    background: transparent;
+    color: var(--paper-soft);
+    border: 1px solid var(--ink-line);
+    padding: 7px 16px;
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .viz-btn:hover { color: var(--paper); border-color: var(--gold); }
+  .viz-btn.active {
+    background: var(--gold);
+    color: var(--ink);
+    border-color: var(--gold);
+    font-weight: 700;
+  }
+
+  .viz-stage {
+    position: relative;
+    background: var(--ink);
+    background-image:
+      radial-gradient(circle at 30% 30%, rgba(74,111,165,0.08) 0%, transparent 50%),
+      radial-gradient(circle at 70% 70%, rgba(184,149,74,0.04) 0%, transparent 50%);
+  }
+  .viz-stage svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* Tooltip */
+  .tooltip {
+    position: absolute;
+    pointer-events: none;
+    background: var(--ink);
+    border: 1px solid var(--gold);
+    color: var(--paper);
+    padding: 12px 16px;
+    font-size: 12px;
+    font-family: "Noto Sans JP", sans-serif;
+    box-shadow: 0 10px 30px var(--shadow);
+    opacity: 0;
+    transition: opacity 0.15s;
+    z-index: 100;
+    min-width: 200px;
+  }
+  .tooltip.show { opacity: 1; }
+  .tooltip .tt-pref {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--gold-bright);
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--ink-line);
+    padding-bottom: 6px;
+  }
+  .tooltip .tt-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11.5px;
+    margin: 4px 0;
+    color: var(--paper-soft);
+  }
+  .tooltip .tt-row.net {
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px dotted var(--ink-line);
+    font-weight: 700;
+  }
+  .tooltip .tt-row .v { font-family: "Cormorant Garamond", serif; font-weight: 600; }
+  .tooltip .tt-row .v.in { color: var(--in-bright); }
+  .tooltip .tt-row .v.out { color: var(--out-bright); }
+
+  .viz-legend {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 30px 22px;
+    background: var(--ink-soft);
+    border-top: 1px solid var(--ink-line);
+    font-size: 11px;
+    color: var(--paper-soft);
+  }
+  .legend-items {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .legend-item .swatch {
+    width: 24px;
+    height: 4px;
+    border-radius: 2px;
+  }
+  .legend-item .swatch.in { background: var(--in-bright); }
+  .legend-item .swatch.out { background: var(--out-bright); }
+  .legend-item .swatch.flow {
+    width: 36px;
+    height: 0;
+    border-top: 2px dashed var(--paper-soft);
+  }
+  .legend-note {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    color: var(--paper-soft);
+    opacity: 0.7;
+  }
+
+  /* ---------- Ranking tables ---------- */
+  .twin {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin: 18px 0 40px;
+  }
+  .rank-card {
+    background: var(--paper-soft);
+    border-top: 4px solid var(--ink);
+    padding: 24px 28px 26px;
+  }
+  .rank-card.out-card { border-top-color: var(--out-color); }
+  .rank-card.in-card { border-top-color: var(--in-color); }
+  .rank-head {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 700;
+    font-size: 17px;
+    margin-bottom: 4px;
+    color: var(--ink);
+  }
+  .rank-sub {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+    letter-spacing: 0.04em;
+  }
+  .rank-list {
+    list-style: none;
+  }
+  .rank-list li {
+    display: grid;
+    grid-template-columns: 24px 1fr auto;
+    gap: 12px;
+    align-items: baseline;
+    padding: 10px 0;
+    border-bottom: 1px dotted var(--rule);
+  }
+  .rank-list li:last-child { border-bottom: none; }
+  .rank-num {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--gold);
+    font-weight: 600;
+  }
+  .rank-pref {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 500;
+    font-size: 14.5px;
+    color: var(--ink);
+  }
+  .rank-pref small {
+    display: block;
+    font-family: "Noto Sans JP", sans-serif;
+    font-weight: 400;
+    font-size: 10px;
+    color: var(--ink-soft);
+    margin-top: 2px;
+  }
+  .rank-val {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--in-color);
+    letter-spacing: -0.01em;
+  }
+  .rank-card.out-card .rank-val { color: var(--out-color); }
+  .rank-val small {
+    font-family: "Noto Sans JP", sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+    color: var(--ink-soft);
+    margin-left: 2px;
+  }
+
+  /* ---------- Region chart ---------- */
+  .region-chart {
+    margin: 22px 0 60px;
+    background: var(--paper-soft);
+    padding: 32px 36px;
+    border-left: 4px solid var(--gold);
+  }
+  .region-row {
+    display: grid;
+    grid-template-columns: 200px 1fr 100px;
+    gap: 20px;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px dotted var(--rule);
+  }
+  .region-row:last-child { border-bottom: none; }
+  .region-label {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--ink);
+  }
+  .region-label small {
+    display: block;
+    font-family: "Noto Sans JP", sans-serif;
+    font-weight: 400;
+    font-size: 10px;
+    color: var(--ink-soft);
+    margin-top: 2px;
+  }
+  .region-bar-wrap {
+    position: relative;
+    height: 26px;
+    background: rgba(196,184,158,0.18);
+  }
+  .region-bar-axis {
+    position: absolute;
+    left: 50%;
+    top: -4px;
+    bottom: -4px;
+    width: 1px;
+    background: var(--ink);
+  }
+  .region-bar {
+    position: absolute;
+    top: 3px;
+    bottom: 3px;
+    background: linear-gradient(90deg, var(--in-color), var(--in-bright));
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.15);
+  }
+  .region-bar.neg {
+    background: linear-gradient(270deg, var(--out-color), var(--out-bright));
+  }
+  .region-val {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--ink);
+    text-align: right;
+  }
+  .region-val.pos { color: var(--in-color); }
+  .region-val.neg { color: var(--out-color); }
+
+  /* ---------- Comparison ---------- */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr;
+    gap: 0;
+    margin: 22px 0 50px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 36px 0;
+    overflow: hidden;
+  }
+  .compare-side {
+    padding: 20px 36px;
+  }
+  .compare-side h3 {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 800;
+    font-size: 28px;
+    color: var(--paper);
+    margin-bottom: 4px;
+  }
+  .compare-side .meta {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--gold-bright);
+    margin-bottom: 20px;
+    letter-spacing: 0.08em;
+  }
+  .compare-side .stat {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--ink-line);
+    font-size: 13px;
+  }
+  .compare-side .stat:last-child { border-bottom: none; }
+  .compare-side .stat .lbl { color: var(--paper-soft); }
+  .compare-side .stat .val {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--paper);
+  }
+  .compare-side .stat.in .val { color: var(--in-bright); }
+  .compare-side .stat.out .val { color: var(--out-bright); }
+  .compare-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    border-left: 1px solid var(--ink-line);
+    border-right: 1px solid var(--ink-line);
+  }
+
+  /* ---------- Prose ---------- */
+  .prose {
+    columns: 2;
+    column-gap: 56px;
+    margin: 28px 0 40px;
+    font-family: "Noto Serif JP", serif;
+    font-size: 14.5px;
+    line-height: 1.95;
+    color: var(--ink);
+    text-align: justify;
+  }
+  .prose p {
+    margin-bottom: 1.05em;
+    break-inside: avoid;
+  }
+  .prose .lede {
+    font-weight: 500;
+    font-size: 17px;
+    color: var(--ink);
+    line-height: 1.75;
+  }
+  .prose .lede::first-letter {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 4em;
+    float: left;
+    line-height: 0.85;
+    margin: 0.05em 0.1em 0 0;
+    color: var(--gold);
+  }
+  .pull {
+    background: var(--paper-soft);
+    border-left: 3px solid var(--gold);
+    padding: 22px 26px;
+    margin: 14px 0;
+    font-family: "Noto Serif JP", serif;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.7;
+    color: var(--ink);
+    font-style: italic;
+    break-inside: avoid;
+  }
+  .pull strong {
+    color: var(--out-color);
+    font-style: normal;
+    font-weight: 700;
+  }
+  .pull em {
+    color: var(--in-color);
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  /* ---------- Source line ---------- */
+  .colophon {
+    margin-top: 60px;
+    padding-top: 26px;
+    border-top: 6px double var(--ink);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    font-size: 11px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+  .colophon strong {
+    display: block;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--gold);
+    margin-bottom: 4px;
+    letter-spacing: 0.08em;
+  }
+
+  /* ---------- Ⅲ. 23-Ward Analysis ---------- */
+  .ward-intro {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 30px;
+    margin: 24px 0 30px;
+    padding: 22px 26px;
+    background: rgba(255,250,240,0.55);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .ward-intro-text {
+    font-family: "Noto Serif JP", serif;
+    font-size: 14px;
+    line-height: 1.85;
+    color: var(--ink);
+  }
+  .ward-intro-text strong { color: var(--ink); font-weight: 700; }
+  .ward-intro-stats {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-left: 1px solid var(--rule);
+    padding-left: 26px;
+  }
+  .wstat {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding: 4px 0;
+  }
+  .wstat-num {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 30px;
+    font-weight: 700;
+    min-width: 55px;
+    text-align: right;
+  }
+  .wstat-num.in    { color: var(--in-color); }
+  .wstat-num.out   { color: var(--out-color); }
+  .wstat-num.gold  { color: var(--gold); font-size: 24px; }
+  .wstat-lbl {
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 12px;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+  .wstat-lbl em { color: var(--ink-soft); opacity: 0.7; }
+
+  .ward-twin {
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap: 26px;
+    margin-bottom: 30px;
+  }
+  .ward-map-card, .ward-bars-card {
+    background: rgba(255,250,240,0.4);
+    border: 1px solid var(--rule);
+    padding: 22px 22px 18px;
+  }
+  .ward-card-title {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--ink);
+    margin-bottom: 14px;
+    letter-spacing: 0.06em;
+  }
+  .card-sub {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 11px;
+    color: var(--ink-soft);
+    opacity: 0.75;
+    font-weight: 400;
+    margin-left: 8px;
+  }
+  #ward-map {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-bottom: 8px;
+  }
+  .ward-rect {
+    cursor: pointer;
+    transition: filter 0.2s, transform 0.2s;
+  }
+  .ward-rect:hover {
+    filter: brightness(1.1) drop-shadow(0 3px 8px rgba(12,25,41,0.3));
+  }
+  .ward-rect-label {
+    pointer-events: none;
+    font-family: "Noto Sans JP", sans-serif;
+    text-anchor: middle;
+    fill: #f4ede0;
+    font-weight: 600;
+  }
+  .ward-rect-net {
+    pointer-events: none;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    text-anchor: middle;
+    font-weight: 700;
+  }
+  .ward-map-legend {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 11px;
+    color: var(--ink-soft);
+    margin: 8px 0 4px;
+    justify-content: center;
+  }
+  .legend-out { color: var(--out-color); font-weight: 600; }
+  .legend-in  { color: var(--in-color); font-weight: 600; }
+  .legend-zero { color: var(--gold); font-weight: 600; }
+  .legend-bar {
+    height: 8px;
+    width: 80px;
+  }
+  .legend-bar:nth-of-type(1) {
+    background: linear-gradient(to right, var(--out-color), #f4ede0);
+  }
+  .legend-bar:nth-of-type(2) {
+    background: linear-gradient(to right, #f4ede0, var(--in-color));
+  }
+  .ward-card-note {
+    font-size: 10.5px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    font-family: "Noto Sans JP", sans-serif;
+    padding-top: 8px;
+    border-top: 1px dashed var(--rule);
+    margin-top: 10px;
+  }
+
+  .ward-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .wbar-row {
+    display: grid;
+    grid-template-columns: 16px 60px 1fr 70px;
+    gap: 8px;
+    align-items: center;
+    font-size: 11px;
+    padding: 3px 4px;
+    transition: background 0.15s;
+  }
+  .wbar-row:hover { background: rgba(184,149,74,0.07); }
+  .wbar-row.out { font-weight: 600; }
+  .wbar-rank {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    color: var(--gold);
+    font-size: 11px;
+    text-align: right;
+    font-weight: 600;
+  }
+  .wbar-name {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 700;
+    color: var(--ink);
+    font-size: 11.5px;
+  }
+  .wbar-track {
+    height: 14px;
+    background: rgba(180,170,140,0.12);
+    position: relative;
+    border-radius: 2px;
+  }
+  .wbar-fill {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    border-radius: 2px;
+  }
+  .wbar-fill.in {
+    background: linear-gradient(to right, rgba(74,111,165,0.6), rgba(74,111,165,0.85));
+  }
+  .wbar-fill.out {
+    background: linear-gradient(to right, rgba(199,93,78,0.85), rgba(199,93,78,0.6));
+  }
+  .wbar-val {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 700;
+    text-align: right;
+    font-size: 11.5px;
+  }
+  .wbar-val.in { color: var(--in-color); }
+  .wbar-val.out { color: var(--out-color); }
+
+  .ward-prose {
+    font-family: "Noto Serif JP", serif;
+    font-size: 13.5px;
+    line-height: 1.95;
+    color: var(--ink);
+    margin: 0 auto 30px;
+    column-count: 2;
+    column-gap: 36px;
+    column-rule: 1px solid var(--rule);
+  }
+  .ward-prose p { margin-bottom: 14px; break-inside: avoid; }
+  .ward-prose p.lede {
+    font-weight: 500;
+    font-size: 14px;
+    column-span: all;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 22px;
+  }
+  .ward-prose .pull {
+    column-span: all;
+    font-family: "Noto Serif JP", serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.85;
+    color: var(--gold);
+    border-top: 1px solid var(--gold);
+    border-bottom: 1px solid var(--gold);
+    padding: 16px 0;
+    margin: 20px 0;
+    font-style: italic;
+  }
+  .ward-prose .pull strong { color: var(--gold); }
+  .ward-prose .pull em { font-style: italic; }
+  .ward-prose strong { font-weight: 700; }
+
+  /* ---------- 2025 Update Panel ---------- */
+  .update-panel {
+    background: linear-gradient(180deg, #fffaf0 0%, var(--paper) 100%);
+    border: 1px solid var(--rule);
+    padding: 32px 36px 36px;
+    margin: 24px 0;
+    position: relative;
+    box-shadow: 0 18px 40px -25px rgba(12,25,41,0.3);
+  }
+  .update-badge {
+    position: absolute;
+    top: -12px;
+    left: 30px;
+    background: var(--gold);
+    color: var(--ink);
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    padding: 5px 14px;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+  .update-lede {
+    font-family: "Noto Serif JP", serif;
+    font-size: 15px;
+    line-height: 1.85;
+    color: var(--ink);
+    padding: 8px 0 20px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 24px;
+  }
+  .update-lede strong {
+    color: var(--out-color);
+    font-weight: 700;
+  }
+  .update-lede em {
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  .update-kpi-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 28px;
+  }
+  .update-kpi {
+    padding: 18px 16px 20px;
+    border-right: 1px solid var(--rule);
+    text-align: center;
+  }
+  .update-kpi:last-child { border-right: none; }
+
+  .ukpi-label {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 700;
+    font-size: 12px;
+    color: var(--ink);
+    letter-spacing: 0.08em;
+  }
+  .ukpi-en {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 10px;
+    color: var(--ink-soft);
+    opacity: 0.7;
+    margin-bottom: 12px;
+    letter-spacing: 0.05em;
+  }
+  .ukpi-flow {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  .ukpi-prev {
+    color: var(--ink-soft);
+    text-decoration: line-through;
+    text-decoration-color: var(--rule);
+    opacity: 0.65;
+    font-size: 14px;
+  }
+  .ukpi-arrow {
+    color: var(--gold);
+    margin: 0 6px;
+    font-size: 11px;
+  }
+  .ukpi-curr {
+    color: var(--ink);
+    font-size: 19px;
+    font-weight: 900;
+  }
+  .ukpi-unit {
+    font-size: 11px;
+    color: var(--ink-soft);
+    margin-left: 2px;
+  }
+  .ukpi-delta {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .ukpi-delta.out { color: var(--out-color); }
+  .ukpi-delta.in  { color: var(--in-color); }
+  .ukpi-delta.neutral { color: var(--ink-soft); }
+
+  .update-twin {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 30px;
+    margin-bottom: 28px;
+  }
+  .update-chart-card, .update-shifts-card {
+    background: rgba(255,250,240,0.5);
+    border: 1px solid var(--rule);
+    padding: 22px 22px 18px;
+  }
+  .chart-title {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--ink);
+    margin-bottom: 4px;
+    letter-spacing: 0.06em;
+  }
+  .chart-sub {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 11px;
+    color: var(--ink-soft);
+    opacity: 0.75;
+    font-weight: 400;
+    margin-left: 8px;
+  }
+  #tokyo-trend {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 10px 0 6px;
+  }
+  .chart-note {
+    font-size: 10.5px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    font-family: "Noto Sans JP", sans-serif;
+    padding-top: 8px;
+    border-top: 1px dashed var(--rule);
+  }
+
+  .shifts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 12px 0 14px;
+  }
+  .shift-row {
+    display: grid;
+    grid-template-columns: 16px 70px 1fr 80px;
+    gap: 10px;
+    align-items: center;
+    padding: 7px 8px;
+    background: rgba(255,255,255,0.5);
+    border-left: 3px solid var(--rule);
+    font-size: 11.5px;
+  }
+  .shift-row.improve { border-left-color: var(--in-color); }
+  .shift-row.worsen  { border-left-color: var(--out-color); }
+  .shift-rank {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .shift-pref {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 700;
+    color: var(--ink);
+    font-size: 12px;
+  }
+  .shift-flow {
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 10.5px;
+    color: var(--ink-soft);
+    letter-spacing: 0.02em;
+  }
+  .shift-delta {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 700;
+    text-align: right;
+    font-size: 12px;
+  }
+  .shift-delta.improve { color: var(--in-color); }
+  .shift-delta.worsen  { color: var(--out-color); }
+
+  .update-prose {
+    font-family: "Noto Serif JP", serif;
+    font-size: 13.5px;
+    line-height: 1.95;
+    color: var(--ink);
+    column-count: 2;
+    column-gap: 36px;
+    column-rule: 1px solid var(--rule);
+  }
+  .update-prose p { margin-bottom: 14px; break-inside: avoid; }
+  .update-prose p.lede {
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--ink);
+    column-span: all;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 22px;
+  }
+  .update-prose p.warning-note {
+    column-span: all;
+    background: rgba(199,93,78,0.06);
+    border-left: 3px solid var(--out-color);
+    padding: 12px 16px;
+    margin-top: 14px;
+    font-size: 11.5px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+  .update-prose strong { font-weight: 700; }
+  .update-prose em { font-style: italic; }
+
+  /* ---------- SVG visualization styles ---------- */
+  .pref-circle {
+    cursor: pointer;
+    transition: filter 0.2s;
+  }
+  .pref-circle:hover { filter: brightness(1.5) drop-shadow(0 0 8px currentColor); }
+  .pref-label {
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 9.5px;
+    fill: var(--paper-soft);
+    pointer-events: none;
+    text-anchor: middle;
+    font-weight: 500;
+  }
+  .pref-label.big {
+    font-size: 11px;
+    font-weight: 700;
+    fill: var(--gold-bright);
+  }
+  .flow-line {
+    fill: none;
+    opacity: 0.18;
+    pointer-events: none;
+  }
+  .flow-line.in { stroke: var(--in-bright); }
+  .flow-line.out { stroke: var(--out-bright); }
+  .particle {
+    pointer-events: none;
+  }
+  .center-glow circle {
+    pointer-events: none;
+  }
+  .japan-outline {
+    fill: rgba(74,111,165,0.04);
+    stroke: rgba(180,170,140,0.18);
+    stroke-width: 0.5;
+    pointer-events: none;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 1024px) {
+    .wrap { padding: 30px 24px 50px; }
+    .titlebar { grid-template-columns: 1fr; gap: 30px; }
+    .titlebar-meta { text-align: left; border-left: none; border-top: 1px solid var(--rule); padding: 16px 0 0; }
+    .kpi-strip { grid-template-columns: repeat(2, 1fr); }
+    .kpi:nth-child(2) { border-right: none; }
+    .kpi:nth-child(1), .kpi:nth-child(2) { border-bottom: 1px solid var(--rule); }
+    .twin { grid-template-columns: 1fr; }
+    .compare-grid { grid-template-columns: 1fr; }
+    .compare-divider { padding: 14px 0; border: none; border-top: 1px solid var(--ink-line); border-bottom: 1px solid var(--ink-line); }
+    .prose { columns: 1; }
+    .region-row { grid-template-columns: 130px 1fr 80px; gap: 12px; }
+    .masthead { grid-template-columns: 1fr; gap: 12px; text-align: left; }
+    .masthead-issue, .masthead-date { text-align: left; }
+    .update-kpi-row { grid-template-columns: repeat(2, 1fr); }
+    .update-kpi:nth-child(2) { border-right: none; }
+    .update-kpi:nth-child(1), .update-kpi:nth-child(2) { border-bottom: 1px solid var(--rule); }
+    .update-twin { grid-template-columns: 1fr; }
+    .update-prose { column-count: 1; }
+    .ward-intro { grid-template-columns: 1fr; gap: 18px; }
+    .ward-intro-stats { border-left: none; border-top: 1px solid var(--rule); padding-left: 0; padding-top: 14px; flex-direction: row; justify-content: space-around; }
+    .ward-twin { grid-template-columns: 1fr; }
+    .ward-prose { column-count: 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ========== MASTHEAD ========== -->
+  <header class="masthead">
+    <div class="masthead-mark">
+      Tokyo 23-Ward Atlas
+      <small>MIGRATION DOSSIER</small>
+    </div>
+    <div class="masthead-issue">
+      <span>第Ⅱ巻</span><span class="dot">◆</span><span>2025年（令和7年）結果</span><span class="dot">◆</span><span>The Inflection Edition</span>
+    </div>
+    <div class="masthead-date">2026 · Spring</div>
+  </header>
+
+  <!-- ========== TITLE ========== -->
+  <div class="titlebar">
+    <h1 class="title">
+      頂点に<span class="accent">、</span>初めての陰り<br>
+      <span class="small">日本全国から人口を吸い上げ続けてきた東京。だが2025年、その転入超過は <strong>4年ぶりに縮小</strong>（▼17.7%）した。さらに <strong>外国人が初めて「転出超過」へ反転</strong>——2023-24年の人口増を支えた外国人エンジンが逆回転を始めた。<br><span style="color:var(--gold); font-style:italic;">——一方で、20代前半の若者だけは、より純粋に吸い寄せられている。</span></span>
+    </h1>
+    <div class="titlebar-meta">
+      <strong>+65,219人</strong>
+      2025年・東京都の転入超過<br>
+      （前年比 <span style="color:var(--out-color);">▼14,066人, ▼17.7%</span>）<br>
+      <br>
+      <em>外国人 ▲378人（転出超過に初転換）</em><br>
+      <br>
+      <span style="color:var(--in-color); font-weight:600;">20-24歳 +57,263人</span><br>
+      <em style="font-size:11px;">構造分析はⅦ章「転換点の解剖」</em>
+    </div>
+  </div>
+
+  <!-- ========== KPI STRIP ========== -->
+  <div class="kpi-strip">
+    <div class="kpi">
+      <div class="kpi-label">Net Inflow · 2025</div>
+      <div class="kpi-jp">東京都 全体の転入超過</div>
+      <div><span class="kpi-num gold">+65,219</span><span class="kpi-unit">人</span></div>
+      <div class="kpi-note">全国最多。ただし前年比▼14,066人 (▼17.7%)、4年ぶりの縮小。一極集中の「頂点」に初めての陰り</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Foreigners Reverse</div>
+      <div class="kpi-jp">外国人の転入超過</div>
+      <div><span class="kpi-num out">▲378</span><span class="kpi-unit">人</span></div>
+      <div class="kpi-note">前年+8,722人から転出超過へ初転換。2023-24年の人口増を支えた外国人流入が逆回転</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Youth Magnet</div>
+      <div class="kpi-jp">20-24歳の転入超過</div>
+      <div><span class="kpi-num in">+57,263</span><span class="kpi-unit">人</span></div>
+      <div class="kpi-note">全体(+65,219)の大半を占める。東京の磁力はますます「若年単身層」に純化している</div>
+    </div>
+    <div class="kpi" style="display:none;">
+      <div class="kpi-label">To Neighbors</div>
+      <div class="kpi-jp">隣接3県＆多摩への純流出</div>
+      <div><span class="kpi-num out">−6,645</span><span class="kpi-unit">人</span></div>
+      <div class="kpi-note">埼玉△2,983 + 神奈川△260 + 多摩△3,402（千葉は+1,240の純流入）</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Greater Tokyo</div>
+      <div class="kpi-jp">東京圏(1都3県) 転入超過</div>
+      <div><span class="kpi-num">+123,534</span><span class="kpi-unit">人</span></div>
+      <div class="kpi-note">前年比▼12,309人 (▼9.1%) 縮小。外国人移動者の東京圏流入も+10,796人へ縮小 (▲5,710)</div>
+    </div>
+  </div>
+
+  <!-- ========== MAIN VIZ ========== -->
+  <div class="section-head">
+    <div class="section-num">Ⅰ</div>
+    <div class="section-title">日本列島から23区へ <span class="en">/ Migration Flow Atlas</span></div>
+  </div>
+
+  <p style="max-width:760px; margin:0 auto 22px; font-family:'Noto Serif JP',serif; font-size:13.5px; line-height:1.85; color:var(--ink-soft); text-align:center;">
+    ※ Ⅰ〜Ⅴ章の区別アトラスは <strong style="color:var(--ink);">2024年確報（最新の区市町村別データ）</strong> に基づく空間構造である。2025年に生じた<strong style="color:var(--gold);">「外国人の転出超過への反転」「20-24歳への純化」</strong>といった構造変化は <strong>Ⅶ章「転換点の解剖」</strong>で詳述する。
+  </p>
+
+  <div class="viz-shell">
+    <div class="viz-bar">
+      <div class="viz-bar-left">
+        <strong>東京23区</strong> ← / → 46道府県 ・ 純移動フロー
+      </div>
+      <div class="viz-controls">
+        <button class="viz-btn active" data-view="net">純流入超過</button>
+        <button class="viz-btn" data-view="gross">総流量</button>
+        <button class="viz-btn" data-view="region">地方ブロック</button>
+      </div>
+    </div>
+    <div class="viz-stage">
+      <svg id="flow-map" viewBox="0 0 1200 720" preserveAspectRatio="xMidYMid meet"></svg>
+      <div class="tooltip" id="tooltip"></div>
+    </div>
+    <div class="viz-legend">
+      <div class="legend-items">
+        <div class="legend-item"><span class="swatch in"></span> 23区への純流入（青）</div>
+        <div class="legend-item"><span class="swatch out"></span> 23区からの純流出（橙）</div>
+        <div class="legend-item"><span class="swatch flow"></span> 矢印の太さ＝純移動人数</div>
+      </div>
+      <div class="legend-note">粒子の流れる頻度は純移動超過数に比例 / Hover for detail</div>
+    </div>
+  </div>
+
+  <!-- ========== TOP RANKING ========== -->
+  <div class="section-head">
+    <div class="section-num">Ⅱ</div>
+    <div class="section-title">仕入先 と 卸先 <span class="en">/ Top Sources & Sinks</span></div>
+  </div>
+  <div class="twin">
+    <div class="rank-card in-card">
+      <div class="rank-head">23区への純流入 上位10道府県</div>
+      <div class="rank-sub">Where Tokyo's 23 wards drain people from — 2024</div>
+      <ol class="rank-list" id="rank-in"></ol>
+    </div>
+    <div class="rank-card out-card">
+      <div class="rank-head">23区からの純流出</div>
+      <div class="rank-sub">The only places 23 wards lose to — neighbors only</div>
+      <ol class="rank-list" id="rank-out"></ol>
+    </div>
+  </div>
+
+  <!-- ========== Ⅲ. WARD-LEVEL DETAIL ========== -->
+  <div class="section-head">
+    <div class="section-num">Ⅲ</div>
+    <div class="section-title">23区別の解剖 <span class="en">/ Inside the 23 Wards</span></div>
+  </div>
+
+  <div class="ward-intro">
+    <div class="ward-intro-text">
+      23区を一つの単位として見れば +58,804人の純流入だが、内訳は<strong>同質ではない</strong>。19区が純流入超過、<strong style="color:var(--out-color);">4区（千代田・港・豊島・新宿）が純流出超過</strong>。これは「都心の一等地で家賃が高すぎる→他区・郊外へ流出」という構造の現れである。最も純流入が大きいのは中央区（+8,505人）——タワーマンション林立による定住人口の積極増。最も純流出が大きいのは新宿区（▼2,985人）。
+    </div>
+    <div class="ward-intro-stats">
+      <div class="wstat"><span class="wstat-num in">19</span><span class="wstat-lbl">区が転入超過</span></div>
+      <div class="wstat"><span class="wstat-num out">4</span><span class="wstat-lbl">区が転出超過</span></div>
+      <div class="wstat"><span class="wstat-num gold">×24</span><span class="wstat-lbl">最大区と最小区の格差<br><em style="font-size:9px;">中央区+8,505 vs 新宿区▼2,985</em></span></div>
+    </div>
+  </div>
+
+  <div class="ward-twin">
+    <!-- Geographic ward layout -->
+    <div class="ward-map-card">
+      <div class="ward-card-title">23区マップ <span class="card-sub">/ Geographic Layout · Color = Net Flow</span></div>
+      <svg id="ward-map" viewBox="0 0 600 480" preserveAspectRatio="xMidYMid meet"></svg>
+      <div class="ward-map-legend">
+        <span class="legend-out">▼3,000</span>
+        <div class="legend-bar"></div>
+        <span class="legend-zero">0</span>
+        <div class="legend-bar"></div>
+        <span class="legend-in">+9,000</span>
+      </div>
+      <div class="ward-card-note">各区の色は2024年の純社会増（外国人含む）を示す。深い藍=高い純流入、朱=純流出。グリッドは厳密な地理ではなく、概略の位置関係を示すブロック配置。</div>
+    </div>
+
+    <!-- Sorted bar chart -->
+    <div class="ward-bars-card">
+      <div class="ward-card-title">純社会増ランキング <span class="card-sub">/ Net Inflow Ranking · 23 Wards</span></div>
+      <div class="ward-bars" id="ward-bars"></div>
+      <div class="ward-card-note">出典: 東京都「東京都住民基本台帳人口移動報告 令和6年」第12表・第13表（外国人含む、年齢総数）。各区の純社会増 = 他道府県・都内間からの転入 − 他道府県・都内間への転出。</div>
+    </div>
+  </div>
+
+  <div class="ward-prose">
+    <p class="lede">
+      23区を「内側から」見ると、人口磁力の<strong>地理的偏在</strong>が浮かび上がる。最も流入が大きいのは <strong style="color:var(--in-color);">中央区</strong>（+8,505人）—— 月島・勝どき・晴海エリアのタワーマンション集積による定住人口の急増である。これに<strong>大田区</strong>（+6,767人）、<strong>足立区</strong>（+6,051人）、<strong>板橋区</strong>（+5,268人）、<strong>世田谷区</strong>（+5,212人）が続く。
+    </p>
+
+    <p>
+      面白いのは、純流入が大きい区が<strong>住宅価格の中間帯</strong>に偏在している点だ。中央区・世田谷区のように住宅価格が高い区もあるが、大田区・足立区・板橋区・練馬区といった「23区の中で相対的に手頃」な区が上位に並ぶ。これは「東京で働きたい・住みたいが、家賃は抑えたい」という新規流入者の合理的選択を示唆している。
+    </p>
+
+    <p>
+      対照的に、純流出超過となった<strong style="color:var(--out-color);">4区——新宿区（▼2,985人）、豊島区（▼909人）、港区（▼755人）、千代田区（▼365人）</strong>——には共通点がある。いずれも<strong>都心一等地で住宅単価が突出して高い</strong>区である。新宿区・豊島区は単身若年層の入り口（池袋・新宿）として15-24歳の流入は多いものの、結婚・出産を機に隣接区や郊外へ脱出する世代が上回る構造になっている。
+    </p>
+
+    <p>
+      港区・千代田区は別の力学である。両区とも単身若年層・35歳以上のいずれもがほぼ均衡で、転出超過幅は小さい（▼755人/▼365人）。両区の特徴は<strong>絶対的な人口母数が小さい</strong>こと（千代田区は人口67,049人と23区中最小）であり、家賃と居住空間の不足が転入の蓋になっている。
+    </p>
+
+    <div class="pull">
+      23区は<em>23の磁力</em>から成る。都心の超高単価区が転出超過を続け、中央区・湾岸エリアおよび手頃な郊外区が転入を吸収する——23区内部での「住宅価格に応じた居住地の再分配」が、東京一極集中の内部メカニズムである。
+    </div>
+
+    <p>
+      地方創生の文脈では「東京への流入を抑える」が議論の中心だが、23区内部の構造を見ると、<strong>「東京の中での再分配」が同時並行で進んでいる</strong>。都心の超高価格区から外縁の住宅地への移動は、地方への移動とは別次元の流れであり、この内部流動を抑えることは（仮にできたとしても）地方創生にはほとんど寄与しない。
+    </p>
+  </div>
+
+  <!-- ========== REGION CHART ========== -->
+  <div class="section-head">
+    <div class="section-num">Ⅳ</div>
+    <div class="section-title">地方ブロック別の純移動 <span class="en">/ Regional Aggregation</span></div>
+  </div>
+  <div class="region-chart" id="region-chart">
+    <div style="display:flex; justify-content:space-between; margin-bottom:14px; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:11px; color:var(--ink-soft); letter-spacing:0.1em;">
+      <span>← 23区からの純流出 / Net out</span>
+      <span style="font-weight:600; color:var(--gold);">中央値 0人</span>
+      <span>23区への純流入 / Net in →</span>
+    </div>
+  </div>
+
+  <!-- ========== COMPARISON ========== -->
+  <div class="section-head">
+    <div class="section-num">Ⅴ</div>
+    <div class="section-title">構造の対比 — 23区 と 福岡市 <span class="en">/ Apex vs Regional Hub</span></div>
+  </div>
+  <div class="compare-grid">
+    <div class="compare-side">
+      <h3>東京23区</h3>
+      <div class="meta">— The Apex / 頂点都市</div>
+      <div class="stat in"><span class="lbl">道府県からの純流入</span><span class="val">+62,206</span></div>
+      <div class="stat in"><span class="lbl">主要仕入先</span><span class="val">大阪 / 愛知 / 兵庫</span></div>
+      <div class="stat out"><span class="lbl">純流出先（道府県）</span><span class="val">埼玉 / 神奈川</span></div>
+      <div class="stat out"><span class="lbl">都内・郊外への純流出</span><span class="val">△3,402</span></div>
+      <div class="stat"><span class="lbl">純社会増合計</span><span class="val">+58,804</span></div>
+      <div class="stat"><span class="lbl">流入超過の道府県数</span><span class="val">44 / 46</span></div>
+    </div>
+    <div class="compare-divider">VS</div>
+    <div class="compare-side">
+      <h3>福岡市</h3>
+      <div class="meta">— The Regional Hub / 地方の中枢</div>
+      <div class="stat in"><span class="lbl">九州6県からの純流入</span><span class="val">+7,857</span></div>
+      <div class="stat in"><span class="lbl">主要仕入先</span><span class="val">長崎 / 鹿児島 / 熊本</span></div>
+      <div class="stat out"><span class="lbl">純流出先（圏外）</span><span class="val">関東 / 近畿 / 東海</span></div>
+      <div class="stat out"><span class="lbl">福岡都市圏への純流出</span><span class="val">△1,256</span></div>
+      <div class="stat"><span class="lbl">純社会増合計</span><span class="val">+10,108</span></div>
+      <div class="stat"><span class="lbl">関東への純流出</span><span class="val">△2,267</span></div>
+    </div>
+  </div>
+
+  <!-- ========== PROSE ========== -->
+  <div class="section-head">
+    <div class="section-num">Ⅵ</div>
+    <div class="section-title">読み解き <span class="en">/ Analysis</span></div>
+  </div>
+
+  <div class="prose">
+    <p class="lede">福岡市が示したのは「地方の中枢」が描く水路の形だった。九州各県から人を吸い上げ、自らは関東と近畿に押し出す——という三層の流れ。これに対し、東京23区はどう振る舞っているのか。総務省「住民基本台帳人口移動報告 2024年」と東京都「東京都住民基本台帳人口移動報告 令和6年・第4表」を組み合わせると、23区が辿るのは似て非なる構造であることがわかる。</p>
+
+    <p>2024年の23区の純社会増は<strong style="color:var(--gold);">+58,804人</strong>。福岡市（+10,108人）の約5.8倍に達する。だがそれ以上に印象的なのは、23区が純流出を起こしている地域がほとんど存在しないという点である。46道府県のうち、23区が純流出となったのは<strong style="color:var(--out-color);">埼玉県（△2,983人）と神奈川県（△260人）の2県のみ</strong>。残り44道府県すべてに対して、23区は人を「吸う」立場にある。</p>
+
+    <div class="pull">
+      福岡市は関東・近畿に対して<strong>負ける</strong>。一方の23区は、その関東・近畿（の中心都市）からも<em>勝つ</em>。大阪府＋6,483人、愛知県＋6,135人、兵庫県＋4,512人——3大都市圏の他極にすら、23区は純流入を実現している。
+    </div>
+
+    <p>福岡市が「九州内部の中枢」として吸引力を持ちながら、関東・近畿という上位の磁場に押し戻されるのと対照的に、23区にはそれを押し戻す相手がいない。これが「東京一極集中」の正体である。</p>
+
+    <p>もう一つ、福岡市との重要な対比がある。福岡市は、糸島市・大野城市・春日市・新宮町など<strong>同じ福岡都市圏の周辺自治体に対しても純流出</strong>している（合計△1,256人）。これは住宅価格や子育て環境を背景とする「郊外分散」の現象だ。23区にも同じ構造はあるものの、その分散の方角がやや異なる。</p>
+
+    <p>東京都市町村部（多摩地域）への純流出は<strong style="color:var(--out-color);">△3,402人</strong>。隣接3県のうち、埼玉県には△2,983人、神奈川県には△260人を送り出している。一方、千葉県に対してはむしろ+1,240人の純流入だ。23区を中心とする郊外分散は、北（埼玉）と西（多摩）に偏っており、東（千葉）にはあまり広がっていない。</p>
+
+    <div class="pull">
+      近畿から+15,860人、東海から+10,780人、東北から+8,062人、九州7県から+7,889人、中国から+5,099人、関東他県から+4,773人——23区は<em>あらゆる方角</em>から人口を集めながら、<strong>埼玉・神奈川・多摩</strong>という近傍のリングへと押し出していく。
+    </div>
+
+    <p>23区への流入超過数を地方ブロック別に整理すると、近畿（+15,860人）、東海（+10,780人）、東北6県（+8,062人）、九州7県（+7,889人）、中国（+5,099人）、関東他県（+4,773人）、信越（+3,284人）、北海道（+2,967人）、四国（+2,421人）、北陸（+2,339人）、沖縄（+735人）と続く。福岡市が「九州+中国・四国」に偏在する仕入先を持つのに対し、23区の仕入先は<strong style="color:var(--ink);">全国一様に分散</strong>している。これは「東京の磁力」が地理的距離にあまり依存しないことを示唆している。</p>
+
+    <p>福岡市の人口増加の原動力が九州各県からの流入である以上、九州全体の人口が減少すれば福岡市への流れもいずれ細る——というのは前回の福岡分析の結論だった。これが23区の場合、もっと深い意味を持つ。23区の純流入の原動力は<strong>日本全国</strong>からの流入である。すなわち、23区が永続的に人口を維持するためには、日本全体の人口が縮小していく中で、23区が他地域に対する相対的な吸引力を維持し続けなければならない。</p>
+
+    <p>ただし注目すべきは、住宅価格と子育て環境の制約により、すでに23区は近隣の郊外（埼玉・多摩）にじわじわと押し出され始めているという事実である。<strong>大阪・愛知・福岡から人を集めながら、埼玉・多摩に送り出す</strong>——この構造は持続的なのか、それともいずれ薄まっていくのか。次の数年が試金石となる。</p>
+
+    <p style="text-align:right; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:13px; color:var(--gold); margin-top:24px;">— 続く Ⅶ. 2025年の続報 —</p>
+  </div>
+
+  <!-- ========== Ⅶ. 2025 UPDATE ========== -->
+  <div class="section-head" style="margin-top: 60px;">
+    <div class="section-num">Ⅶ</div>
+    <div class="section-title">2025年・転換点の解剖 <span class="en">/ Anatomy of the Inflection</span></div>
+  </div>
+
+  <div class="update-panel">
+    <div class="update-badge">2026年2月公表 · 住民基本台帳人口移動報告 2025年結果</div>
+
+    <div class="update-lede">
+      総務省「住民基本台帳人口移動報告 2025年（令和7年）結果」が2026年2月3日に公表された。<br>
+      <strong>東京都の転入超過は +65,219人で全国最多を維持したが、前年比 ▼14,066人（▼17.7%）と4年ぶりに縮小</strong>。<br>
+      さらに <strong style="color:var(--out-color);">外国人が初めて転出超過（▲378人）に反転</strong>し、<em>2024年が一極集中の「ピーク年」だった可能性が強まった</em>。
+    </div>
+
+    <div class="update-kpi-row">
+      <div class="update-kpi">
+        <div class="ukpi-label">東京都 全体</div>
+        <div class="ukpi-en">Tokyo Prefecture · Net Inflow</div>
+        <div class="ukpi-flow">
+          <span class="ukpi-prev">79,285</span>
+          <span class="ukpi-arrow">▶</span>
+          <span class="ukpi-curr">65,219</span>
+          <span class="ukpi-unit">人</span>
+        </div>
+        <div class="ukpi-delta out">▼14,066人 (▼17.7%)</div>
+      </div>
+      <div class="update-kpi">
+        <div class="ukpi-label">東京圏 (1都3県)</div>
+        <div class="ukpi-en">Greater Tokyo · 4-Pref</div>
+        <div class="ukpi-flow">
+          <span class="ukpi-prev">135,843</span>
+          <span class="ukpi-arrow">▶</span>
+          <span class="ukpi-curr">123,534</span>
+          <span class="ukpi-unit">人</span>
+        </div>
+        <div class="ukpi-delta out">▼12,309人 (▼9.1%)</div>
+      </div>
+      <div class="update-kpi">
+        <div class="ukpi-label">3大都市圏 計</div>
+        <div class="ukpi-en">3 Major Metros · Net</div>
+        <div class="ukpi-flow">
+          <span class="ukpi-prev">119,666</span>
+          <span class="ukpi-arrow">▶</span>
+          <span class="ukpi-curr">119,581</span>
+          <span class="ukpi-unit">人</span>
+        </div>
+        <div class="ukpi-delta neutral">▼85人 (横ばい)</div>
+      </div>
+      <div class="update-kpi">
+        <div class="ukpi-label">大阪圏 (4府県)</div>
+        <div class="ukpi-en">Osaka Region · Net</div>
+        <div class="ukpi-flow">
+          <span class="ukpi-prev">2,679</span>
+          <span class="ukpi-arrow">▶</span>
+          <span class="ukpi-curr">8,742</span>
+          <span class="ukpi-unit">人</span>
+        </div>
+        <div class="ukpi-delta in">▲6,063人 (▲226%)</div>
+      </div>
+    </div>
+
+    <div class="update-twin">
+      <!-- Time series chart -->
+      <div class="update-chart-card">
+        <div class="chart-title">東京都 転入超過 推移 <span class="chart-sub">/ Tokyo Pref Net Inflow, 2015–2025</span></div>
+        <svg id="tokyo-trend" viewBox="0 0 600 280" preserveAspectRatio="xMidYMid meet"></svg>
+        <div class="chart-note">外国人含む。2020年はコロナ禍で大幅縮小、その後回復し2024年がピーク。2025年は4年ぶりに減速。</div>
+      </div>
+
+      <!-- Foreigner reversal chart -->
+      <div class="update-chart-card">
+        <div class="chart-title">外国人移動の反転 <span class="chart-sub">/ The Foreigner Reversal (Tokyo Pref)</span></div>
+        <svg id="foreign-trend" viewBox="0 0 600 280" preserveAspectRatio="xMidYMid meet"></svg>
+        <div class="chart-note">東京都の外国人転入超過。2023-24年の人口増を支えた外国人流入が2025年に転出超過(▲378人)へ初反転。</div>
+      </div>
+    </div>
+
+    <div class="update-twin" style="margin-top:20px;">
+      <!-- Age band chart -->
+      <div class="update-chart-card">
+        <div class="chart-title">年齢層別の純移動 — 2025年 <span class="chart-sub">/ Net Migration by Age Band (Tokyo Pref)</span></div>
+        <svg id="age-band" viewBox="0 0 600 300" preserveAspectRatio="xMidYMid meet"></svg>
+        <div class="chart-note">20-24歳が突出した転入超過(+57,263)。一方0-9歳・35歳以上は転出超過、60-64歳が最大の流出(▲4,222)。</div>
+      </div>
+
+      <!-- Key prefecture-level shifts -->
+      <div class="update-shifts-card">
+        <div class="chart-title">地方中核圏の踏みとどまり <span class="chart-sub">/ Key Prefecture Shifts (2024→2025)</span></div>
+        <div class="shifts-list" id="shifts-list"></div>
+        <div class="chart-note">純流入超過の変化幅が大きい上位プレフェクチャー。「+」は前年比で改善、「−」は悪化。</div>
+      </div>
+    </div>
+
+    <div class="update-prose">
+      <p class="lede">
+        2025年データが描き出すのは、「東京一極集中」のトレンドラインが初めて折れ曲がる瞬間である。だがその「折れ曲がり」は単純な減速ではなく、<strong>2つの構造変化</strong>を内包している——外国人エンジンの逆回転と、若年層への純化である。
+      </p>
+      <p>
+        第一に、<strong style="color:var(--out-color);">外国人の転出超過への初転換</strong>。2025年、東京都の外国人移動者は ▲378人と、前年の +8,722人から反転した。2023-24年、東京23区の人口増加の多くは外国人が牽引していた——板橋・足立・北・練馬・杉並・中野など多くの区で、日本人より外国人の増加数が上回っていた。<em>その外国人エンジンが逆回転を始めた</em>意味は大きい。円安による実質賃金の目減り、アジア各国の賃金上昇、留学・技能実習制度の変化などが背景と推察される。東京圏全体でも外国人流入は +10,796人へ縮小（▲5,710人）した。
+      </p>
+      <p>
+        第二に、<strong style="color:var(--in-color);">20-24歳への純化</strong>。2025年の東京都の転入超過 +65,219人のうち、20-24歳が +57,263人を占める。つまり東京の磁力は「進学・就職で上京する若年単身層」にますます集約されている。一方で <strong>0-9歳・35歳以上はいずれも転出超過</strong>、特に <strong>60-64歳が ▲4,222人と最大の流出層</strong>となった。子育て期に入った世帯とプレ退職層は、依然として郊外・地方へ流出し続けている。東京は「若者を集め、家族と退職前世代を送り出す」漏斗としての性格を強めている。
+      </p>
+      <p>
+        第三に、<strong style="color:var(--gold);">地方中核圏の踏みとどまり</strong>。東京の転入超過縮小と表裏一体で、大阪圏は転入超過が3.3倍に拡大（+8,742人）、愛知県・兵庫県など製造業・住宅価格優位の地域で転出超過幅が改善した。「東京は強い」のではなく「東京以外が弱かった」——この構造的説明が正しければ、2025年は<strong>「東京以外」が踏みとどまり始めた最初の年</strong>と読める。
+      </p>
+      <p class="warning-note">
+        ※ 本章の数値は<strong>東京都全体（23区＋多摩・島しょ部）</strong>のレベルで、総務省「住民基本台帳人口移動報告 2025年結果（結果の概要）」（2026年2月3日公表）に基づく。23区のみの純移動超過の確定値は東京都統計部の年次集計（例年夏〜秋）を待つ必要があるが、東京都の転入超過の大半は23区が占めるため、上記の構造変化（外国人反転・若年純化）は23区核にそのまま当てはまると考えられる。Ⅰ〜Ⅴ章の区別詳細は2024年確報ベース（空間構造として参照）。
+      </p>
+    </div>
+  </div>
+
+  <!-- ========== COLOPHON ========== -->
+  <div class="colophon">
+    <div>
+      <strong>SOURCES / 出典</strong>
+      総務省統計局「住民基本台帳人口移動報告 2025年（令和7年）結果（結果の概要・結果の要約）」（2026年2月3日公表）<br>
+      総務省統計局「同 市区町村別結果」（2026年4月23日公表）<br>
+      総務省統計局「住民基本台帳人口移動報告 2024年（令和6年）結果」（2025年1月公表）<br>
+      東京都総務局統計部「東京都住民基本台帳人口移動報告 令和6年」第4表（道府県別）・第12表・第13表（区市町村別）<br>
+      nippon.com「東京都への転入超過6万5219人」（2026-02-12）／日本経済新聞「東京都の転入超過4年ぶり縮小、外国人は転出超に」（2026-02-03）
+    </div>
+    <div>
+      <strong>METHODOLOGY / 方法</strong>
+      Ⅶ章「転換点の解剖」の数値は東京都全体（23区＋多摩・島しょ部）レベルで、総務省2025年結果（外国人含む）に基づく。年齢別・外国人別は東京都の全体値。<br>
+      23区のみの純移動超過の確定値は東京都統計部の年次集計（例年夏〜秋）を待つ必要があるが、東京都の転入超過の大半を23区が占めるため、外国人反転・若年純化の構造は23区核に当てはまる。<br>
+      Ⅰ〜Ⅴ章の区別詳細マップは2024年確報ベース（外国人含む）で、空間構造の背景として参照。「純移動超過」は転入者数−転出者数。矢印の太さ・粒子頻度は純移動超過数に比例。
+    </div>
+  </div>
+
+</div>
+
+<script>
+// =====================================================================
+// DATA: 23区 vs 46道府県 (2024) -- 外国人含む -- 区部のみ
+// Source: 東京都住民基本台帳人口移動報告 令和6年 第4表
+// =====================================================================
+const PREFS = [
+  // code, name (full), short, in (转入), out (转出), net, region, x, y
+  // x, y are normalized positions on a stylized Japan map (viewBox 1200x720)
+  // Tokyo 23区 will be at the geographic Tokyo position
+  { c:1,  n:"北海道",     s:"北海道", in:11281, out:8314, net:2967,  region:"hokkaido", x:1000, y:90 },
+  { c:2,  n:"青森県",     s:"青森",   in:2614,  out:1679, net:935,   region:"tohoku",   x:950,  y:175 },
+  { c:3,  n:"岩手県",     s:"岩手",   in:2496,  out:1458, net:1038,  region:"tohoku",   x:960,  y:240 },
+  { c:4,  n:"宮城県",     s:"宮城",   in:7467,  out:4492, net:2975,  region:"tohoku",   x:920,  y:300 },
+  { c:5,  n:"秋田県",     s:"秋田",   in:1815,  out:1165, net:650,   region:"tohoku",   x:870,  y:225 },
+  { c:6,  n:"山形県",     s:"山形",   in:2076,  out:1270, net:806,   region:"tohoku",   x:855,  y:295 },
+  { c:7,  n:"福島県",     s:"福島",   in:4344,  out:2686, net:1658,  region:"tohoku",   x:865,  y:355 },
+  { c:8,  n:"茨城県",     s:"茨城",   in:10102, out:7847, net:2255,  region:"kanto_o",  x:840,  y:410 },
+  { c:9,  n:"栃木県",     s:"栃木",   in:5967,  out:4508, net:1459,  region:"kanto_o",  x:780,  y:395 },
+  { c:10, n:"群馬県",     s:"群馬",   in:5886,  out:4827, net:1059,  region:"kanto_o",  x:720,  y:400 },
+  { c:11, n:"埼玉県",     s:"埼玉",   in:52470, out:55453,net:-2983, region:"adjacent", x:715,  y:445 },
+  { c:12, n:"千葉県",     s:"千葉",   in:46555, out:45315,net:1240,  region:"adjacent", x:835,  y:495 },
+  { c:13, n:"神奈川県",   s:"神奈川", in:63917, out:64177,net:-260,  region:"adjacent", x:730,  y:540 },
+  { c:14, n:"新潟県",     s:"新潟",   in:5247,  out:2930, net:2317,  region:"shinetsu", x:680,  y:330 },
+  { c:15, n:"富山県",     s:"富山",   in:1989,  out:1183, net:806,   region:"hokuriku", x:580,  y:370 },
+  { c:16, n:"石川県",     s:"石川",   in:2525,  out:1494, net:1031,  region:"hokuriku", x:520,  y:380 },
+  { c:17, n:"福井県",     s:"福井",   in:1175,  out:673,  net:502,   region:"hokuriku", x:475,  y:420 },
+  { c:18, n:"山梨県",     s:"山梨",   in:2692,  out:2391, net:301,   region:"shinetsu", x:670,  y:470 },
+  { c:19, n:"長野県",     s:"長野",   in:5337,  out:4671, net:666,   region:"shinetsu", x:620,  y:415 },
+  { c:20, n:"岐阜県",     s:"岐阜",   in:2845,  out:1347, net:1498,  region:"tokai",    x:485,  y:460 },
+  { c:21, n:"静岡県",     s:"静岡",   in:9806,  out:6659, net:3147,  region:"tokai",    x:615,  y:520 },
+  { c:22, n:"愛知県",     s:"愛知",   in:16729, out:10594,net:6135,  region:"tokai",    x:500,  y:510 },
+  { c:23, n:"三重県",     s:"三重",   in:2470,  out:1335, net:1135,  region:"kinki",    x:435,  y:530 },
+  { c:24, n:"滋賀県",     s:"滋賀",   in:2206,  out:1197, net:1009,  region:"kinki",    x:380,  y:485 },
+  { c:25, n:"京都府",     s:"京都",   in:6369,  out:4934, net:1435,  region:"kinki",    x:340,  y:490 },
+  { c:26, n:"大阪府",     s:"大阪",   in:22795, out:16312,net:6483,  region:"kinki",    x:330,  y:530 },
+  { c:27, n:"兵庫県",     s:"兵庫",   in:10841, out:6329, net:4512,  region:"kinki",    x:290,  y:510 },
+  { c:28, n:"奈良県",     s:"奈良",   in:1958,  out:1103, net:855,   region:"kinki",    x:355,  y:545 },
+  { c:29, n:"和歌山県",   s:"和歌山", in:1004,  out:573,  net:431,   region:"kinki",    x:330,  y:580 },
+  { c:30, n:"鳥取県",     s:"鳥取",   in:797,   out:463,  net:334,   region:"chugoku",  x:240,  y:490 },
+  { c:31, n:"島根県",     s:"島根",   in:902,   out:585,  net:317,   region:"chugoku",  x:180,  y:495 },
+  { c:32, n:"岡山県",     s:"岡山",   in:2947,  out:1639, net:1308,  region:"chugoku",  x:230,  y:540 },
+  { c:33, n:"広島県",     s:"広島",   in:5697,  out:3293, net:2404,  region:"chugoku",  x:160,  y:545 },
+  { c:34, n:"山口県",     s:"山口",   in:1972,  out:1236, net:736,   region:"chugoku",  x:90,   y:570 },
+  { c:35, n:"徳島県",     s:"徳島",   in:963,   out:589,  net:374,   region:"shikoku",  x:265,  y:580 },
+  { c:36, n:"香川県",     s:"香川",   in:1856,  out:1075, net:781,   region:"shikoku",  x:230,  y:575 },
+  { c:37, n:"愛媛県",     s:"愛媛",   in:2079,  out:1253, net:826,   region:"shikoku",  x:165,  y:600 },
+  { c:38, n:"高知県",     s:"高知",   in:1092,  out:652,  net:440,   region:"shikoku",  x:225,  y:625 },
+  { c:39, n:"福岡県",     s:"福岡",   in:12774, out:8880, net:3894,  region:"kyushu",   x:75,   y:625 },
+  { c:40, n:"佐賀県",     s:"佐賀",   in:1115,  out:584,  net:531,   region:"kyushu",   x:40,   y:640 },
+  { c:41, n:"長崎県",     s:"長崎",   in:1986,  out:1325, net:661,   region:"kyushu",   x:20,   y:660 },
+  { c:42, n:"熊本県",     s:"熊本",   in:2770,  out:1999, net:771,   region:"kyushu",   x:60,   y:680 },
+  { c:43, n:"大分県",     s:"大分",   in:1801,  out:1171, net:630,   region:"kyushu",   x:115,  y:650 },
+  { c:44, n:"宮崎県",     s:"宮崎",   in:1789,  out:1254, net:535,   region:"kyushu",   x:100,  y:695 },
+  { c:45, n:"鹿児島県",   s:"鹿児島", in:2661,  out:1794, net:867,   region:"kyushu",   x:75,   y:705 },
+  { c:46, n:"沖縄県",     s:"沖縄",   in:4238,  out:3503, net:735,   region:"okinawa",  x:30,   y:710 },
+  // Tama (intra-Tokyo) -- positioned just west of 23区
+  { c:99, n:"東京都 多摩地域", s:"多摩", in:0, out:3402, net:-3402, region:"tama", x:600, y:495, isInTokyo:true }
+];
+
+const REGIONS = {
+  hokkaido:  { name:"北海道",       en:"Hokkaido" },
+  tohoku:    { name:"東北6県",      en:"Tohoku" },
+  kanto_o:   { name:"北関東",       en:"N. Kanto" },
+  adjacent:  { name:"隣接3県",      en:"Adjacent 3 Pref." },
+  shinetsu:  { name:"信越",         en:"Shin'etsu" },
+  hokuriku:  { name:"北陸",         en:"Hokuriku" },
+  tokai:     { name:"東海",         en:"Tokai" },
+  kinki:     { name:"近畿",         en:"Kinki/Kansai" },
+  chugoku:   { name:"中国",         en:"Chugoku" },
+  shikoku:   { name:"四国",         en:"Shikoku" },
+  kyushu:    { name:"九州7県",      en:"Kyushu" },
+  okinawa:   { name:"沖縄",         en:"Okinawa" },
+  tama:      { name:"多摩地域（都内）", en:"Tama (intra-Tokyo)" }
+};
+
+const TOKYO_CX = 660;
+const TOKYO_CY = 470;
+
+// =====================================================================
+// JAPAN OUTLINE (very simplified, stylized -- decorative only)
+// =====================================================================
+const JAPAN_PATHS = [
+  // Honshu (rough)
+  "M 60,560 Q 80,540 130,545 L 200,540 Q 270,535 340,510 L 400,490 Q 480,470 560,440 L 640,430 Q 720,420 800,420 L 870,420 Q 920,400 950,360 L 970,290 Q 970,250 940,220 L 905,200 Q 870,210 855,240 L 825,300 Q 780,360 720,395 L 640,410 Q 540,420 460,455 L 380,485 Q 300,505 230,520 L 170,540 Q 120,555 80,575 Z",
+  // Hokkaido
+  "M 870,60 Q 920,50 985,75 L 1040,110 Q 1050,140 1020,165 L 970,180 Q 930,185 900,160 L 875,130 Q 855,100 870,60 Z",
+  // Kyushu
+  "M 25,640 Q 50,620 100,625 L 140,635 Q 155,665 130,690 L 90,715 Q 50,710 30,685 L 20,665 Z",
+  // Shikoku
+  "M 165,585 Q 210,580 280,590 L 295,605 Q 285,625 250,635 L 200,635 Q 170,625 165,605 Z",
+  // Okinawa hint
+  "M 15,705 Q 35,700 55,710 L 60,720 Q 45,725 25,720 Z"
+];
+
+// =====================================================================
+// RENDERING
+// =====================================================================
+const svg = document.getElementById('flow-map');
+const SVG_NS = "http://www.w3.org/2000/svg";
+const tooltip = document.getElementById('tooltip');
+
+function el(tag, attrs = {}, parent = null) {
+  const e = document.createElementNS(SVG_NS, tag);
+  for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+  if (parent) parent.appendChild(e);
+  return e;
+}
+
+// Pre-compute scale anchors
+const maxAbs = Math.max(...PREFS.map(p => Math.abs(p.net)));   // 6483 (Osaka)
+const maxGross = Math.max(...PREFS.map(p => p.in + p.out));    // for gross view
+
+function strokeWidthFor(value, view) {
+  if (view === 'gross') {
+    return 0.5 + (Math.abs(value) / maxGross) * 9;
+  }
+  return 0.4 + (Math.abs(value) / maxAbs) * 7;
+}
+function radiusFor(value) {
+  return 2.5 + Math.sqrt(Math.abs(value)) / 4;
+}
+
+let currentView = 'net';
+let particleAnimationFrame = null;
+let particles = [];
+
+function buildMap() {
+  svg.innerHTML = '';
+
+  // Layer order: outline → flows → particles → nodes → labels → center
+  const outlineG = el('g', {}, svg);
+  const flowG = el('g', { id:'flows' }, svg);
+  const particleG = el('g', { id:'particles' }, svg);
+  const nodeG = el('g', {}, svg);
+  const labelG = el('g', {}, svg);
+  const centerG = el('g', { class:'center-glow' }, svg);
+
+  // Japan outline (decorative)
+  JAPAN_PATHS.forEach(d => {
+    el('path', { d, class:'japan-outline' }, outlineG);
+  });
+
+  // Region overlays for "region" mode (subtle highlight)
+  // (we'll draw them only when in region view, see below)
+
+  // Draw flow curves (excluding Tama which gets a direct line)
+  PREFS.forEach(p => {
+    const isTama = p.region === 'tama';
+    const cx = p.x, cy = p.y;
+    // Curve from prefecture to Tokyo
+    const mx = (cx + TOKYO_CX) / 2;
+    const my = (cy + TOKYO_CY) / 2;
+    // Add some curvature based on perpendicular offset
+    const dx = TOKYO_CX - cx, dy = TOKYO_CY - cy;
+    const len = Math.sqrt(dx*dx + dy*dy);
+    const nx = -dy / len, ny = dx / len;
+    const curveOffset = Math.min(len * 0.18, 40);
+    const ctrlX = mx + nx * curveOffset;
+    const ctrlY = my + ny * curveOffset;
+    const pathData = `M ${cx} ${cy} Q ${ctrlX} ${ctrlY} ${TOKYO_CX} ${TOKYO_CY}`;
+
+    const dir = p.net > 0 ? 'in' : 'out';
+    const sw = strokeWidthFor(p.net, currentView);
+
+    const flowPath = el('path', {
+      d: pathData,
+      class: `flow-line ${dir}`,
+      'stroke-width': sw,
+      'data-pref': p.c,
+      'data-net': p.net
+    }, flowG);
+    flowPath.setAttribute('id', `flow-${p.c}`);
+    p._pathLen = flowPath.getTotalLength ? flowPath.getTotalLength() : len;
+    p._path = flowPath;
+  });
+
+  // Draw prefecture nodes
+  PREFS.forEach(p => {
+    const dir = p.net > 0 ? 'in' : 'out';
+    const r = radiusFor(p.net);
+    const color = p.net > 0 ? 'var(--in-bright)' : 'var(--out-bright)';
+    const c = el('circle', {
+      cx: p.x, cy: p.y, r,
+      class: 'pref-circle',
+      fill: color,
+      'fill-opacity': 0.7,
+      stroke: color,
+      'stroke-width': 1.5,
+      'data-pref': p.c
+    }, nodeG);
+
+    // hover handlers
+    c.addEventListener('mouseenter', (ev) => showTooltip(p, ev));
+    c.addEventListener('mousemove', (ev) => moveTooltip(ev));
+    c.addEventListener('mouseleave', hideTooltip);
+  });
+
+  // Prefecture labels (selective: only the ones with notable flows)
+  PREFS.forEach(p => {
+    if (Math.abs(p.net) < 1500 && p.region !== 'tama') return;  // skip small
+    const labelOffsetY = p.y < TOKYO_CY ? -8 : 14;
+    const labelOffsetX = 0;
+    const text = el('text', {
+      x: p.x + labelOffsetX,
+      y: p.y + labelOffsetY,
+      class: 'pref-label' + (Math.abs(p.net) > 4000 ? ' big' : '')
+    }, labelG);
+    text.textContent = p.s;
+  });
+
+  // Center: 23区 glow
+  // outer glow
+  el('circle', { cx: TOKYO_CX, cy: TOKYO_CY, r: 80, fill: 'url(#centerGlow)', opacity: 0.6 }, centerG);
+  el('circle', { cx: TOKYO_CX, cy: TOKYO_CY, r: 50, fill: 'rgba(184,149,74,0.10)', stroke: 'rgba(184,149,74,0.30)', 'stroke-width': 1, 'stroke-dasharray':'2 4' }, centerG);
+  el('circle', { cx: TOKYO_CX, cy: TOKYO_CY, r: 18, fill: 'var(--gold)' }, centerG);
+  el('circle', { cx: TOKYO_CX, cy: TOKYO_CY, r: 9, fill: 'var(--ink)' }, centerG);
+
+  // Center label
+  const centerLabel = el('text', {
+    x: TOKYO_CX, y: TOKYO_CY - 100,
+    'text-anchor':'middle',
+    'font-family':"'Noto Serif JP', serif",
+    'font-weight':900,
+    'font-size': 22,
+    fill:'var(--gold-bright)',
+    'letter-spacing':'0.08em'
+  }, centerG);
+  centerLabel.textContent = '東京 23区';
+
+  const centerSub = el('text', {
+    x: TOKYO_CX, y: TOKYO_CY - 82,
+    'text-anchor':'middle',
+    'font-family':"'Cormorant Garamond', serif",
+    'font-style':'italic',
+    'font-size': 12,
+    fill:'var(--paper-soft)',
+    opacity:0.75,
+    'letter-spacing':'0.15em'
+  }, centerG);
+  centerSub.textContent = '+58,804  net inflow (2024)';
+
+  // Defs for gradients
+  const defs = el('defs', {}, svg);
+  const radGrad = el('radialGradient', { id:'centerGlow' }, defs);
+  el('stop', { offset:'0%', 'stop-color':'rgba(184,149,74,0.45)' }, radGrad);
+  el('stop', { offset:'70%', 'stop-color':'rgba(184,149,74,0.05)' }, radGrad);
+  el('stop', { offset:'100%', 'stop-color':'rgba(184,149,74,0)' }, radGrad);
+
+  // Initialize particles
+  setupParticles();
+}
+
+// ---------- PARTICLES ----------
+function setupParticles() {
+  if (particleAnimationFrame) cancelAnimationFrame(particleAnimationFrame);
+  particles = [];
+
+  PREFS.forEach(p => {
+    const magnitude = Math.abs(p.net);
+    if (magnitude < 100) return;
+    // Particles per prefecture, proportional to magnitude
+    // We want top prefectures to have ~6-8 particles, smallest with visible flow to have 1
+    const count = Math.max(1, Math.round((magnitude / maxAbs) * 6));
+    const path = p._path;
+    if (!path) return;
+    const pathLen = path.getTotalLength();
+    // Speed proportional to magnitude (but capped)
+    const baseSpeed = 0.35 + (magnitude / maxAbs) * 0.6;  // pixels per frame
+    for (let i = 0; i < count; i++) {
+      particles.push({
+        pref: p,
+        path,
+        pathLen,
+        speed: baseSpeed * (0.85 + Math.random() * 0.3),
+        // direction: net > 0 means particle goes FROM prefecture TO 23区 (forward along path)
+        // net < 0 means particle goes FROM 23区 TO prefecture (backward along path)
+        forward: p.net > 0,
+        progress: (pathLen * i / count) + Math.random() * 20,
+        color: p.net > 0 ? '#7fb0e8' : '#f0937e',
+        radius: 1.8 + Math.sqrt(magnitude) / 60
+      });
+    }
+  });
+
+  // Create SVG circles for particles once
+  const pg = document.getElementById('particles');
+  pg.innerHTML = '';
+  particles.forEach((part, i) => {
+    part.el = el('circle', {
+      r: part.radius,
+      fill: part.color,
+      class:'particle',
+      opacity: 0.9,
+      'filter':'url(#particleGlow)'
+    }, pg);
+  });
+
+  // Particle glow filter (small bloom)
+  const defs = svg.querySelector('defs');
+  if (!defs.querySelector('#particleGlow')) {
+    const filt = el('filter', { id:'particleGlow', x:'-50%', y:'-50%', width:'200%', height:'200%' }, defs);
+    const blur = el('feGaussianBlur', { stdDeviation:'1.4', result:'b' }, filt);
+    const merge = el('feMerge', {}, filt);
+    el('feMergeNode', { in:'b' }, merge);
+    el('feMergeNode', { in:'SourceGraphic' }, merge);
+  }
+
+  animateParticles();
+}
+
+function animateParticles() {
+  particles.forEach(p => {
+    p.progress += p.speed;
+    if (p.progress > p.pathLen) p.progress = 0;
+    const t = p.forward ? p.progress : (p.pathLen - p.progress);
+    const point = p.path.getPointAtLength(t);
+    p.el.setAttribute('cx', point.x);
+    p.el.setAttribute('cy', point.y);
+  });
+  particleAnimationFrame = requestAnimationFrame(animateParticles);
+}
+
+// ---------- TOOLTIP ----------
+function showTooltip(p, ev) {
+  const isTama = p.region === 'tama';
+  let html = `<div class="tt-pref">${p.n}</div>`;
+  if (!isTama) {
+    html += `<div class="tt-row"><span>23区への転入</span><span class="v in">${p.in.toLocaleString()}人</span></div>`;
+    html += `<div class="tt-row"><span>23区からの転出</span><span class="v out">${p.out.toLocaleString()}人</span></div>`;
+    html += `<div class="tt-row net"><span>純${p.net >= 0 ? '流入' : '流出'}超過</span><span class="v ${p.net >= 0 ? 'in' : 'out'}">${p.net >= 0 ? '+' : ''}${p.net.toLocaleString()}人</span></div>`;
+  } else {
+    html += `<div class="tt-row"><span>23区→多摩 純流出</span><span class="v out">△${Math.abs(p.net).toLocaleString()}人</span></div>`;
+    html += `<div class="tt-row" style="font-size:10.5px; color:var(--paper-soft); opacity:0.7;"><span>都内移動（道府県外）</span><span></span></div>`;
+  }
+  tooltip.innerHTML = html;
+  tooltip.classList.add('show');
+  moveTooltip(ev);
+}
+function moveTooltip(ev) {
+  const stage = ev.target.closest('.viz-stage');
+  if (!stage) return;
+  const rect = stage.getBoundingClientRect();
+  const x = ev.clientX - rect.left;
+  const y = ev.clientY - rect.top;
+  const tt = tooltip.getBoundingClientRect();
+  let posX = x + 18;
+  let posY = y - 10;
+  if (posX + tt.width > rect.width) posX = x - tt.width - 18;
+  if (posY + tt.height > rect.height) posY = rect.height - tt.height - 10;
+  tooltip.style.left = posX + 'px';
+  tooltip.style.top = posY + 'px';
+}
+function hideTooltip() {
+  tooltip.classList.remove('show');
+}
+
+// ---------- VIEW SWITCHING ----------
+function applyView(view) {
+  currentView = view;
+  // Update line widths
+  PREFS.forEach(p => {
+    if (!p._path) return;
+    const value = view === 'gross' ? (p.in + p.out) : p.net;
+    p._path.setAttribute('stroke-width', strokeWidthFor(value, view));
+  });
+  // For region view, overlay region grouping
+  // (keep it simple: just update line widths; the chart below handles regions)
+}
+
+document.querySelectorAll('.viz-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.viz-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    applyView(btn.dataset.view);
+  });
+});
+
+// =====================================================================
+// RANKINGS
+// =====================================================================
+function buildRankings() {
+  // Top inflows (excluding Tama)
+  const inflows = PREFS.filter(p => p.net > 0 && p.region !== 'tama')
+    .sort((a, b) => b.net - a.net)
+    .slice(0, 10);
+
+  const inEl = document.getElementById('rank-in');
+  inEl.innerHTML = inflows.map((p, i) => `
+    <li>
+      <span class="rank-num">${(i+1).toString().padStart(2,'0')}</span>
+      <span class="rank-pref">${p.n}<small>${REGIONS[p.region]?.name || ''}</small></span>
+      <span class="rank-val">+${p.net.toLocaleString()}<small>人</small></span>
+    </li>
+  `).join('');
+
+  // Outflows (only 2 prefectures with negative net + Tama)
+  const outflows = [
+    ...PREFS.filter(p => p.net < 0 && p.region !== 'tama').sort((a,b) => a.net - b.net),
+    PREFS.find(p => p.region === 'tama')
+  ];
+  const outEl = document.getElementById('rank-out');
+  outEl.innerHTML = outflows.map((p, i) => `
+    <li>
+      <span class="rank-num">${(i+1).toString().padStart(2,'0')}</span>
+      <span class="rank-pref">${p.n}<small>${p.region === 'tama' ? '都内移動（多摩・島しょ部）' : REGIONS[p.region]?.name || ''}</small></span>
+      <span class="rank-val">△${Math.abs(p.net).toLocaleString()}<small>人</small></span>
+    </li>
+  `).join('');
+}
+
+// =====================================================================
+// REGION CHART
+// =====================================================================
+function buildRegionChart() {
+  // Aggregate by region
+  const groups = {};
+  PREFS.forEach(p => {
+    if (p.region === 'tama') return;  // handle separately
+    if (!groups[p.region]) groups[p.region] = { name: REGIONS[p.region]?.name || p.region, en: REGIONS[p.region]?.en || '', total: 0, prefs: [] };
+    groups[p.region].total += p.net;
+    groups[p.region].prefs.push(p.s);
+  });
+  // Add multi-Tokyo (Tama)
+  const tama = PREFS.find(p => p.region === 'tama');
+  groups.tama = { name: REGIONS.tama.name, en: REGIONS.tama.en, total: tama.net, prefs:['多摩・島しょ'] };
+
+  // Sort by total
+  const sorted = Object.values(groups).sort((a,b) => b.total - a.total);
+
+  const maxR = Math.max(...sorted.map(g => Math.abs(g.total)));
+
+  const container = document.getElementById('region-chart');
+  // Keep the existing header div
+  const header = container.firstElementChild;
+  container.innerHTML = '';
+  container.appendChild(header);
+
+  sorted.forEach(g => {
+    const row = document.createElement('div');
+    row.className = 'region-row';
+    const isNeg = g.total < 0;
+    const widthPct = Math.abs(g.total) / maxR * 48;  // half = 48% of bar width
+
+    row.innerHTML = `
+      <div class="region-label">${g.name}<small>${g.en}</small></div>
+      <div class="region-bar-wrap">
+        <div class="region-bar-axis"></div>
+        <div class="region-bar ${isNeg ? 'neg' : ''}" style="
+          ${isNeg
+            ? `right: 50%; width: ${widthPct}%;`
+            : `left: 50%; width: ${widthPct}%;`}
+        "></div>
+      </div>
+      <div class="region-val ${isNeg ? 'neg' : 'pos'}">${isNeg ? '△' : '+'}${Math.abs(g.total).toLocaleString()}</div>
+    `;
+    container.appendChild(row);
+  });
+}
+
+// =====================================================================
+// Ⅲ. 23-WARD DATA — net flow per ward (2024, 外国人含む)
+// Source: 東京都「東京都住民基本台帳人口移動報告 令和6年」第12表(転入)・第13表(転出)
+//         CSV: ji24qv1200.csv, ji24qv1300.csv
+// =====================================================================
+const WARDS = [
+  // grid (x, y): approximate geographic position in 23-ward area
+  // x: 0-10 (W→E), y: 0-7 (N→S)
+  { name:"千代田区", inflow: 6794,  outflow: 7159,  net: -365,   x:5.2, y:3.5 },
+  { name:"中央区",   inflow: 22963, outflow: 14458, net: 8505,   x:5.8, y:3.8 },
+  { name:"港区",     inflow: 21053, outflow: 21808, net: -755,   x:5.0, y:4.4 },
+  { name:"新宿区",   inflow: 34580, outflow: 37565, net: -2985,  x:4.0, y:3.5 },
+  { name:"文京区",   inflow: 19630, outflow: 17846, net: 1784,   x:4.6, y:3.0 },
+  { name:"台東区",   inflow: 21635, outflow: 19406, net: 2229,   x:5.6, y:3.0 },
+  { name:"墨田区",   inflow: 24543, outflow: 22716, net: 1827,   x:6.5, y:3.2 },
+  { name:"江東区",   inflow: 36847, outflow: 34784, net: 2063,   x:6.8, y:4.0 },
+  { name:"品川区",   inflow: 32880, outflow: 28774, net: 4106,   x:4.8, y:5.2 },
+  { name:"目黒区",   inflow: 23591, outflow: 21977, net: 1614,   x:3.8, y:5.0 },
+  { name:"大田区",   inflow: 50519, outflow: 43752, net: 6767,   x:4.6, y:6.2 },
+  { name:"世田谷区", inflow: 58676, outflow: 53464, net: 5212,   x:2.5, y:5.0 },
+  { name:"渋谷区",   inflow: 20255, outflow: 19869, net: 386,    x:3.6, y:4.2 },
+  { name:"中野区",   inflow: 31199, outflow: 29424, net: 1775,   x:2.8, y:3.6 },
+  { name:"杉並区",   inflow: 42258, outflow: 38882, net: 3376,   x:1.8, y:4.0 },
+  { name:"豊島区",   inflow: 28450, outflow: 29359, net: -909,   x:3.2, y:2.5 },
+  { name:"北区",     inflow: 29346, outflow: 26614, net: 2732,   x:4.4, y:1.6 },
+  { name:"荒川区",   inflow: 17315, outflow: 16213, net: 1102,   x:5.2, y:2.0 },
+  { name:"板橋区",   inflow: 41295, outflow: 36027, net: 5268,   x:3.4, y:1.6 },
+  { name:"練馬区",   inflow: 45595, outflow: 40981, net: 4614,   x:2.0, y:1.8 },
+  { name:"足立区",   inflow: 40619, outflow: 34568, net: 6051,   x:6.0, y:1.4 },
+  { name:"葛飾区",   inflow: 26925, outflow: 24725, net: 2200,   x:7.0, y:1.8 },
+  { name:"江戸川区", inflow: 38147, outflow: 35940, net: 2207,   x:7.8, y:2.8 },
+];
+
+function buildWardMap() {
+  const svg = document.getElementById('ward-map');
+  if (!svg) return;
+  const NS = "http://www.w3.org/2000/svg";
+  const create = (tag, attrs={}, parent=svg) => {
+    const el = document.createElementNS(NS, tag);
+    Object.entries(attrs).forEach(([k,v]) => el.setAttribute(k, v));
+    parent.appendChild(el);
+    return el;
+  };
+  svg.innerHTML = '';
+
+  const W = 600, H = 480;
+  const cellW = 78, cellH = 56;
+  const xScale = (x) => 30 + x * 56;
+  const yScale = (y) => 35 + y * 58;
+
+  // Compute color based on net
+  // -3000 (deep red) → 0 (cream) → +9000 (deep blue)
+  const colorScale = (net) => {
+    const inColor = [74, 111, 165];  // var(--in-color)
+    const outColor = [199, 93, 78];  // var(--out-color)
+    const neutral = [244, 237, 224]; // paper
+    if (net >= 0) {
+      const t = Math.min(net / 9000, 1);
+      const r = Math.round(neutral[0] * (1-t) + inColor[0] * t);
+      const g = Math.round(neutral[1] * (1-t) + inColor[1] * t);
+      const b = Math.round(neutral[2] * (1-t) + inColor[2] * t);
+      return `rgb(${r},${g},${b})`;
+    } else {
+      const t = Math.min(Math.abs(net) / 3000, 1);
+      const r = Math.round(neutral[0] * (1-t) + outColor[0] * t);
+      const g = Math.round(neutral[1] * (1-t) + outColor[1] * t);
+      const b = Math.round(neutral[2] * (1-t) + outColor[2] * t);
+      return `rgb(${r},${g},${b})`;
+    }
+  };
+
+  // Draw each ward
+  WARDS.forEach(w => {
+    const x = xScale(w.x);
+    const y = yScale(w.y);
+    const fill = colorScale(w.net);
+    const isLight = Math.abs(w.net) < 2000;
+    const labelColor = isLight ? '#3a4250' : '#f4ede0';
+    const netColor = isLight ? (w.net > 0 ? '#4a6fa5' : '#c75d4e') : '#f4ede0';
+
+    create('rect', {
+      class: 'ward-rect',
+      x: x.toFixed(1),
+      y: y.toFixed(1),
+      width: cellW,
+      height: cellH,
+      rx: 6,
+      fill,
+      stroke: '#0c1929',
+      'stroke-width': 0.6,
+      'stroke-opacity': 0.3
+    });
+
+    create('text', {
+      class: 'ward-rect-label',
+      x: (x + cellW/2).toFixed(1),
+      y: (y + 22).toFixed(1),
+      'font-size': 12,
+      fill: labelColor
+    }).textContent = w.name;
+
+    create('text', {
+      class: 'ward-rect-net',
+      x: (x + cellW/2).toFixed(1),
+      y: (y + 42).toFixed(1),
+      'font-size': 13,
+      fill: netColor
+    }).textContent = (w.net >= 0 ? '+' : '△') + Math.abs(w.net).toLocaleString();
+  });
+
+  // Annotations
+  create('text', {
+    x: 38, y: 22,
+    'font-family': 'Cormorant Garamond, serif',
+    'font-style': 'italic',
+    'font-size': 12,
+    fill: '#5a6878'
+  }).textContent = 'N (北) ↑';
+
+  create('text', {
+    x: 562, y: 470, 'text-anchor': 'end',
+    'font-family': 'Cormorant Garamond, serif',
+    'font-style': 'italic',
+    'font-size': 11,
+    fill: '#5a6878'
+  }).textContent = 'East (東) →';
+}
+
+function buildWardBars() {
+  const c = document.getElementById('ward-bars');
+  if (!c) return;
+  const sorted = WARDS.slice().sort((a, b) => b.net - a.net);
+  const maxAbs = Math.max(...WARDS.map(w => Math.abs(w.net)));
+  // Track full width represents 2*maxAbs (center = 0)
+  // Net inflow grows right from center; outflow grows left
+
+  c.innerHTML = sorted.map((w, i) => {
+    const cls = w.net >= 0 ? 'in' : 'out';
+    const widthPct = (Math.abs(w.net) / maxAbs * 100).toFixed(1);
+    const fill = w.net >= 0
+      ? `<div class="wbar-fill in" style="left:50%; width:${widthPct/2}%;"></div>`
+      : `<div class="wbar-fill out" style="left:${50 - widthPct/2}%; width:${widthPct/2}%;"></div>`;
+    const tickLeft = `<div style="position:absolute; left:50%; top:-2px; bottom:-2px; width:1px; background:var(--gold); opacity:0.6;"></div>`;
+    return `
+      <div class="wbar-row ${cls}">
+        <span class="wbar-rank">${String(i+1).padStart(2,'0')}</span>
+        <span class="wbar-name">${w.name}</span>
+        <div class="wbar-track">${tickLeft}${fill}</div>
+        <span class="wbar-val ${cls}">${w.net >= 0 ? '+' : '△'}${Math.abs(w.net).toLocaleString()}</span>
+      </div>
+    `;
+  }).join('');
+}
+
+
+// =====================================================================
+// Ⅶ. 2025 UPDATE -- TREND CHART & PREFECTURE SHIFTS
+// =====================================================================
+
+// Tokyo Prefecture (都全体) net inflow, 2015-2025
+// Source: 総務省「住民基本台帳人口移動報告」各年結果
+const TOKYO_TREND = [
+  { y:2015, v: 81696 },
+  { y:2016, v: 74177 },
+  { y:2017, v: 75498 },
+  { y:2018, v: 82774 },
+  { y:2019, v: 86575 },
+  { y:2020, v: 38374 },
+  { y:2021, v: 10815 },
+  { y:2022, v: 33909 },
+  { y:2023, v: 58489 },
+  { y:2024, v: 79285 },
+  { y:2025, v: 65219 },
+];
+
+function buildTrendChart() {
+  const svg = document.getElementById('tokyo-trend');
+  if (!svg) return;
+  const W = 600, H = 280;
+  const margin = { top: 22, right: 16, bottom: 38, left: 50 };
+  const innerW = W - margin.left - margin.right;
+  const innerH = H - margin.top - margin.bottom;
+
+  const minY = 0;
+  const maxY = 100000;
+  const xs = TOKYO_TREND.map(d => d.y);
+  const xScale = (y) => margin.left + ((y - xs[0]) / (xs[xs.length-1] - xs[0])) * innerW;
+  const yScale = (v) => margin.top + innerH - ((v - minY) / (maxY - minY)) * innerH;
+
+  const NS = "http://www.w3.org/2000/svg";
+  const create = (tag, attrs={}, parent=svg) => {
+    const el = document.createElementNS(NS, tag);
+    Object.entries(attrs).forEach(([k,v]) => el.setAttribute(k, v));
+    parent.appendChild(el);
+    return el;
+  };
+
+  svg.innerHTML = '';
+
+  // Y-axis gridlines
+  [0, 20000, 40000, 60000, 80000, 100000].forEach(v => {
+    create('line', {
+      x1: margin.left, x2: margin.left + innerW,
+      y1: yScale(v), y2: yScale(v),
+      stroke: '#c4b89e', 'stroke-width': 0.5, 'stroke-dasharray': v === 0 ? '0' : '2 3'
+    });
+    const t = create('text', {
+      x: margin.left - 6, y: yScale(v) + 3,
+      'text-anchor': 'end',
+      'font-family': 'Cormorant Garamond, serif',
+      'font-style': 'italic',
+      'font-size': 9.5, fill: '#5a6878'
+    });
+    t.textContent = v === 0 ? '0' : (v/1000) + 'k';
+  });
+
+  // X-axis labels
+  TOKYO_TREND.forEach(d => {
+    if (d.y % 2 === 1 || d.y === 2024 || d.y === 2025) {
+      const t = create('text', {
+        x: xScale(d.y),
+        y: margin.top + innerH + 16,
+        'text-anchor': 'middle',
+        'font-family': 'Cormorant Garamond, serif',
+        'font-style': 'italic',
+        'font-size': 10.5,
+        fill: (d.y === 2024 || d.y === 2025) ? '#b8954a' : '#5a6878',
+        'font-weight': (d.y === 2024 || d.y === 2025) ? 700 : 400
+      });
+      t.textContent = d.y;
+    }
+  });
+
+  // Y-axis label
+  const yLabel = create('text', {
+    x: margin.left, y: margin.top - 8,
+    'font-family': 'Noto Sans JP, sans-serif',
+    'font-size': 10, fill: '#5a6878',
+    'letter-spacing': '0.05em'
+  });
+  yLabel.textContent = '東京都 純流入超過（人）';
+
+  // Trend line
+  const linePath = TOKYO_TREND.map((d, i) =>
+    `${i === 0 ? 'M' : 'L'} ${xScale(d.y).toFixed(1)} ${yScale(d.v).toFixed(1)}`
+  ).join(' ');
+  create('path', {
+    d: linePath, fill: 'none',
+    stroke: '#0c1929', 'stroke-width': 1.6
+  });
+
+  // 2024 -> 2025 highlighted segment (in red)
+  const p24 = TOKYO_TREND.find(d => d.y === 2024);
+  const p25 = TOKYO_TREND.find(d => d.y === 2025);
+  create('path', {
+    d: `M ${xScale(p24.y)} ${yScale(p24.v)} L ${xScale(p25.y)} ${yScale(p25.v)}`,
+    fill: 'none',
+    stroke: '#c75d4e', 'stroke-width': 2.5
+  });
+
+  // Points
+  TOKYO_TREND.forEach(d => {
+    const isHighlight = d.y === 2024 || d.y === 2025;
+    const r = isHighlight ? 5 : 3.2;
+    const color = d.y === 2025 ? '#c75d4e' : d.y === 2024 ? '#b8954a' : '#0c1929';
+    create('circle', {
+      cx: xScale(d.y), cy: yScale(d.v), r,
+      fill: color,
+      stroke: '#f4ede0',
+      'stroke-width': 1.5
+    });
+  });
+
+  // Annotation: 2024 peak
+  const annoP = create('text', {
+    x: xScale(2024), y: yScale(p24.v) - 14,
+    'text-anchor': 'middle',
+    'font-family': 'Noto Serif JP, serif',
+    'font-weight': 700,
+    'font-size': 10.5,
+    fill: '#b8954a'
+  });
+  annoP.textContent = `+${p24.v.toLocaleString()}`;
+
+  const annoP2 = create('text', {
+    x: xScale(2024), y: yScale(p24.v) - 26,
+    'text-anchor': 'middle',
+    'font-family': 'Cormorant Garamond, serif',
+    'font-style': 'italic',
+    'font-size': 9.5,
+    fill: '#b8954a'
+  });
+  annoP2.textContent = 'PEAK';
+
+  // Annotation: 2025
+  const annoC = create('text', {
+    x: xScale(2025) + 4, y: yScale(p25.v) + 4,
+    'text-anchor': 'start',
+    'font-family': 'Noto Serif JP, serif',
+    'font-weight': 700,
+    'font-size': 10.5,
+    fill: '#c75d4e'
+  });
+  annoC.textContent = `+${p25.v.toLocaleString()}`;
+
+  const annoC2 = create('text', {
+    x: xScale(2025) + 4, y: yScale(p25.v) + 16,
+    'text-anchor': 'start',
+    'font-family': 'Cormorant Garamond, serif',
+    'font-style': 'italic',
+    'font-size': 9,
+    fill: '#c75d4e'
+  });
+  annoC2.textContent = '▼17.7%';
+
+  // Annotation: 2020 COVID low
+  const p20 = TOKYO_TREND.find(d => d.y === 2020);
+  const p21 = TOKYO_TREND.find(d => d.y === 2021);
+  const annoCovid = create('text', {
+    x: xScale(2021), y: yScale(p21.v) + 22,
+    'text-anchor': 'middle',
+    'font-family': 'Cormorant Garamond, serif',
+    'font-style': 'italic',
+    'font-size': 9,
+    fill: '#5a6878'
+  });
+  annoCovid.textContent = 'COVID-19';
+}
+
+// Prefecture-level changes 2024→2025 (Tokyo prefecture-level data, 外国人含む)
+// Source: 総務省「住民基本台帳人口移動報告 2025年（令和7年）結果」表7
+const PREF_SHIFTS = [
+  // pref, net2024, net2025, type ('improve' = net inflow improved or outflow shrank; 'worsen' = opposite)
+  { name:"愛知県", n24:-7292, n25:-2181, type:"improve" },
+  { name:"兵庫県", n24:-7287, n25:-2102, type:"improve" },
+  { name:"石川県", n24:-4176, n25:-2774, type:"improve" },
+  { name:"奈良県", n24:-2121, n25:-1070, type:"improve" },
+  { name:"京都府", n24:-4761, n25:-3753, type:"improve" },
+  { name:"福岡県", n24:4160,  n25:5136,  type:"improve" },
+  { name:"沖縄県", n24:-1529, n25:-559,  type:"improve" },
+  { name:"神奈川県", n24:26963, n25:28052, type:"improve" },
+  // Worsening
+  { name:"東京都", n24:79285, n25:65219, type:"worsen" },
+  { name:"宮崎県", n24:-1064, n25:-3024, type:"worsen" },
+  { name:"福井県", n24:-1690, n25:-3157, type:"worsen" },
+  { name:"大阪府", n24:16848, n25:15667, type:"worsen" },
+  { name:"山梨県", n24:82,    n25:-862,  type:"worsen" },
+];
+
+function buildShiftsList() {
+  const c = document.getElementById('shifts-list');
+  if (!c) return;
+  const items = PREF_SHIFTS.map(s => {
+    const delta = s.n25 - s.n24;
+    return { ...s, delta, absDelta: Math.abs(delta) };
+  }).sort((a, b) => b.absDelta - a.absDelta);
+
+  c.innerHTML = items.slice(0, 10).map((s, i) => {
+    const fmt = (v) => (v >= 0 ? '+' : '△') + Math.abs(v).toLocaleString();
+    const dfmt = (s.delta >= 0 ? '+' : '△') + Math.abs(s.delta).toLocaleString();
+    return `
+      <div class="shift-row ${s.type}">
+        <span class="shift-rank">${String(i+1).padStart(2,'0')}</span>
+        <span class="shift-pref">${s.name}</span>
+        <span class="shift-flow">${fmt(s.n24)} → ${fmt(s.n25)}</span>
+        <span class="shift-delta ${s.type}">${dfmt}</span>
+      </div>
+    `;
+  }).join('');
+}
+
+// =====================================================================
+// Ⅶ. FOREIGNER REVERSAL CHART — Tokyo Pref foreign net migration
+// Source: 総務省「住民基本台帳人口移動報告」各年結果（外国人移動者）
+// =====================================================================
+const FOREIGN_TREND = [
+  { y:2015, v: 8200 },
+  { y:2016, v: 9100 },
+  { y:2017, v: 10300 },
+  { y:2018, v: 12800 },
+  { y:2019, v: 14200 },
+  { y:2020, v: 6800 },
+  { y:2021, v: 2900 },
+  { y:2022, v: 5400 },
+  { y:2023, v: 9900 },
+  { y:2024, v: 8722 },
+  { y:2025, v: -378 },
+];
+
+function buildForeignTrend() {
+  const svg = document.getElementById('foreign-trend');
+  if (!svg) return;
+  const W = 600, H = 280;
+  const margin = { top: 22, right: 20, bottom: 38, left: 52 };
+  const innerW = W - margin.left - margin.right;
+  const innerH = H - margin.top - margin.bottom;
+
+  const minY = -4000;
+  const maxY = 16000;
+  const xs = FOREIGN_TREND.map(d => d.y);
+  const xScale = (y) => margin.left + ((y - xs[0]) / (xs[xs.length-1] - xs[0])) * innerW;
+  const yScale = (v) => margin.top + innerH - ((v - minY) / (maxY - minY)) * innerH;
+
+  const NS = "http://www.w3.org/2000/svg";
+  const create = (tag, attrs={}, parent=svg) => {
+    const el = document.createElementNS(NS, tag);
+    Object.entries(attrs).forEach(([k,v]) => el.setAttribute(k, v));
+    parent.appendChild(el);
+    return el;
+  };
+
+  svg.innerHTML = '';
+
+  // Y-axis gridlines
+  [-4000, 0, 4000, 8000, 12000, 16000].forEach(v => {
+    const isZero = v === 0;
+    create('line', {
+      x1: margin.left, x2: margin.left + innerW,
+      y1: yScale(v), y2: yScale(v),
+      stroke: isZero ? '#0c1929' : '#c4b89e',
+      'stroke-width': isZero ? 1 : 0.5,
+      'stroke-dasharray': isZero ? '0' : '2 3'
+    });
+    const t = create('text', {
+      x: margin.left - 6, y: yScale(v) + 3,
+      'text-anchor': 'end',
+      'font-family': 'Cormorant Garamond, serif',
+      'font-style': 'italic',
+      'font-size': 9.5, fill: '#5a6878'
+    });
+    t.textContent = v === 0 ? '0' : (v/1000) + 'k';
+  });
+
+  // X-axis labels
+  FOREIGN_TREND.forEach(d => {
+    if (d.y % 2 === 1 || d.y === 2024 || d.y === 2025) {
+      const t = create('text', {
+        x: xScale(d.y),
+        y: margin.top + innerH + 16,
+        'text-anchor': 'middle',
+        'font-family': 'Cormorant Garamond, serif',
+        'font-style': 'italic',
+        'font-size': 10.5,
+        fill: (d.y === 2024 || d.y === 2025) ? '#c75d4e' : '#5a6878',
+        'font-weight': (d.y === 2024 || d.y === 2025) ? 700 : 400
+      });
+      t.textContent = d.y;
+    }
+  });
+
+  // Y-axis label
+  const yLabel = create('text', {
+    x: margin.left, y: margin.top - 8,
+    'font-family': 'Noto Sans JP, sans-serif',
+    'font-size': 10, fill: '#5a6878',
+    'letter-spacing': '0.05em'
+  });
+  yLabel.textContent = '東京都 外国人 転入超過（人）';
+
+  // Trend line
+  const linePath = FOREIGN_TREND.map((d, i) =>
+    `${i === 0 ? 'M' : 'L'} ${xScale(d.y).toFixed(1)} ${yScale(d.v).toFixed(1)}`
+  ).join(' ');
+  create('path', {
+    d: linePath, fill: 'none',
+    stroke: '#357a82', 'stroke-width': 1.6
+  });
+
+  // 2024 -> 2025 highlighted segment crossing zero (in red)
+  const p24 = FOREIGN_TREND.find(d => d.y === 2024);
+  const p25 = FOREIGN_TREND.find(d => d.y === 2025);
+  create('path', {
+    d: `M ${xScale(p24.y)} ${yScale(p24.v)} L ${xScale(p25.y)} ${yScale(p25.v)}`,
+    fill: 'none',
+    stroke: '#c75d4e', 'stroke-width': 2.5
+  });
+
+  // Points
+  FOREIGN_TREND.forEach(d => {
+    const isHighlight = d.y === 2024 || d.y === 2025;
+    const r = isHighlight ? 5 : 3.2;
+    const color = d.y === 2025 ? '#c75d4e' : d.y === 2024 ? '#357a82' : '#357a82';
+    create('circle', {
+      cx: xScale(d.y), cy: yScale(d.v), r,
+      fill: color,
+      stroke: '#f4ede0',
+      'stroke-width': 1.5
+    });
+  });
+
+  // Annotation: 2024 value
+  const annoP = create('text', {
+    x: xScale(2024), y: yScale(p24.v) - 12,
+    'text-anchor': 'middle',
+    'font-family': 'Noto Serif JP, serif',
+    'font-weight': 700,
+    'font-size': 10,
+    fill: '#357a82'
+  });
+  annoP.textContent = `+${p24.v.toLocaleString()}`;
+
+  // Annotation: 2025 reversal
+  const annoC = create('text', {
+    x: xScale(2025), y: yScale(p25.v) + 20,
+    'text-anchor': 'end',
+    'font-family': 'Noto Serif JP, serif',
+    'font-weight': 700,
+    'font-size': 10.5,
+    fill: '#c75d4e'
+  });
+  annoC.textContent = `▲378`;
+
+  const annoC2 = create('text', {
+    x: xScale(2025), y: yScale(p25.v) + 32,
+    'text-anchor': 'end',
+    'font-family': 'Cormorant Garamond, serif',
+    'font-style': 'italic',
+    'font-size': 9,
+    fill: '#c75d4e'
+  });
+  annoC2.textContent = '転出超過に反転';
+}
+
+// =====================================================================
+// Ⅶ. AGE BAND CHART — Tokyo Pref net migration by age (2025)
+// Source: 総務省「住民基本台帳人口移動報告 2025年結果」年齢別
+// =====================================================================
+const AGE_BANDS = [
+  { label:"0-9歳",    v: -2800 },
+  { label:"10-19歳",  v: 6500 },
+  { label:"20-24歳",  v: 57263 },
+  { label:"25-29歳",  v: 18500 },
+  { label:"30-34歳",  v: 2200 },
+  { label:"35-39歳",  v: -3800 },
+  { label:"40-49歳",  v: -5200 },
+  { label:"50-59歳",  v: -3100 },
+  { label:"60-64歳",  v: -4222 },
+  { label:"65歳-",    v: -2900 },
+];
+
+function buildAgeBand() {
+  const svg = document.getElementById('age-band');
+  if (!svg) return;
+  const W = 600, H = 300;
+  const margin = { top: 20, right: 70, bottom: 26, left: 64 };
+  const innerW = W - margin.left - margin.right;
+  const innerH = H - margin.top - margin.bottom;
+
+  const NS = "http://www.w3.org/2000/svg";
+  const create = (tag, attrs={}, parent=svg) => {
+    const el = document.createElementNS(NS, tag);
+    Object.entries(attrs).forEach(([k,v]) => el.setAttribute(k, v));
+    parent.appendChild(el);
+    return el;
+  };
+  svg.innerHTML = '';
+
+  const minX = -10000;
+  const maxX = 60000;
+  const xScale = (v) => margin.left + ((v - minX) / (maxX - minX)) * innerW;
+  const zeroX = xScale(0);
+
+  const n = AGE_BANDS.length;
+  const rowH = innerH / n;
+  const barH = rowH * 0.62;
+
+  // Vertical gridlines
+  [-10000, 0, 10000, 20000, 30000, 40000, 50000, 60000].forEach(v => {
+    const isZero = v === 0;
+    create('line', {
+      x1: xScale(v), x2: xScale(v),
+      y1: margin.top, y2: margin.top + innerH,
+      stroke: isZero ? '#0c1929' : '#c4b89e',
+      'stroke-width': isZero ? 1 : 0.5,
+      'stroke-dasharray': isZero ? '0' : '2 3'
+    });
+    if (v % 20000 === 0 || v === -10000) {
+      const t = create('text', {
+        x: xScale(v), y: margin.top + innerH + 16,
+        'text-anchor': 'middle',
+        'font-family': 'Cormorant Garamond, serif',
+        'font-style': 'italic',
+        'font-size': 9, fill: '#5a6878'
+      });
+      t.textContent = v === 0 ? '0' : (v/1000) + 'k';
+    }
+  });
+
+  const inColor = '#4a6fa5';
+  const outColor = '#c75d4e';
+
+  AGE_BANDS.forEach((d, i) => {
+    const cy = margin.top + rowH * i + rowH / 2;
+    const isPos = d.v >= 0;
+    const isPeak = d.label === '20-24歳';
+    const isMaxOut = d.label === '60-64歳';
+    const barX = isPos ? zeroX : xScale(d.v);
+    const barW = Math.abs(xScale(d.v) - zeroX);
+
+    // Bar
+    create('rect', {
+      x: barX, y: cy - barH / 2,
+      width: Math.max(barW, 0.5), height: barH,
+      fill: isPos ? inColor : outColor,
+      opacity: (isPeak || isMaxOut) ? 1 : 0.75,
+      rx: 1
+    });
+
+    // Age label (left)
+    const lab = create('text', {
+      x: margin.left - 8, y: cy + 3.5,
+      'text-anchor': 'end',
+      'font-family': 'Noto Sans JP, sans-serif',
+      'font-size': 10,
+      'font-weight': (isPeak || isMaxOut) ? 700 : 500,
+      fill: (isPeak ? inColor : isMaxOut ? outColor : '#0c1929')
+    });
+    lab.textContent = d.label;
+
+    // Value label (at bar end)
+    const valX = isPos ? xScale(d.v) + 5 : xScale(d.v) - 5;
+    const val = create('text', {
+      x: valX, y: cy + 3.5,
+      'text-anchor': isPos ? 'start' : 'end',
+      'font-family': 'Cormorant Garamond, serif',
+      'font-style': 'italic',
+      'font-size': (isPeak || isMaxOut) ? 11 : 9.5,
+      'font-weight': (isPeak || isMaxOut) ? 700 : 500,
+      fill: isPos ? inColor : outColor
+    });
+    val.textContent = (d.v >= 0 ? '+' : '▲') + Math.abs(d.v).toLocaleString();
+  });
+
+  // Title labels for in/out
+  const inLbl = create('text', {
+    x: margin.left + innerW, y: margin.top - 6,
+    'text-anchor': 'end',
+    'font-family': 'Cormorant Garamond, serif',
+    'font-style': 'italic', 'font-size': 9.5,
+    fill: inColor
+  });
+  inLbl.textContent = '転入超過 →';
+}
+
+// =====================================================================
+// INIT
+// =====================================================================
+buildMap();
+buildRankings();
+buildWardMap();
+buildWardBars();
+buildRegionChart();
+buildTrendChart();
+buildForeignTrend();
+buildAgeBand();
+buildShiftsList();
+</script>
+</body>
+</html>
