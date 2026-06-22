@@ -394,7 +394,7 @@
 
     <div class="pos-wrap">
       <div class="pos-title">候補者ポジショニング・マップ</div>
-      <div class="pos-cite">各候補の公開討論会(ReHacQ / FM杉並 / 子供若者政策公開討論会)での発言・経歴に基づく評価</div>
+      <div class="pos-cite">各候補の公開討論会(ReHacQ / FM杉並 / 子供若者政策公開討論会)での発言・経歴に基づく編集部評価</div>
       <svg id="posChart" viewBox="0 0 900 520" preserveAspectRatio="xMidYMid meet"></svg>
       <div class="pos-legend">
         <span><span class="pos-dot" style="background:var(--gold)"></span>増田義彦（再生の道）</span>
@@ -481,12 +481,17 @@
         <div class="mech-h">都市間競争に勝ち、所得と税収を押し上げる</div>
         <div class="mech-tag">Urban competitiveness → income → tax base</div>
         <div class="mech-body">
-          緑は街の魅力を高め、人と企業を惹きつけ、地価と所得を押し上げる——結果として<strong>区の税収が増える</strong>。シドニー3地区の研究では <strong>街路樹の樹冠を10%増やすと住宅価値が平均5万豪ドル上昇</strong>。米USDAは <strong>成熟した街路樹が資産価値を10〜20%高める</strong>とし、商業地では <strong>買い物客の支出が9〜12%増える</strong>という調査もある。増田が discussion で語った「緑1%増→所得1%増」は、この実証群を踏まえた要約である。
+          緑は街の魅力を高め、人と企業を惹きつけ、地価と所得を押し上げる——結果として<strong>固定資産税・都市計画税といった区の税収が増える</strong>。最も重要なのは、これが <strong>海外だけでなく日本国内・東京23区のデータでも確認されている</strong>点だ。国土交通省の研究会(2024年9月公表)が引く黒田ら(2023)の重回帰分析では、<strong>東京23区の分譲マンションで、100m圏内の緑地量が10%増えると平均住宅価格が2〜2.5%(約74〜93万円)上昇</strong>する。海外ではシドニー(街路樹冠+10%→住宅価値+5万豪ドル)、USDA(成熟樹で資産価値+10〜20%)、高品質な緑の商業地で買い物客支出+9〜12%という実証も揃う。
         </div>
         <div class="mech-viz">
-          <svg id="valueChart" viewBox="0 0 820 240" preserveAspectRatio="xMidYMid meet"></svg>
+          <svg id="valueChart" viewBox="0 0 820 280" preserveAspectRatio="xMidYMid meet"></svg>
         </div>
-        <span class="src-tag">City of Sydney study (2017, +10%→A$50k) / USDA (10–20%) / Wolf, retail spending (+9–12%)</span>
+        <span class="src-tag">黒田ら(2023)／国交省「グリーンインフラの市場における経済価値に関する研究会」(2024) ／ City of Sydney (2017) ／ USDA ／ Wolf (retail)</span>
+
+        <div class="reveal" style="margin-top:16px;">
+          <strong>国内・東京23区のエビデンスが効く理由。</strong> ニューヨークやメルボルンの数字は「方向性」を示すが、人口規模も制度も違う杉並にそのまま当てはめることはできない。だからこそ、<em>東京23区の分譲マンションを対象にした黒田ら(2023)の数字が決定的</em>だ。同じ研究会資料では、都心5区で<strong>敷地内緑地10%以上の物件は緑地のない物件より坪あたり月額賃料が約7.4%高い</strong>ことも示された。控えめでも、地に足のついた、杉並に直接適用できる数字である。
+          <span class="src-tag">国交省「グリーンインフラを取り巻く国内外の動向」黒田ら(2023)・都心5区REIT分析</span>
+        </div>
       </div>
     </div>
 
@@ -559,6 +564,44 @@
     <div class="reveal">
       皮肉なことに、増田が「稼ぐ資産」と位置づける緑そのものが、いま杉並で最も急速に失われている。東京大学の研究では <strong>杉並の樹冠被覆率は9年間で39.5%減と23区ワースト</strong>。世界の主要都市(NY 23.4%、シドニー19.8%、パリ17.6%)が軒並み樹冠を<em>増やす</em>なか、東京は7.3%へと<em>減らし</em>続けている。<strong>守るべき資産が減りながら、それを支える税基盤も細る</strong>——この二重の時限装置に、いま手を打てるかどうかが問われている。
       <span class="src-tag">東京大学 寺田研究室 / 日本経済新聞「チャートは語る」(2026-05-24)</span>
+    </div>
+
+    <!-- Honest scale calibration -->
+    <h3 style="font-family:'Noto Serif JP',serif; font-weight:700; font-size:17px; color:var(--forest); margin:30px 0 6px;">正しい期待値 — 「劇的増収」ではなく「地盤沈下を防ぐ」</h3>
+    <p class="lede" style="margin-bottom:18px;">
+      ここで誠実であるべきだ。ニューヨークやメルボルンのようなメガシティの研究(都市林の経済価値を平均+85%拡大、年間5億ドル超の便益)は、緑の<em>方向性と上限</em>を示すが、人口規模も制度も違う杉並にそのまま当てはめることはできない。現実的な期待値は、国内の保守的な数字(緑+10%→住宅価格+2〜2.5%)を <strong>一定エリアごとに数%ずつ積み上げ、区全体の税基盤が「ジリジリ落ちる」のを防ぎ、わずかに押し上げる</strong> ——この水準である。だが、人口減と高齢化で税収が構造的に細る杉並にとって、<strong>「下げ止め」こそが死活的に重要</strong>なのだ。
+    </p>
+
+    <div class="model-chart">
+      <svg id="scaleChart" viewBox="0 0 880 200" preserveAspectRatio="xMidYMid meet"></svg>
+    </div>
+
+    <h3 style="font-family:'Noto Serif JP',serif; font-weight:700; font-size:17px; color:var(--forest); margin:30px 0 8px;">税収は4つの経路で生まれる — 不動産価値だけではない</h3>
+    <div class="model-cards" style="grid-template-columns:repeat(4,1fr);">
+      <div class="mcard">
+        <div class="mcard-city">① 不動産</div>
+        <div class="mcard-stat" style="font-size:15px;">固定資産税・都市計画税</div>
+        <div class="mcard-d">緑による地価・住宅価値の上昇が、保有課税の税収ベースを押し上げる。黒田ら(2023)で実証。</div>
+      </div>
+      <div class="mcard">
+        <div class="mcard-city">② 企業・雇用</div>
+        <div class="mcard-stat" style="font-size:15px;">法人系税収・雇用</div>
+        <div class="mcard-d">緑豊かで魅力ある街は、オフィス・高付加価値産業を呼び込み、法人系税収と雇用を生む。</div>
+      </div>
+      <div class="mcard">
+        <div class="mcard-city">③ 消費・来街</div>
+        <div class="mcard-stat" style="font-size:15px;">消費・関連税収</div>
+        <div class="mcard-d">緑のある商店街は買い物客の滞在と支出を増やす(海外実証で+9〜12%)。来街者増が消費を喚起。</div>
+      </div>
+      <div class="mcard" style="border-left-color:var(--gold);">
+        <div class="mcard-city">④ コスト抑制</div>
+        <div class="mcard-stat" style="font-size:15px; color:var(--gold-deep);">将来支出の削減</div>
+        <div class="mcard-d">直接の増収ではないが、ヒートアイランド緩和・内水氾濫リスク軽減・避難場所機能で、医療費・福祉費・災害復旧費の増大を抑える。</div>
+      </div>
+    </div>
+    <div class="reveal">
+      重要なのは <strong>④コスト抑制は「高所得者の流入」に依存しない</strong> 点だ。猛暑の緩和も、浸水リスクの低減も、避難場所としての機能も、<em>所得に関係なくすべての区民に等しく届く</em>便益である。緑の投資が堅牢なのは、不動産価値という単一経路に賭けるのではなく、4つの経路に分散しているからだ。
+      <span class="src-tag">国交省グリーンインフラ推進戦略 / 黒田ら(2023) / Endreny et al. (2017, Ecological Modelling)</span>
     </div>
   </section>
 
@@ -716,7 +759,29 @@
     <div class="rebut">
       <div class="rebut-q"><span class="qmark">Q</span>「緑で稼ぐ」なんて理想論。財政の裏付けがない。</div>
       <div class="rebut-a">
-        実証研究が裏付けている。<strong>シドニー研究では街路樹冠+10%で住宅価値+5万豪ドル</strong>、USDAは成熟樹で資産価値+10〜20%、ミネソタ州は<strong>樹木管理1ドルあたり7ドルの便益</strong>と試算。メルボルンは実際に3,000万豪ドルを投じて22%→40%の倍増計画を実行中だ。理想論ではなく、<em>世界の主要都市が予算を付けて実行している都市経営</em>である。
+        国内の実証研究が裏付けている。国土交通省の研究会が引く黒田ら(2023)では、<strong>東京23区の分譲マンションで緑地+10%(100m圏)→住宅価格+2〜2.5%</strong>、都心5区では<strong>敷地内緑地10%以上で坪あたり月額賃料+7.4%</strong>。海外でもシドニー(街路樹冠+10%→+5万豪ドル)、ミネソタ州(樹木管理1ドル→7ドルの便益)が揃う。メルボルンは実際に3,000万豪ドルを投じ22%→40%計画を実行中だ。<em>海外の理想論ではなく、日本のデータでも確認された都市経営</em>である。
+      </div>
+    </div>
+
+    <div class="rebut">
+      <div class="rebut-q"><span class="qmark">Q</span>NYやメルボルンはメガシティ。杉並にそのまま当てはめるのは無理では?</div>
+      <div class="rebut-a">
+        その通りで、<strong>メガシティの数字(都市林価値+85%、年5億ドル超)をそのまま杉並に適用するのは誤り</strong>だ。だから本ページが重視するのは、メガシティの華やかな数字ではなく、<strong>東京23区を対象にした国内の保守的な実証(緑+10%→住宅+2〜2.5%)</strong>である。現実的な期待値は「劇的な増収」ではなく、<em>一定エリアごとに数%の資産価値を積み上げ、人口減で細る税基盤の地盤沈下を防ぎ、わずかに押し上げる</em>こと。人口減・高齢化が進む杉並にとって、この「下げ止め」こそが死活的に重要なのだ。
+      </div>
+    </div>
+
+    <div class="rebut">
+      <div class="rebut-q"><span class="qmark">Q</span>地価が上がれば低所得者が追い出される（グリーン・ジェントリフィケーション）のでは?</div>
+      <div class="rebut-a">
+        これは緑化政策が世界的に直面する<strong>現実のリスクであり、研究でも指摘されている</strong>（緑化による地価上昇が低所得層の住み替えを招きうる）。だからこそ設計が問われる。緩和策は明確だ——<strong>公園・公共用地・緑の乏しい地区を優先する「公平性ファーストの緑化」</strong>、住宅施策との連動、そして前述④の<strong>コスト抑制便益(猛暑・水害・避難)は所得に関係なく全区民に等しく届く</strong>こと。さらに増田の「杉並ハック制度」は、緑化を上からの地価対策ではなく<em>区民とともに設計する</em>仕組みであり、誰のための緑かを問い続ける構造になっている。リスクを直視した上で、設計で乗り越える。
+        <span class="src-tag" style="color:var(--ink-soft);">グリーン・ジェントリフィケーション研究（都市林の資産価値・公平性に関する査読文献）</span>
+      </div>
+    </div>
+
+    <div class="rebut">
+      <div class="rebut-q"><span class="qmark">Q</span>地価が上がっても、高い賃料を払う需要が追いつかないのでは?</div>
+      <div class="rebut-a">
+        鋭い指摘だ。杉並は既に基準地価が前年比+8〜16%と堅調な一方、<strong>価格上昇が賃料上昇を上回る利回り低下の傾向</strong>も出ている。だが「緑で稼ぐ」の本質は地価の最大化ではなく、<strong>4つの経路(不動産・法人雇用・消費・コスト抑制)への分散</strong>にある。とりわけ<em>コスト抑制は高所得者の流入に一切依存しない</em>。単一の不動産価値だけに賭ける戦略ではないからこそ、需要サイドの変動に対しても頑健なのだ。
       </div>
     </div>
 
@@ -777,20 +842,24 @@
     <div>
       <strong>Sources / 出典</strong>
       公開討論会: ReHacQ 杉並区長選候補者討論 / FM杉並「区長候補予定者 対話会」 / 日本若者協議会「子供若者政策公開討論会」(2026)<br>
+      黒田ら(2023) / 国土交通省「グリーンインフラの市場における経済価値に関する研究会」(2024年9月公表) — 東京23区 緑地+10%(100m圏)→住宅価格+2〜2.5%、都心5区 敷地内緑地10%以上→坪あたり月額賃料+7.4%<br>
+      国土交通省「グリーンインフラ推進戦略2023」<br>
       City of Sydney, street tree canopy &amp; property value study (2017) — +10% canopy ≈ +A$50,000<br>
       USDA / Arbor Day Foundation — mature trees raise property value 10–20%<br>
       Minnesota Dept. of Natural Resources — $7 benefit per $1 invested in tree care<br>
       Pauleit &amp; Duhme (2000), Munich — +10% canopy → −1.4°C surface temp / カルガリー大学 (2025)<br>
+      Endreny et al. (2017, Ecological Modelling) — megacity urban forest value +85% potential / ~$505M/yr (SUNY-ESF, i-Tree Cool Air)<br>
       City of Melbourne — Urban Forest Strategy (22%→40% by 2040, A$30M, ~3,000 trees/yr)<br>
       NYC (30% by 2040) / Paris (30% by 2030) 公表目標<br>
+      グリーン・ジェントリフィケーションに関する査読文献 (urban tree canopy &amp; equity / hedonic studies)<br>
       東京大学 寺田研究室 — 23区樹冠被覆率研究 / 日本経済新聞「チャートは語る」(2026-05-24)<br>
       特別区長会調査研究機構 — 特別区将来人口推計(2035年ピーク) / 国立社会保障・人口問題研究所
     </div>
     <div>
       <strong>Methodology / 方法</strong>
-      本ページは、増田義彦候補が公開討論会で実際に述べた政策(緑で稼ぐ・杉並ハック制度・長期ビジョン)を、海外の実証研究および公的統計と照合して検証した <em>政策解説ドキュメント</em> です。<br><br>
-      ポジショニング・マップおよび各図表は、討論会での発言・経歴・公開データに基づく評価・可視化であり、各候補の優劣を断定するものではありません。読者は他候補(岸本聡子氏・田中良氏・大和田伸氏ほか)の政策も併せて精査し、自身の優先順位に基づき判断することが推奨されます。<br><br>
-      「緑1%増→所得1%増」等の表現は、増田候補が討論で述べた要約を、関連する実証研究(資産価値・所得との正の相関)に照らして提示したものです。<br><br>
+      本ページは、増田義彦候補が3つの公開討論会で実際に述べた政策(緑で稼ぐ・杉並ハック制度・長期ビジョン)を、<em>国内(東京23区)の実証研究を一次アンカーとし、海外の研究・公的統計で補完する</em>形で照合・検証した政策解説ドキュメントです。<br><br>
+      スケールの扱いについて: メガシティ(NY・メルボルン等)の数字は緑の経済効果の「方向性と上限」を示すものとして扱い、杉並への適用にあたっては <strong>国内・東京23区の保守的な実証(黒田ら2023)を基準</strong>としています。期待値は「劇的な増収」ではなく、税基盤の下支え・緩やかな押し上げとして提示しています。<br><br>
+      ポジショニング・マップおよび各図表は、討論会での発言・経歴・公開データに基づく編集部の評価・可視化であり、各候補の優劣を断定するものではありません。読者は他候補(岸本聡子氏・田中良氏・大和田伸氏ほか)の政策も併せて精査し、自身の優先順位に基づき判断することが推奨されます。<br><br>
       Created 2026 · Independent policy dossier · 緑で稼ぐ杉並
     </div>
   </div>
@@ -980,37 +1049,41 @@ function buildValueChart() {
   const svg = document.getElementById('valueChart');
   if (!svg) return;
   svg.innerHTML = '';
-  const W = 820, H = 240;
-  const m = { top: 30, right: 40, bottom: 64, left: 56 };
+  const W = 820, H = 280;
+  const m = { top: 30, right: 40, bottom: 30, left: 56 };
   const iw = W - m.left - m.right, ih = H - m.top - m.bottom;
-  // three findings as horizontal-ish grouped metric bars (use % scale 0-27)
+  // domestic study leads (highlighted); international studies follow
   const data = [
-    { lab: 'シドニー街路樹+10%', val: '+A$50,000', pct: 0.40, note: '住宅価値' },
+    { lab: '東京23区 分譲MS・緑地+10%(100m圏)', val: '+2〜2.5%', pct: 0.30, note: '住宅価格（約74〜93万円）／黒田ら2023', hi: true },
+    { lab: '都心5区 敷地内緑地10%以上', val: '+7.4%', pct: 0.46, note: '坪あたり月額賃料', hi: true },
+    { lab: 'シドニー 街路樹+10%', val: '+A$50,000', pct: 0.40, note: '住宅価値' },
     { lab: 'USDA 成熟街路樹', val: '+10〜20%', pct: 0.65, note: '資産価値' },
     { lab: '高品質な緑の商業地', val: '+9〜12%', pct: 0.42, note: '買い物客の支出' },
   ];
-  const t = mk(svg, 'text', { x: m.left, y: 18, 'font-family': 'Noto Sans JP, sans-serif', 'font-size': 11, fill: '#5d6a6b', 'letter-spacing': '0.04em' });
-  t.textContent = '緑が資産価値・所得・消費を押し上げる（実証研究）';
+  const t = mk(svg, 'text', { x: m.left, y: 16, 'font-family': 'Noto Sans JP, sans-serif', 'font-size': 11, fill: '#5d6a6b', 'letter-spacing': '0.04em' });
+  t.textContent = '緑が資産価値・賃料・消費を押し上げる（国内＝強調／海外＝実証研究）';
   const rowH = ih / data.length;
   data.forEach((d, i) => {
     const cy = m.top + rowH * (i + 0.5);
-    const barMaxW = iw * 0.62;
+    const barMaxW = iw * 0.60;
     const bw = barMaxW * d.pct;
-    // label
-    const lb = mk(svg, 'text', { x: m.left, y: cy - 10, 'font-family': 'Noto Serif JP, serif', 'font-weight': 600, 'font-size': 13, fill: '#2b3a44' });
+    const barColor = d.hi ? '#16432d' : '#3f7a52';
+    const valColor = d.hi ? '#b8954a' : '#8a6f33';
+    // domestic marker dot
+    if (d.hi) {
+      mk(svg, 'circle', { cx: m.left - 8, cy: cy - 9, r: 3, fill: '#b8954a' });
+    }
+    const lb = mk(svg, 'text', { x: m.left, y: cy - 9, 'font-family': 'Noto Serif JP, serif', 'font-weight': d.hi ? 700 : 600, 'font-size': 12.5, fill: d.hi ? '#16432d' : '#2b3a44' });
     lb.textContent = d.lab;
-    // track
-    mk(svg, 'rect', { x: m.left, y: cy, width: barMaxW, height: 12, fill: 'rgba(63,122,82,0.12)', rx: 6 });
-    // bar
-    const bar = mk(svg, 'rect', { x: m.left, y: cy, width: 0, height: 12, fill: '#3f7a52', rx: 6 });
-    mk(svg, 'animate', { attributeName: 'width', from: 0, to: bw, dur: '0.9s', begin: `${i * 0.18}s`, fill: 'freeze', calcMode: 'spline', keySplines: '0.2 0.8 0.2 1', keyTimes: '0;1' }, bar);
-    // value
-    const vv = mk(svg, 'text', { x: m.left + bw + 12, y: cy + 11, 'font-family': 'Cormorant Garamond, serif', 'font-style': 'italic', 'font-weight': 700, 'font-size': 18, fill: '#b8954a', opacity: 0 });
+    mk(svg, 'rect', { x: m.left, y: cy, width: barMaxW, height: 11, fill: 'rgba(63,122,82,0.12)', rx: 5.5 });
+    const bar = mk(svg, 'rect', { x: m.left, y: cy, width: 0, height: 11, fill: barColor, rx: 5.5 });
+    mk(svg, 'animate', { attributeName: 'width', from: 0, to: bw, dur: '0.9s', begin: `${i * 0.14}s`, fill: 'freeze', calcMode: 'spline', keySplines: '0.2 0.8 0.2 1', keyTimes: '0;1' }, bar);
+    const vv = mk(svg, 'text', { x: m.left + bw + 12, y: cy + 6, 'font-family': 'Cormorant Garamond, serif', 'font-style': 'italic', 'font-weight': 700, 'font-size': 16, fill: valColor, opacity: 0 });
     vv.textContent = d.val;
-    mk(svg, 'animate', { attributeName: 'opacity', from: 0, to: 1, dur: '0.4s', begin: `${i * 0.18 + 0.7}s`, fill: 'freeze' }, vv);
-    const nt = mk(svg, 'text', { x: m.left + bw + 12, y: cy + 27, 'font-family': 'Noto Sans JP, sans-serif', 'font-size': 10.5, fill: '#5d6a6b', opacity: 0 });
+    mk(svg, 'animate', { attributeName: 'opacity', from: 0, to: 1, dur: '0.4s', begin: `${i * 0.14 + 0.6}s`, fill: 'freeze' }, vv);
+    const nt = mk(svg, 'text', { x: m.left + bw + 12, y: cy + 20, 'font-family': 'Noto Sans JP, sans-serif', 'font-size': 9.5, fill: '#5d6a6b', opacity: 0 });
     nt.textContent = d.note;
-    mk(svg, 'animate', { attributeName: 'opacity', from: 0, to: 1, dur: '0.4s', begin: `${i * 0.18 + 0.8}s`, fill: 'freeze' }, nt);
+    mk(svg, 'animate', { attributeName: 'opacity', from: 0, to: 1, dur: '0.4s', begin: `${i * 0.14 + 0.7}s`, fill: 'freeze' }, nt);
   });
 }
 
@@ -1232,6 +1305,65 @@ function buildModelChart() {
 }
 
 /* ============================================================
+   SECTION III — SCALE CALIBRATION (domestic floor → megacity ceiling)
+   ============================================================ */
+function buildScaleChart() {
+  const svg = document.getElementById('scaleChart');
+  if (!svg) return;
+  svg.innerHTML = '';
+  const W = 880, H = 200;
+  const m = { left: 60, right: 60, top: 64, bottom: 50 };
+  const iw = W - m.left - m.right;
+  const axY = 120;
+
+  // title
+  const t = mk(svg, 'text', { x: m.left, y: 26, 'font-family': 'Noto Sans JP, sans-serif', 'font-size': 11.5, fill: '#5d6a6b' });
+  t.textContent = '緑の経済効果のスケール感 — 杉並に適用すべきは「国内の保守的な数字」';
+
+  // gradient track (green to gold)
+  const defs = mk(svg, 'defs');
+  const grad = mk(svg, 'linearGradient', { id: 'scaleGrad', x1: '0%', y1: '0%', x2: '100%', y2: '0%' }, defs);
+  mk(svg, 'stop', { offset: '0%', 'stop-color': '#16432d' }, grad);
+  mk(svg, 'stop', { offset: '35%', 'stop-color': '#3f7a52' }, grad);
+  mk(svg, 'stop', { offset: '100%', 'stop-color': '#b8954a' }, grad);
+
+  const track = mk(svg, 'rect', { x: m.left, y: axY - 4, width: 0, height: 8, rx: 4, fill: 'url(#scaleGrad)' });
+  mk(svg, 'animate', { attributeName: 'width', from: 0, to: iw, dur: '1.1s', fill: 'freeze', calcMode: 'spline', keySplines: '0.2 0.8 0.2 1', keyTimes: '0;1' }, track);
+
+  // end labels
+  const l1 = mk(svg, 'text', { x: m.left, y: axY + 28, 'text-anchor': 'start', 'font-family': 'Noto Sans JP', 'font-size': 10.5, fill: '#16432d', 'font-weight': 600 });
+  l1.textContent = '控えめ・確実（国内）';
+  const l2 = mk(svg, 'text', { x: m.left + iw, y: axY + 28, 'text-anchor': 'end', 'font-family': 'Noto Sans JP', 'font-size': 10.5, fill: '#8a6f33', 'font-weight': 600 });
+  l2.textContent = '大・不確実（メガシティ上限）';
+
+  // markers
+  const marks = [
+    { x: 0.16, top: true, label: ['東京23区 黒田ら2023', '緑+10% → 住宅+2〜2.5%'], c: '#16432d', big: true },
+    { x: 0.40, top: false, label: ['杉並の現実的期待値', '数%を積み上げ税基盤を下支え'], c: '#3f7a52', big: true, zone: true },
+    { x: 0.92, top: true, label: ['メガシティ上限 Endreny', '都市林価値 +85% / $505M'], c: '#b8954a', big: false },
+  ];
+
+  // realistic zone band
+  const zoneX1 = m.left + iw * 0.08, zoneX2 = m.left + iw * 0.52;
+  const zone = mk(svg, 'rect', { x: zoneX1, y: axY - 16, width: 0, height: 32, rx: 4, fill: 'rgba(63,122,82,0.12)', stroke: '#3f7a52', 'stroke-width': 1, 'stroke-dasharray': '3 3' });
+  mk(svg, 'animate', { attributeName: 'width', from: 0, to: zoneX2 - zoneX1, dur: '0.8s', begin: '1.0s', fill: 'freeze' }, zone);
+
+  marks.forEach((mk_, i) => {
+    const px = m.left + iw * mk_.x;
+    const dot = mk(svg, 'circle', { cx: px, cy: axY, r: 0, fill: mk_.c, stroke: '#fbf8f0', 'stroke-width': 2 });
+    mk(svg, 'animate', { attributeName: 'r', from: 0, to: mk_.big ? 7 : 6, dur: '0.4s', begin: `${1.0 + i * 0.2}s`, fill: 'freeze' }, dot);
+    const ly = mk_.top ? axY - 22 : axY + 42;
+    const l1y = mk_.top ? ly : ly;
+    const lab1 = mk(svg, 'text', { x: px, y: l1y, 'text-anchor': 'middle', 'font-family': 'Noto Serif JP, serif', 'font-weight': 700, 'font-size': 11, fill: mk_.c, opacity: 0 });
+    lab1.textContent = mk_.label[0];
+    mk(svg, 'animate', { attributeName: 'opacity', from: 0, to: 1, dur: '0.4s', begin: `${1.2 + i * 0.2}s`, fill: 'freeze' }, lab1);
+    const lab2 = mk(svg, 'text', { x: px, y: l1y + 14, 'text-anchor': 'middle', 'font-family': 'Cormorant Garamond, "Noto Sans JP", serif', 'font-size': 10, fill: '#5d6a6b', opacity: 0 });
+    lab2.textContent = mk_.label[1];
+    mk(svg, 'animate', { attributeName: 'opacity', from: 0, to: 1, dur: '0.4s', begin: `${1.3 + i * 0.2}s`, fill: 'freeze' }, lab2);
+  });
+}
+
+/* ============================================================
    SECTION V — HACK FLOW (5-step)
    ============================================================ */
 function buildHackFlow() {
@@ -1284,7 +1416,7 @@ function runAll() {
   const builders = {
     posChart: buildPosChart, coolChart: buildCoolChart, valueChart: buildValueChart,
     industryChart: buildIndustryChart, flywheel: buildFlywheel, fiscalChart: buildFiscalChart,
-    modelChart: buildModelChart, hackFlow: buildHackFlow
+    scaleChart: buildScaleChart, modelChart: buildModelChart, hackFlow: buildHackFlow
   };
   // IntersectionObserver to trigger animated builds on view
   const built = {};
