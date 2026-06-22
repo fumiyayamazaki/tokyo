@@ -37,7 +37,15 @@
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+    /* Japanese-aware line breaking: break at phrase (bunsetsu) boundaries,
+       not mid-word; apply strict kinsoku. Falls back gracefully where unsupported. */
+    line-break: strict;
+    word-break: auto-phrase;
+    overflow-wrap: normal;
   }
+
+  /* Keep critical compound terms / proper nouns / numbers from splitting (cross-browser insurance) */
+  .nb { white-space: nowrap; }
 
   /* subtle paper grain */
   body::before {
@@ -86,7 +94,7 @@
   /* ====================== HERO ====================== */
   .hero {
     position: relative;
-    margin: 0 -28px;
+    margin: 0;
     padding: 0;
     background: linear-gradient(165deg, var(--forest-deep) 0%, var(--forest) 55%, #1d5638 100%);
     color: #eef3ec;
@@ -326,11 +334,55 @@
   }
   .rebut-a strong { color: var(--forest); font-weight: 700; }
 
+  /* ============ DEEP-DIVE (academic treatment) ============ */
+  .deepdive {
+    background: linear-gradient(135deg, rgba(22,67,45,0.06), rgba(184,149,74,0.05));
+    border: 1px solid var(--rule); border-top: 3px solid var(--forest);
+    padding: 26px 28px 28px; margin: 6px 0 30px;
+  }
+  .deepdive-eyebrow {
+    font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 13px;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-deep); margin-bottom: 8px;
+  }
+  .deepdive-h {
+    font-family: "Noto Serif JP", serif; font-weight: 700; font-size: clamp(18px,2.4vw,22px);
+    color: var(--ink); line-height: 1.3; margin-bottom: 14px;
+  }
+  .deepdive-intro {
+    font-family: "Noto Serif JP", serif; font-size: 14.5px; line-height: 1.9; color: var(--ink-mid); margin-bottom: 6px;
+  }
+  .deepdive-intro strong { color: var(--forest); font-weight: 700; }
+  .dd-viz { background: #fbf8f0; border: 1px solid var(--rule); padding: 18px 20px; margin: 20px 0; }
+  .dd-viz svg { width: 100%; height: auto; display: block; }
+  .dd-points { margin: 18px 0 6px; }
+  .dd-point { display: grid; grid-template-columns: 40px 1fr; gap: 14px; padding: 14px 0; border-top: 1px solid var(--rule); }
+  .dd-point:first-child { border-top: none; }
+  .dd-point-n {
+    font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 700; font-size: 26px;
+    color: var(--green-mid); line-height: 1;
+  }
+  .dd-point-h { font-family: "Noto Serif JP", serif; font-weight: 700; font-size: 15px; color: var(--ink); margin-bottom: 5px; line-height: 1.4; }
+  .dd-point-b { font-family: "Noto Serif JP", serif; font-size: 13.5px; line-height: 1.85; color: var(--ink-mid); }
+  .dd-point-b strong { color: var(--forest); font-weight: 700; }
+  .dd-point-b em { font-style: normal; color: var(--gold-deep); font-weight: 600; font-family: inherit; }
+  .dd-cite {
+    font-family: "Cormorant Garamond", "Noto Serif JP", serif; font-size: 11.5px; color: var(--ink-soft);
+    line-height: 1.7; margin-top: 14px; padding-top: 12px; border-top: 1px dotted var(--rule);
+  }
+  .dd-cite strong { font-family: "Noto Sans JP"; font-weight: 700; color: var(--ink); font-size: 10.5px; letter-spacing: 0.08em; }
+
+  @media (max-width: 560px) {
+    .dd-point { grid-template-columns: 1fr; gap: 4px; }
+  }
+
   /* ============ VISION / CLOSING ============ */
   .vision-body { font-family: "Noto Serif JP", serif; font-size: 14.5px; line-height: 1.92; color: var(--ink-mid); max-width: 860px; }
   .vision-body strong { color: var(--ink); font-weight: 700; }
   .closing {
-    margin: 50px -28px 0; padding: 56px 28px 60px;
+    position: relative; left: 50%; right: 50%;
+    margin-left: -50vw; margin-right: -50vw; width: 100vw;
+    margin-top: 50px;
+    padding: 56px 28px 60px;
     background: linear-gradient(165deg, var(--forest-deep), var(--forest) 70%, #1d5638);
     color: #eef3ec; border-top: 3px solid var(--gold);
   }
@@ -481,7 +533,7 @@
         <div class="mech-h">都市間競争に勝ち、所得と税収を押し上げる</div>
         <div class="mech-tag">Urban competitiveness → income → tax base</div>
         <div class="mech-body">
-          緑は街の魅力を高め、人と企業を惹きつけ、地価と所得を押し上げる。結果として<strong>固定資産税・都市計画税といった区の税収が増える</strong>。最も重要なのは、これが<strong>海外だけでなく日本国内・東京23区のデータでも確認されている</strong>点だ。国土交通省の研究会(2024年9月公表)が引く黒田ら(2023)の重回帰分析では、<strong>東京23区の分譲マンションで、100m圏内の緑地量が10%増えると平均住宅価格が2〜2.5%(約74〜93万円)上昇</strong>する。海外ではシドニー(街路樹冠+10%→住宅価値+5万豪ドル)、USDA(成熟樹で資産価値+10〜20%)、高品質な緑の商業地で買い物客支出+9〜12%という実証も揃う。
+          緑は街の魅力を高め、人と企業を惹きつけ、地価と所得を押し上げる。結果として<strong>固定資産税・都市計画税といった区の税収が増える</strong>。見逃せないのは、これが<strong>海外だけでなく日本国内・東京23区のデータでも確認されている</strong>点にある。国土交通省の研究会(2024年9月公表)が引く黒田ら(2023)の重回帰分析では、<strong>東京23区の分譲マンションで、100m圏内の緑地量が10%増えると平均住宅価格が2〜2.5%(約74〜93万円)上昇</strong>する。海外ではシドニー(街路樹冠+10%→住宅価値+5万豪ドル)、USDA(成熟樹で資産価値+10〜20%)、高品質な緑の商業地で買い物客支出+9〜12%という実証も揃う。
         </div>
         <div class="mech-viz">
           <svg id="valueChart" viewBox="0 0 820 280" preserveAspectRatio="xMidYMid meet"></svg>
@@ -489,7 +541,7 @@
         <span class="src-tag">黒田ら(2023)／国交省「グリーンインフラの市場における経済価値に関する研究会」(2024) ／ City of Sydney (2017) ／ USDA ／ Wolf (retail)</span>
 
         <div class="reveal" style="margin-top:16px;">
-          <strong>国内・東京23区のエビデンスが効く理由。</strong>ニューヨークやメルボルンの数字は「方向性」を示すが、人口規模も制度も違う杉並にそのまま当てはめることはできない。だからこそ、<em>東京23区の分譲マンションを対象にした黒田ら(2023)の数字が決定的</em>だ。同じ研究会資料では、都心5区で<strong>敷地内緑地10%以上の物件は緑地のない物件より坪あたり月額賃料が約7.4%高い</strong>ことも示された。控えめでも、地に足のついた、杉並に直接適用できる数字である。
+          <strong>国内・東京23区のエビデンスが効く理由。</strong>ニューヨークやメルボルンの数字は「方向性」を示すが、人口規模も制度も違う杉並にそのまま当てはめることはできない。ここで効いてくるのが、<em>東京23区の分譲マンションを対象にした黒田ら(2023)の数字</em>になる。同じ研究会資料では、都心5区で<strong>敷地内緑地10%以上の物件は緑地のない物件より坪あたり月額賃料が約7.4%高い</strong>ことも示された。控えめでも、地に足のついた、杉並に直接適用できる数字である。
           <span class="src-tag">国交省「グリーンインフラを取り巻く国内外の動向」黒田ら(2023)・都心5区REIT分析</span>
         </div>
       </div>
@@ -569,7 +621,7 @@
     <!-- Honest scale calibration -->
     <h3 style="font-family:'Noto Serif JP',serif; font-weight:700; font-size:17px; color:var(--forest); margin:30px 0 6px;">正しい期待値：「劇的増収」ではなく「地盤沈下を防ぐ」</h3>
     <p class="lede" style="margin-bottom:18px;">
-      ここで誠実であるべきだ。ニューヨークやメルボルンのようなメガシティの研究(都市林の経済価値を平均+85%拡大、年間5億ドル超の便益)は、緑の<em>方向性と上限</em>を示すが、人口規模も制度も違う杉並にそのまま当てはめることはできない。現実的な期待値は、国内の保守的な数字(緑+10%→住宅価格+2〜2.5%)を<strong>一定エリアごとに数%ずつ積み上げ、区全体の税基盤が「ジリジリ落ちる」のを防ぎ、わずかに押し上げる</strong>。それが現実的な水準である。人口減と高齢化で税収が構造的に細る杉並にとって、<strong>「下げ止め」こそが死活的に重要</strong>なのだ。
+      ここは誠実に見ておきたい。ニューヨークやメルボルンのようなメガシティの研究(都市林の経済価値を平均+85%拡大、年間5億ドル超の便益)は、緑の<em>方向性と上限</em>を示すが、人口規模も制度も違う杉並にそのまま当てはめることはできない。現実的な期待値は、国内の保守的な数字(緑+10%→住宅価格+2〜2.5%)を<strong>一定エリアごとに数%ずつ積み上げ、区全体の税基盤が「ジリジリ落ちる」のを防ぎ、わずかに押し上げる</strong>。それが現実的な水準である。人口減と高齢化で税収が構造的に細る杉並にとっては、この<strong>「下げ止め」</strong>こそが何より大きい。
     </p>
 
     <div class="model-chart">
@@ -577,7 +629,7 @@
     </div>
 
     <h3 style="font-family:'Noto Serif JP',serif; font-weight:700; font-size:17px; color:var(--forest); margin:30px 0 8px;">税収は4つの経路で生まれる：不動産価値だけではない</h3>
-    <div class="model-cards" style="grid-template-columns:repeat(4,1fr);">
+    <div class="model-cards" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr));">
       <div class="mcard">
         <div class="mcard-city">① 不動産</div>
         <div class="mcard-stat" style="font-size:15px;">固定資産税・都市計画税</div>
@@ -600,7 +652,7 @@
       </div>
     </div>
     <div class="reveal">
-      重要なのは<strong>④コスト抑制は「高所得者の流入」に依存しない</strong>点だ。猛暑の緩和も、浸水リスクの低減も、避難場所としての機能も、<em>所得に関係なくすべての区民に等しく届く</em>便益である。緑の投資が堅牢なのは、不動産価値という単一経路に賭けるのではなく、4つの経路に分散しているからだ。
+      見落とされがちなのが、<strong>④コスト抑制は「高所得者の流入」に依存しない</strong>という点。猛暑の緩和も、浸水リスクの低減も、避難場所としての機能も、<em>所得に関係なくすべての区民に等しく届く</em>便益である。緑への投資が崩れにくいのは、不動産価値という単一経路に賭けず、4つの経路に分散している点にある。
       <span class="src-tag">国交省グリーンインフラ推進戦略 / 黒田ら(2023) / Endreny et al. (2017, Ecological Modelling)</span>
     </div>
   </section>
@@ -618,7 +670,7 @@
     </div>
 
     <p class="lede">
-      増田が掲げるモデルは空想ではない。<strong>メルボルンは2012年から20年計画で樹冠被覆率を22%→40%へ倍増</strong>させる「アーバン・フォレスト戦略」を実行中だ。総額3,000万豪ドル、年3,000本の植樹、<em>1本ごとにIDとメールアドレスを付与</em>して市民が見守る仕組みは世界の注目を集めた。ニューヨークは2040年までに30%、パリは2030年までに市内3割を緑地化する数値目標を掲げる。
+      増田が掲げるモデルは空想ではない。<strong>メルボルンは2012年から20年計画で樹冠被覆率を22%→40%へ倍増</strong>させる「アーバン・フォレスト戦略」を、いま実行している。総額3,000万豪ドル、年3,000本の植樹、<em>1本ごとにIDとメールアドレスを付与</em>して市民が見守る仕組みは世界の注目を集めた。ニューヨークは2040年までに30%、パリは2030年までに市内3割を緑地化する数値目標を掲げる。
     </p>
 
     <div class="model-chart">
@@ -662,7 +714,7 @@
     </div>
 
     <p class="lede">
-      増田のもう一つの柱が「杉並ハック制度」だ。これは<strong>市民・若者が出した政策提案を、実際に予算化・実行するところまで区が責任を持って伴走する</strong>仕組みである。提案が多ければAIで一次スクリーニングし、区長と職員が2次・最終選考を行う。採用されれば議会を通して予算をつけて実行し、<strong>不採用の場合も理由を明示する</strong>。現職の「聞く区政」を一歩進め、<em>市民とともに政策を作る区政</em>への進化を目指す。
+      増田のもう一つの柱が「杉並ハック制度」。<strong>市民・若者が出した政策提案を、実際に予算化・実行するところまで区が責任を持って伴走する</strong>仕組みである。提案が多ければAIで一次スクリーニングし、区長と職員が2次・最終選考を行う。採用されれば議会を通して予算をつけて実行し、<strong>不採用の場合も理由を明示する</strong>。現職の「聞く区政」を一歩進め、<em>市民とともに政策を作る区政</em>への進化を目指す。
     </p>
 
     <div class="flow-wrap">
@@ -706,7 +758,7 @@
     </div>
 
     <p class="lede">
-      候補者の真価は、耳あたりの良い公約より、<strong>反対意見や人気政策にどう向き合うか</strong>に表れる。討論会で増田が見せたのは、データに基づき、人気のある政策にも冷静に費用対効果を問う姿勢だった。これは「アンチの突っ込み」に最も強い資質である。
+      候補者の真価は、耳あたりの良い公約より、<strong>反対意見や人気政策にどう向き合うか</strong>に表れる。討論会で増田が見せたのは、データに基づき、人気のある政策にも冷静に費用対効果を問う姿勢だった。これは、厳しい検証や異論にさらされても揺るがない資質である。
     </p>
 
     <div class="rigor">
@@ -753,42 +805,105 @@
     </div>
 
     <p class="lede">
-      公平を期すため、増田に向けられうる批判を正面から取り上げ、事実に基づいて応答する。
+      公平を期すため、増田に向けられうる批判を正面から取り上げ、事実に基づいて応答する。最初に、最も重要で、最も鋭い論点であるグリーン・ジェントリフィケーションを学術研究に照らして詳しく検討する。
     </p>
+
+    <!-- Deep-dive: Green Gentrification -->
+    <div class="deepdive">
+      <div class="deepdive-eyebrow">Academic Review · 学術的検証</div>
+      <div class="deepdive-h">グリーン・ジェントリフィケーションは、杉並で起きるのか</div>
+      <div class="deepdive-intro">
+        最初に、ひとつ認めておきたいことがある。<strong>緑化が地価を押し上げ、結果として低所得層を住み替えに追い込む「グリーン・ジェントリフィケーション」は、実在し、学術的にも十分に裏付けられた現象</strong>である(Gould &amp; Lewis 2017／Anguelovski et al. 2019, 2024)。その特徴は、資本の再投資・社会層の上方化・景観の変化・脆弱層の住み替えの4点に整理される。これを否定するのは誠実ではない。問われているのは「起きるか/起きないか」ではなく、<strong>どんな規模・設計・制度のもとで起きやすく、どうすれば避けられるか</strong>。論点はそこにある。以下、研究知見に照らして5点で応答していく。
+      </div>
+
+      <div class="dd-viz">
+        <svg id="ggCompare" viewBox="0 0 880 372" preserveAspectRatio="xMidYMid meet"></svg>
+      </div>
+
+      <div class="dd-points">
+        <div class="dd-point">
+          <div class="dd-point-n">1</div>
+          <div>
+            <div class="dd-point-h">駆動するのは「大規模な旗艦公園」であって、分散した街路樹ではない</div>
+            <div class="dd-point-b">
+              研究が住み替えとの強い相関を示すのは、ハイラインのような<strong>大規模で象徴的な新設公園</strong>のケースが中心だ(Rigolon &amp; Németh 2020ほか)。投機を呼ぶのは「目玉開発」であり、増田が掲げるのは<em>区内に広く薄く緑を増やす街路樹・樹冠型</em>の緑化である。これは投機的な地価高騰を引き起こしにくい類型に属する。
+            </div>
+          </div>
+        </div>
+
+        <div class="dd-point">
+          <div class="dd-point-n">2</div>
+          <div>
+            <div class="dd-point-h">研究が示す処方箋「Just Green Enough」は、杉並ハック制度そのもの</div>
+            <div class="dd-point-b">
+              Curran &amp; Hamilton(2012, 2017)が提唱した <strong>「ちょうどよい緑(Just Green Enough)」</strong>は、高級再開発と切り離し、<strong>小規模・住民参加・地域が定義する緑化</strong>を行えば、住み替えを招かずに緑の便益が得られると示す。鍵を握るのは、参加型の計画と住民のコントロールである。増田の<em>「杉並ハック制度」（市民提案→共同設計→実行）は、この処方箋をそのまま制度にしたもの</em>といえる。緑化の是非と設計を住民が握る構造そのものが、最も有効な予防策である。
+            </div>
+          </div>
+        </div>
+
+        <div class="dd-point">
+          <div class="dd-point-n">3</div>
+          <div>
+            <div class="dd-point-h">緑化「だけ」では住み替えは起きない — 市場要因との合わせ技</div>
+            <div class="dd-point-b">
+              この分野の主導的研究者ら自身が、<strong>「グリーン・ジェントリフィケーションは都市変化の十分な説明ではない」</strong>と明言している(“Improvement, not displacement” 2022)。緑化は、規制緩和・投機・借家人保護の弱さといった他の要因と組み合わさって初めて住み替えを生む。<em>緑化単独を住み替えの原因と見なすのは、研究の知見と整合しない</em>。
+            </div>
+          </div>
+        </div>
+
+        <div class="dd-point">
+          <div class="dd-point-n">4</div>
+          <div>
+            <div class="dd-point-h">日本の制度・市場は、住み替え圧力を構造的に弱める</div>
+            <div class="dd-point-b">
+              この現象の研究の大半は、<strong>住宅が値上がりし、立ち退きが容易な米国型の市場</strong>を前提とする。杉並・日本はそもそも構造が違う。<strong>借地借家法は立ち退き・更新拒絶に「正当事由」を要求</strong>し(28条／立退料は賃料6〜12か月が相場)、市場任せの急速な追い出しは法的に難しい。加えて<strong>日本の住宅は急速に減価し(平均寿命約32年)、空き家率は全国13%超・賃貸18.5%</strong>、人口も2008年をピークに減少局面にある。値上がりが暴走する条件自体が乏しい。実際、福祉国家型の住宅政策をもつウィーンやタンペレでは、緑化による住み替えが緩和されることが示されている。
+            </div>
+          </div>
+        </div>
+
+        <div class="dd-point">
+          <div class="dd-point-n">5</div>
+          <div>
+            <div class="dd-point-h">公平性ファースト＋全住民に届く便益で、設計から織り込む</div>
+            <div class="dd-point-b">
+              リスクは「直視した上で設計で抑える」。<strong>緑の乏しい地区・公共用地を優先して緑化し(分配の公平性)、住宅施策と連動させる</strong>。これが研究の示す予防ツールである(BCNUEJ「都市の緑の正義のための政策ツール」)。さらに、緑の<strong>コスト抑制便益(猛暑・水害・避難)は、所得や持ち家/借家を問わず全住民に等しく届く</strong>。これらは誰も追い出さない。住み替えを生むのは「地価最大化」だが、増田の戦略の重心は<em>地価ではなく、4経路への分散と全住民の生活防衛</em>にある。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dd-cite">
+        <strong>References ·</strong> Gould &amp; Lewis (2017) <em>Green Gentrification</em>／Anguelovski, Connolly et al. (2019, 2024)／Curran &amp; Hamilton (2012; 2017) <em>Just Green Enough</em>／“Improvement, not displacement: A framework for urban green gentrification research and practice” (2022)／Rigolon &amp; Németh (2020)／BCNUEJ「Policy and Planning Tools for Urban Green Justice」／借地借家法第28条／Brookings (2021)・ADBI (2016) 日本の住宅市場分析。
+      </div>
+    </div>
+
+    <p class="lede" style="margin-bottom:10px;">続いて、その他の論点に簡潔に応答する。</p>
 
     <div class="rebut">
       <div class="rebut-q"><span class="qmark">Q</span>「緑で稼ぐ」なんて理想論。財政の裏付けがない。</div>
       <div class="rebut-a">
-        国内の実証研究が裏付けている。国土交通省の研究会が引く黒田ら(2023)では、<strong>東京23区の分譲マンションで緑地+10%(100m圏)→住宅価格+2〜2.5%</strong>、都心5区では<strong>敷地内緑地10%以上で坪あたり月額賃料+7.4%</strong>。海外でもシドニー(街路樹冠+10%→+5万豪ドル)、ミネソタ州(樹木管理1ドル→7ドルの便益)が揃う。メルボルンは実際に3,000万豪ドルを投じ22%→40%計画を実行中だ。<em>海外の理想論ではなく、日本のデータでも確認された都市経営</em>である。
+        国内の実証研究が裏付けている。国土交通省の研究会が引く黒田ら(2023)では、<strong>東京23区の分譲マンションで緑地+10%(100m圏)→住宅価格+2〜2.5%</strong>、都心5区では<strong>敷地内緑地10%以上で坪あたり月額賃料+7.4%</strong>。海外でもシドニー(街路樹冠+10%→+5万豪ドル)、ミネソタ州(樹木管理1ドル→7ドルの便益)が揃う。メルボルンは実際に3,000万豪ドルを投じ、22%→40%計画を進めている。<em>海外の理想論ではなく、日本のデータでも確認された都市経営</em>である。
       </div>
     </div>
 
     <div class="rebut">
       <div class="rebut-q"><span class="qmark">Q</span>NYやメルボルンはメガシティ。杉並にそのまま当てはめるのは無理では?</div>
       <div class="rebut-a">
-        その通りで、<strong>メガシティの数字(都市林価値+85%、年5億ドル超)をそのまま杉並に適用するのは誤り</strong>だ。だから本ページが重視するのは、メガシティの華やかな数字ではなく、<strong>東京23区を対象にした国内の保守的な実証(緑+10%→住宅+2〜2.5%)</strong>である。現実的な期待値は「劇的な増収」ではなく、<em>一定エリアごとに数%の資産価値を積み上げ、人口減で細る税基盤の地盤沈下を防ぎ、わずかに押し上げる</em>こと。人口減・高齢化が進む杉並にとって、この「下げ止め」こそが死活的に重要なのだ。
-      </div>
-    </div>
-
-    <div class="rebut">
-      <div class="rebut-q"><span class="qmark">Q</span>地価が上がれば低所得者が追い出される（グリーン・ジェントリフィケーション）のでは?</div>
-      <div class="rebut-a">
-        これは緑化政策が世界的に直面する<strong>現実のリスクであり、研究でも指摘されている</strong>（緑化による地価上昇が低所得層の住み替えを招きうる）。だからこそ設計が問われる。緩和策は明確だ。<strong>公園・公共用地・緑の乏しい地区を優先する「公平性ファーストの緑化」</strong>、住宅施策との連動、そして前述④の<strong>コスト抑制便益(猛暑・水害・避難)は所得に関係なく全区民に等しく届く</strong>こと。さらに増田の「杉並ハック制度」は、緑化を上からの地価対策ではなく<em>区民とともに設計する</em>仕組みであり、誰のための緑かを問い続ける構造になっている。リスクを直視した上で、設計で乗り越える。
-        <span class="src-tag" style="color:var(--ink-soft);">グリーン・ジェントリフィケーション研究（都市林の資産価値・公平性に関する査読文献）</span>
+        この指摘はもっともである。<strong>メガシティの数字(都市林価値+85%、年5億ドル超)を、そのまま杉並に当てはめることはできない</strong>。本ページが拠り所にするのも、メガシティの華やかな数字ではなく、<strong>東京23区を対象にした国内の保守的な実証(緑+10%→住宅+2〜2.5%)</strong>のほうである。現実的な期待値は「劇的な増収」ではなく、<em>一定エリアごとに数%の資産価値を積み上げ、人口減で細る税基盤の地盤沈下を防ぎ、わずかに押し上げる</em>こと。人口減・高齢化が進む杉並では、この「下げ止め」そのものが大きな成果になる。
       </div>
     </div>
 
     <div class="rebut">
       <div class="rebut-q"><span class="qmark">Q</span>地価が上がっても、高い賃料を払う需要が追いつかないのでは?</div>
       <div class="rebut-a">
-        鋭い指摘だ。杉並は既に基準地価が前年比+8〜16%と堅調な一方、<strong>価格上昇が賃料上昇を上回る利回り低下の傾向</strong>も出ている。だが「緑で稼ぐ」の本質は地価の最大化ではなく、<strong>4つの経路(不動産・法人雇用・消費・コスト抑制)への分散</strong>にある。とりわけ<em>コスト抑制は高所得者の流入に一切依存しない</em>。単一の不動産価値だけに賭ける戦略ではないからこそ、需要サイドの変動に対しても頑健なのだ。
+        これはもっともな懸念だろう。杉並では既に基準地価が前年比+8〜16%と堅調な一方、<strong>価格上昇が賃料上昇を上回る利回り低下の傾向</strong>も出ている。ただ「緑で稼ぐ」の本質は地価の最大化ではなく、<strong>4つの経路(不動産・法人雇用・消費・コスト抑制)への分散</strong>にある。なかでも<em>コスト抑制は高所得者の流入に一切依存しない</em>。単一の不動産価値だけに賭ける戦略ではないため、需要サイドの変動にも崩れにくい。
       </div>
     </div>
 
     <div class="rebut">
-      <div class="rebut-q"><span class="qmark">Q</span>区政・行政の経験がない「落下傘」では?</div>
+      <div class="rebut-q"><span class="qmark">Q</span>行政経験がなく、地元とのつながりも薄いのでは?</div>
       <div class="rebut-a">
-        まず<strong>落下傘ではない</strong>。杉並生まれ・杉並育ち、高井戸の小中学校、善福寺公園を走る地元の当事者だ。行政経験がない点は事実だが、<strong>富士通で北米法人の社長・海外役員として予算と組織を動かした経営の実務</strong>がある。象徴的なことに、<em>現職・岸本氏自身が「副区長に選ぶなら増田」と指名</em>している。
+        地元との縁はむしろ強い。杉並生まれ・杉並育ち、高井戸の小中学校、善福寺公園を走る、根っからの地元の人間である。行政経験がない点は事実だが、<strong>富士通で北米法人の社長・海外役員として予算と組織を動かした経営の実務</strong>がある。象徴的なことに、<em>現職・岸本氏自身が「副区長に選ぶなら増田」と指名</em>している。
       </div>
     </div>
 
@@ -802,7 +917,7 @@
     <div class="rebut">
       <div class="rebut-q"><span class="qmark">Q</span>現職が強い中で、当選は難しいのでは?</div>
       <div class="rebut-a">
-        構図として現職・元区長・自民推薦が揃う厳しい混戦であることは事実だ。だが本ページの目的は当選確率の予想ではなく、<strong>増田の政策が他候補にない論点(緑の都市経営・データ駆動・長期ビジョン)を選挙に持ち込んでいる</strong>ことを示すことにある。<em>「人口減・税収減の時代に、街の稼ぐ力をどう作るか」</em>。この問いを最も具体的に語る候補は、増田義彦をおいて他にいない。
+        現職・元区長・自民推薦が揃う厳しい混戦であることは、間違いない。だが本ページの目的は当選確率の予想ではなく、<strong>増田の政策が他候補にない論点(緑の都市経営・データ駆動・長期ビジョン)を選挙に持ち込んでいる</strong>ことを示すことにある。<em>「人口減・税収減の時代に、街の稼ぐ力をどう作るか」</em>。この問いを最も具体的に語る候補は、増田義彦をおいて他にいない。
       </div>
     </div>
   </section>
@@ -817,16 +932,16 @@
           2026年の杉並は岐路に立つ。<strong>2035年に向けて人口がピークアウトし、高齢化が進む</strong>なか、介護も保育も学童も守るには、街そのものの稼ぐ力を作り直すしかない。
         </p>
         <p>
-          増田義彦が示すのは、世界の先進都市が既に実証した道筋だ。<strong>緑に投資し、街の魅力と所得と税収を押し上げ、その税収を再び緑と管理産業に投じる</strong>。一度回り始めれば、緑は財政の負担ではなく、財政を生む資産に変わる。富士通で北米法人を率い、20年を海外で過ごした経営者だからこそ描けるビジョンである。
+          増田義彦が描くのは、世界の先進都市がすでに歩んできた道筋である。<strong>緑に投資し、街の魅力と所得と税収を押し上げ、その税収を再び緑と管理産業に投じる</strong>。一度回り始めれば、緑は財政の負担ではなく、財政を生む資産に変わる。富士通で北米法人を率い、20年を海外で過ごした経営者だからこそ描けるビジョンである。
         </p>
         <p>
-          そして「杉並ハック制度」は、その未来を<em>区民とともに作る</em>約束だ。AIで提案を選び、予算化まで伴走し、落選にも理由を返す。<strong>政治を諦めた若者に、もう一度希望を見せる仕組み</strong>である。
+          そして「杉並ハック制度」は、その未来を<em>区民とともに作る</em>ための約束になる。AIで提案を選び、予算化まで伴走し、落選にも理由を返す。<strong>政治を諦めた若者に、もう一度希望を見せる仕組み</strong>である。
         </p>
         <div class="closing-pull">
           「我々の子や孫の世代、50年後・100年後に<br>どんな杉並を作りたいか」。そこから逆算する。
         </div>
         <p>
-          人口減・税収減という<em>静かに進む危機</em>に、最も具体的な処方箋を示しているのは増田義彦である。気候適応・財政の持続性・データ駆動の行政・市民との共創を最優先に考える有権者にとって、<strong>増田は最も整合性の高い選択肢</strong>だ。
+          人口減・税収減という<em>静かに進む危機</em>に、最も具体的な処方箋を示しているのは増田義彦である。気候適応・財政の持続性・データ駆動の行政・市民との共創を重く見る有権者にとって、<strong>増田義彦は最も筋の通った選択肢</strong>になる。
         </p>
       </div>
       <div class="closing-cta">
@@ -851,7 +966,8 @@
       Endreny et al. (2017, Ecological Modelling) · megacity urban forest value +85% potential / ~$505M/yr (SUNY-ESF, i-Tree Cool Air)<br>
       City of Melbourne · Urban Forest Strategy (22%→40% by 2040, A$30M, ~3,000 trees/yr)<br>
       NYC (30% by 2040) / Paris (30% by 2030) 公表目標<br>
-      グリーン・ジェントリフィケーションに関する査読文献 (urban tree canopy &amp; equity / hedonic studies)<br>
+      グリーン・ジェントリフィケーション研究: Gould &amp; Lewis (2017) / Anguelovski, Connolly et al. (2019, 2024) / Curran &amp; Hamilton「Just Green Enough」(2012, 2017) / 「Improvement, not displacement」(2022) / Rigolon &amp; Németh (2020) / BCNUEJ「Policy and Planning Tools for Urban Green Justice」<br>
+      日本の住宅市場・借家人保護: 借地借家法第28条(正当事由) / Brookings (2021) / ADBI Working Paper (2016) — 急速な住宅減価・高空室率・人口減<br>
       東京大学 寺田研究室：23区樹冠被覆率研究 / 日本経済新聞「チャートは語る」(2026-05-24)<br>
       特別区長会調査研究機構：特別区将来人口推計(2035年ピーク) / 国立社会保障・人口問題研究所
     </div>
@@ -1409,6 +1525,75 @@ function buildHackFlow() {
 }
 
 /* ============================================================
+   SECTION VII — GREEN GENTRIFICATION: JP vs US structural compare
+   ============================================================ */
+function buildGGCompare() {
+  const svg = document.getElementById('ggCompare');
+  if (!svg) return;
+  svg.innerHTML = '';
+  const W = 880, H = 372;
+  const colF = 18, wF = 150;          // factor label column
+  const colUS = 186, wCol = 322;      // US column
+  const colJP = colUS + wCol + 8;     // JP column
+  const headY = 46, rowTop = 64, rowH = 50;
+
+  const title = mk(svg, 'text', { x: colF, y: 20, 'font-family': 'Noto Sans JP, sans-serif', 'font-size': 12, 'font-weight': 700, fill: '#0c1929' });
+  title.textContent = '住み替え（ジェントリフィケーション）を駆動する条件';
+  const sub = mk(svg, 'text', { x: colF, y: 37, 'font-family': 'Cormorant Garamond, "Noto Sans JP", serif', 'font-style': 'italic', 'font-size': 11, fill: '#5d6a6b' });
+  sub.textContent = '市場・制度の構造比較';
+
+  // column headers
+  const hUS = mk(svg, 'g'); 
+  mk(svg, 'rect', { x: colUS, y: headY - 16, width: wCol, height: 24, rx: 3, fill: 'rgba(154,59,46,0.12)' }, hUS);
+  const hut = mk(svg, 'text', { x: colUS + wCol / 2, y: headY, 'text-anchor': 'middle', 'font-family': 'Noto Serif JP, serif', 'font-weight': 700, 'font-size': 13, fill: '#9a3b2e' }, hUS);
+  hut.textContent = '米国型市場（研究の前提）';
+  const hJP = mk(svg, 'g');
+  mk(svg, 'rect', { x: colJP, y: headY - 16, width: wCol, height: 24, rx: 3, fill: 'rgba(63,122,82,0.14)' }, hJP);
+  const hjt = mk(svg, 'text', { x: colJP + wCol / 2, y: headY, 'text-anchor': 'middle', 'font-family': 'Noto Serif JP, serif', 'font-weight': 700, 'font-size': 13, fill: '#16432d' }, hJP);
+  hjt.textContent = '杉並・日本の構造';
+
+  const rows = [
+    { f: '住宅価格', us: '値上がり・資産化', jp: '急速に減価（寿命約32年）' },
+    { f: '借家人保護', us: '弱く、立ち退きが容易', jp: '借地借家法「正当事由」が必要' },
+    { f: '住宅供給', us: '供給制約・低空室', jp: '空き家13%超・供給は潤沢' },
+    { f: '人口・需要', us: '都市集中で需要過熱', jp: '2008年ピーク→減少局面' },
+    { f: '緑化の型', us: '大規模な旗艦公園', jp: '分散街路樹＋参加型（ハック制度）' },
+  ];
+
+  rows.forEach((r, i) => {
+    const y = rowTop + i * rowH;
+    const g = mk(svg, 'g', { opacity: 0 });
+    mk(svg, 'animate', { attributeName: 'opacity', from: 0, to: 1, dur: '0.45s', begin: `${i * 0.18}s`, fill: 'freeze' }, g);
+    // factor label
+    const fl = mk(svg, 'text', { x: colF, y: y + rowH / 2 + 1, 'font-family': 'Noto Serif JP, serif', 'font-weight': 700, 'font-size': 12.5, fill: '#2b3a44' }, g);
+    fl.textContent = r.f;
+    // US cell
+    mk(svg, 'rect', { x: colUS, y: y + 5, width: wCol, height: rowH - 12, rx: 4, fill: 'rgba(154,59,46,0.06)', stroke: 'rgba(154,59,46,0.25)', 'stroke-width': 1 }, g);
+    mk(svg, 'circle', { cx: colUS + 18, cy: y + rowH / 2, r: 5, fill: '#9a3b2e' }, g);
+    const up = mk(svg, 'text', { x: colUS + 18, y: y + rowH / 2 + 3.2, 'text-anchor': 'middle', 'font-family': 'sans-serif', 'font-size': 9, 'font-weight': 700, fill: '#fff' }, g);
+    up.textContent = '↑';
+    const ut = mk(svg, 'text', { x: colUS + 34, y: y + rowH / 2 + 4, 'font-family': 'Noto Sans JP, sans-serif', 'font-size': 12, fill: '#7a2e24' }, g);
+    ut.textContent = r.us;
+    // JP cell
+    mk(svg, 'rect', { x: colJP, y: y + 5, width: wCol, height: rowH - 12, rx: 4, fill: 'rgba(63,122,82,0.07)', stroke: 'rgba(63,122,82,0.3)', 'stroke-width': 1 }, g);
+    mk(svg, 'circle', { cx: colJP + 18, cy: y + rowH / 2, r: 5, fill: '#3f7a52' }, g);
+    const jd = mk(svg, 'text', { x: colJP + 18, y: y + rowH / 2 + 3.2, 'text-anchor': 'middle', 'font-family': 'sans-serif', 'font-size': 9, 'font-weight': 700, fill: '#fff' }, g);
+    jd.textContent = '↓';
+    const jt = mk(svg, 'text', { x: colJP + 34, y: y + rowH / 2 + 4, 'font-family': 'Noto Sans JP, sans-serif', 'font-size': 12, fill: '#1d4a30' }, g);
+    jt.textContent = r.jp;
+  });
+
+  // bottom summary
+  const sy = rowTop + rows.length * rowH + 16;
+  const sline = mk(svg, 'text', { x: W / 2, y: sy, 'text-anchor': 'middle', 'font-family': 'Noto Serif JP, serif', 'font-weight': 700, 'font-size': 12.5, fill: '#16432d', opacity: 0 });
+  sline.textContent = '住み替えを駆動する条件は、杉並・日本では構造的に弱い。';
+  mk(svg, 'animate', { attributeName: 'opacity', from: 0, to: 1, dur: '0.6s', begin: '1.1s', fill: 'freeze' }, sline);
+  const leg = mk(svg, 'text', { x: W / 2, y: sy + 16, 'text-anchor': 'middle', 'font-family': 'Cormorant Garamond, "Noto Sans JP", serif', 'font-size': 10, fill: '#5d6a6b', opacity: 0 });
+  leg.textContent = '↑ 住み替え圧力を強める要因 ／ ↓ 弱める要因';
+  mk(svg, 'animate', { attributeName: 'opacity', from: 0, to: 1, dur: '0.6s', begin: '1.3s', fill: 'freeze' }, leg);
+}
+
+/* ============================================================
    INIT — run on load, charts animate when scrolled into view
    ============================================================ */
 function runAll() {
@@ -1416,7 +1601,8 @@ function runAll() {
   const builders = {
     posChart: buildPosChart, coolChart: buildCoolChart, valueChart: buildValueChart,
     industryChart: buildIndustryChart, flywheel: buildFlywheel, fiscalChart: buildFiscalChart,
-    scaleChart: buildScaleChart, modelChart: buildModelChart, hackFlow: buildHackFlow
+    scaleChart: buildScaleChart, modelChart: buildModelChart, hackFlow: buildHackFlow,
+    ggCompare: buildGGCompare
   };
   // IntersectionObserver to trigger animated builds on view
   const built = {};
