@@ -237,7 +237,8 @@
         </div>
         <div class="hero-affil">
           <strong>再生の道 推薦</strong><br>
-          2026年6月28日 投開票
+          2026年6月28日 投開票<br>
+          <span style="font-size:11px; opacity:0.8;">6月24日 合同個人演説会の議論を反映</span>
         </div>
       </div>
     </div>
@@ -371,6 +372,42 @@
   }
   .dd-cite strong { font-family: "Noto Sans JP"; font-weight: 700; color: var(--ink); font-size: 10.5px; letter-spacing: 0.08em; }
 
+  /* ============ CENTRAL CLASH (稼ぐ vs 守る) ============ */
+  .clash {
+    background: #fbf8f0; border: 1px solid var(--rule); border-top: 3px solid var(--gold);
+    padding: 30px 30px 32px; margin: 6px 0 0;
+  }
+  .clash-eyebrow {
+    font-family: "Cormorant Garamond", "Noto Serif JP", serif; font-style: italic;
+    font-size: 13px; letter-spacing: 0.1em; color: var(--gold-deep); margin-bottom: 8px;
+  }
+  .clash-h {
+    font-family: "Noto Serif JP", serif; font-weight: 700; font-size: clamp(20px,2.8vw,26px);
+    color: var(--ink); line-height: 1.3; margin-bottom: 10px;
+  }
+  .clash-intro { font-family: "Noto Serif JP", serif; font-size: 14.5px; line-height: 1.9; color: var(--ink-mid); margin-bottom: 22px; }
+  .clash-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 18px; }
+  .clash-col { padding: 20px 22px; border-radius: 4px; }
+  .clash-col.earn { background: rgba(22,67,45,0.07); border: 1px solid rgba(22,67,45,0.25); border-top: 3px solid var(--forest); }
+  .clash-col.protect { background: rgba(12,25,41,0.04); border: 1px solid var(--rule); border-top: 3px solid #5d6a6b; }
+  .clash-label { font-family: "Noto Sans JP", sans-serif; font-size: 11px; letter-spacing: 0.1em; font-weight: 700; margin-bottom: 4px; }
+  .clash-col.earn .clash-label { color: var(--forest); }
+  .clash-col.protect .clash-label { color: #5d6a6b; }
+  .clash-word { font-family: "Noto Serif JP", serif; font-weight: 700; font-size: 30px; line-height: 1; margin-bottom: 12px; }
+  .clash-col.earn .clash-word { color: var(--forest); }
+  .clash-col.protect .clash-word { color: var(--ink); }
+  .clash-quote { font-family: "Noto Serif JP", serif; font-size: 14px; line-height: 1.8; color: var(--ink-mid); }
+  .clash-who { font-family: "Cormorant Garamond", "Noto Sans JP", serif; font-size: 12px; color: var(--ink-soft); margin-top: 8px; }
+  .clash-spend { background: rgba(154,59,46,0.05); border: 1px dashed rgba(154,59,46,0.4); padding: 14px 18px; margin-bottom: 18px; font-family: "Noto Serif JP", serif; font-size: 13px; line-height: 1.8; color: var(--ink-mid); }
+  .clash-spend strong { color: var(--crimson); font-weight: 700; }
+  .clash-resolve {
+    background: var(--forest-deep); color: #eef3ec; padding: 22px 24px; border-radius: 4px;
+    font-family: "Noto Serif JP", serif; font-size: clamp(15px,2vw,17px); line-height: 1.85; font-weight: 600;
+  }
+  .clash-resolve strong { color: var(--green-bright); font-weight: 700; }
+  .clash-resolve .big { color: #f0d9a0; font-size: 1.15em; font-weight: 700; }
+  @media (max-width: 600px) { .clash-cols { grid-template-columns: 1fr; } }
+
   /* highlighted callout (e.g. addressing a specific cited paper) */
   .dd-callout {
     background: #fbf8f0; border: 1px solid var(--gold);
@@ -465,7 +502,7 @@
 
     <div class="pos-wrap">
       <div class="pos-title">候補者ポジショニング・マップ</div>
-      <div class="pos-cite">各候補の公開討論会(ReHacQ / FM杉並 / 子供若者政策公開討論会)での発言・経歴に基づく編集部評価</div>
+      <div class="pos-cite">各候補の公開討論会・演説会(ReHacQ / FM杉並 / 子供若者政策公開討論会 / 6月24日 合同個人演説会)での発言・経歴に基づく編集部評価</div>
       <svg id="posChart" viewBox="0 0 900 520" preserveAspectRatio="xMidYMid meet"></svg>
       <div class="pos-legend">
         <span><span class="pos-dot" style="background:var(--gold)"></span>増田義彦（再生の道）</span>
@@ -674,6 +711,19 @@
       見落とされがちなのが、<strong>④コスト抑制は「高所得者の流入」に依存しない</strong>という点。猛暑の緩和も、浸水リスクの低減も、避難場所としての機能も、<em>所得に関係なくすべての区民に等しく届く</em>便益である。緑への投資が崩れにくいのは、不動産価値という単一経路に賭けず、4つの経路に分散している点にある。
       <span class="src-tag">国交省グリーンインフラ推進戦略 / 黒田ら(2023) / Endreny et al. (2017, Ecological Modelling)</span>
     </div>
+
+    <h3 style="font-family:'Noto Serif JP',serif; font-weight:700; font-size:17px; color:var(--forest); margin:34px 0 8px;">では、この高齢化に増田はどう答えるか</h3>
+    <p class="lede" style="margin-bottom:16px;">
+      これは増田にとって他人事ではない。本人も<strong>95歳の親を介護する当事者</strong>であり、晩婚化と長寿化のなかで<em>子の世話・親の介護・自分の老後</em>が重なる「三重の負担」を、自らの言葉で語った。その上で、高齢者福祉を一括りにしないことから始める。<strong>杉並区の高齢者約12万人のうち、約9.5万人は元気な高齢者、約2.5万人が介護を必要とする高齢者</strong>。だから打ち手も2つに分ける、と。元気な層には「年寄り扱いせず働ける」<strong>雇用と活躍の場</strong>(地域コーディネーター制度など)を、介護が必要な層には<strong>質の高い介護</strong>を。雇用と福祉を分けて設計する、データに基づく整理である。
+    </p>
+    <div class="deepdive" style="margin-bottom:0;">
+      <div class="deepdive-eyebrow">A concrete idea · 討論会で示した具体策</div>
+      <div class="deepdive-h">空き家 × 緑 × 高齢者シェアハウス</div>
+      <div class="deepdive-intro">
+        増田が挙げた具体策が、3つの課題を一度に解く。杉並には<strong>管理が行き届かない空き家が数多くある</strong>(区内に約1,300戸、うち4割前後が不適正管理という指摘も討論で出た)。これを<strong>区が借り上げて緑化し、独居高齢者向けのシェアハウス</strong>にする。緑で街の価値と涼しさを取り戻し(<em>木陰に囲まれればエアコン依存も減り、熱中症対策にもなる</em>)、孤立しがちな単身高齢者に安心できる住まいを用意する。この案には討論会で他候補からも「とてもいい」と賛同の声が上がった。<strong>「緑で稼ぐ」は抽象論ではなく、空き家・福祉・防災に同時に効く具体策に落ちる</strong>。その一例である。
+        <span class="src-tag" style="color:var(--ink-soft);">2026年6月24日 合同個人演説会での発言より</span>
+      </div>
+    </div>
   </section>
 
   <hr class="div-rule">
@@ -800,6 +850,12 @@
         <div class="rcard-h">浜田山南口・都市計画道路など、長年の課題に精通</div>
         <div class="rcard-b">
           地元・浜田山の南口整備が、前区長時代にまとまりかけた契約が白紙に戻され<strong>4年間停滞している</strong>具体的経緯を指摘。抽象論ではなく、<strong>区民が実際に困っている個別案件</strong>を把握している。</div>
+      </div>
+      <div class="rcard">
+        <div class="rcard-tag">Transparency · 情報公開</div>
+        <div class="rcard-h">「結論」ではなく「なぜそう決めたか」を問う</div>
+        <div class="rcard-b">
+          増田が選んだ討論テーマが情報公開だった。日本の行政は決定は出すが理由の説明が弱いと述べ、<strong>3つの具体例で各候補に根拠を質した</strong>。①浜田山南口を断念した2023年1月の会議の理由が非公開だった点、②杉並第一小学校の旧病院跡地への移転で、地下に残る霊安室や土壌汚染・浸水の懸念が当時公表されなかった点、③善福寺川の調節池(30万㎥規模)の根拠が十分開示されていない点。<strong>結論より、理由とプロセスを開く</strong>という一貫した立場である。</div>
       </div>
       <div class="rcard">
         <div class="rcard-tag">Vision + dialogue · 強引さの排除</div>
@@ -984,6 +1040,40 @@
     </div>
   </section>
 
+  <!-- ===================== CENTRAL CLASH ===================== -->
+  <section class="section">
+    <div class="clash">
+      <div class="clash-eyebrow">The Real Question · 6月24日 合同個人演説会より</div>
+      <div class="clash-h">争点は、「稼ぐか、守るか」だった</div>
+      <div class="clash-intro">
+        公示後の討論会(6月24日)。最後の訴えで、この選挙の対立軸がくっきりと現れた。増田は「使う」提案が並ぶなかで、ただ一人「稼ぐ」を語った。現職はそれに正面から異を唱えた。
+      </div>
+
+      <div class="clash-cols">
+        <div class="clash-col earn">
+          <div class="clash-label">増田義彦</div>
+          <div class="clash-word">稼ぐ</div>
+          <div class="clash-quote">「人口が減る時代に、どう税を増やし、どう稼ぐか。本来それがこの選挙の最大の争点のはずだ。<strong>稼ぐを語っているのは、私だけ</strong>。皆さんは新しく税金を使う提案ばかりしている」</div>
+          <div class="clash-who">― 最後の訴えより</div>
+        </div>
+        <div class="clash-col protect">
+          <div class="clash-label">岸本聡子（現職）</div>
+          <div class="clash-word">守る</div>
+          <div class="clash-quote">「争点は稼げる杉並ではない。<strong>自治体の使命はお金を稼ぐことではなく、区民の暮らしと命を守ること</strong>だ。企業ではない」</div>
+          <div class="clash-who">― 最後の訴えより</div>
+        </div>
+      </div>
+
+      <div class="clash-spend">
+        実際、討論会で他の3候補が掲げたのは、いずれも「使う」政策だった。田中氏は<strong>出産一時金100万円</strong>、大和田氏は杉並ペイで<strong>一世帯最大10万円のポイント給付</strong>と大型スポーツ施設、現職は<strong>シルバーパス助成・修学旅行無償化・杉並電力</strong>。どれも意義はある。だが財源を生む側を語ったのは、増田だけだった。
+      </div>
+
+      <div class="clash-resolve">
+        この対立は、見かけほど対立していない。<span class="big">稼ぐ力は、守るための原資である。</span>財政の体力を失えば、介護も保育も学童も守れない。人口減で最初に削られるのは、いつも弱い立場の人への予算。増田の答えは、どちらかではなく<strong>「稼いで、守る」</strong>。声の小さい人に光を当てるために、まず街の稼ぐ力を取り戻す。それが「緑で稼ぐ杉並」の芯にある。
+      </div>
+    </div>
+  </section>
+
   <!-- ===================== CLOSING ===================== -->
   <div class="closing">
     <div class="closing-inner">
@@ -1018,7 +1108,7 @@
   <div class="colophon">
     <div>
       <strong>Sources / 出典</strong>
-      公開討論会: ReHacQ 杉並区長選候補者討論 / FM杉並「区長候補予定者 対話会」 / 日本若者協議会「子供若者政策公開討論会」(2026)<br>
+      公開討論会・演説会: ReHacQ 杉並区長選候補者討論 / FM杉並「区長候補予定者 対話会」 / 日本若者協議会「子供若者政策公開討論会」 / リンカーンフォーラム式 合同個人演説会(2026年6月24日) (2026)<br>
       黒田ら(2023) / 国土交通省「グリーンインフラの市場における経済価値に関する研究会」(2024年9月公表)：東京23区 緑地+10%(100m圏)→住宅価格+2〜2.5%、都心5区 敷地内緑地10%以上→坪あたり月額賃料+7.4%<br>
       国土交通省「グリーンインフラ推進戦略2023」<br>
       City of Sydney, street tree canopy &amp; property value study (2017) · +10% canopy ≈ +A$50,000<br>
