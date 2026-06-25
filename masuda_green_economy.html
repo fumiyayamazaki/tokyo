@@ -371,6 +371,25 @@
   }
   .dd-cite strong { font-family: "Noto Sans JP"; font-weight: 700; color: var(--ink); font-size: 10.5px; letter-spacing: 0.08em; }
 
+  /* highlighted callout (e.g. addressing a specific cited paper) */
+  .dd-callout {
+    background: #fbf8f0; border: 1px solid var(--gold);
+    border-left: 4px solid var(--gold); padding: 20px 22px; margin: 22px 0 6px;
+  }
+  .dd-callout-tag {
+    font-family: "Cormorant Garamond", "Noto Serif JP", serif; font-style: italic;
+    font-size: 12px; color: var(--gold-deep); letter-spacing: 0.06em; margin-bottom: 6px;
+  }
+  .dd-callout-h { font-family: "Noto Serif JP", serif; font-weight: 700; font-size: 16px; color: var(--ink); line-height: 1.4; margin-bottom: 8px; }
+  .dd-callout-b { font-family: "Noto Serif JP", serif; font-size: 13.5px; line-height: 1.85; color: var(--ink-mid); }
+  .dd-callout-b strong { color: var(--forest); font-weight: 700; }
+  .dd-callout-b em { font-style: normal; color: var(--gold-deep); font-weight: 600; font-family: inherit; }
+  .dd-callout-list { margin: 10px 0 4px; padding: 0; list-style: none; }
+  .dd-callout-list li { position: relative; padding-left: 22px; margin-bottom: 9px; font-size: 13.5px; line-height: 1.8; color: var(--ink-mid); }
+  .dd-callout-list li::before { content: "▸"; position: absolute; left: 4px; color: var(--gold-deep); font-size: 12px; top: 2px; }
+  .dd-callout-list li strong { color: var(--forest); font-weight: 700; }
+  .dd-callout-kicker { margin-top: 10px; font-family: "Noto Serif JP", serif; font-size: 13.5px; line-height: 1.8; color: var(--forest-deep); font-weight: 600; }
+
   @media (max-width: 560px) {
     .dd-point { grid-template-columns: 1fr; gap: 4px; }
   }
@@ -844,7 +863,7 @@
         <div class="dd-point">
           <div class="dd-point-n">3</div>
           <div>
-            <div class="dd-point-h">緑化「だけ」では住み替えは起きない — 市場要因との合わせ技</div>
+            <div class="dd-point-h">緑化「だけ」では住み替えは起きない：市場要因との合わせ技</div>
             <div class="dd-point-b">
               この分野の主導的研究者ら自身が、<strong>「グリーン・ジェントリフィケーションは都市変化の十分な説明ではない」</strong>と明言している(“Improvement, not displacement” 2022)。緑化は、規制緩和・投機・借家人保護の弱さといった他の要因と組み合わさって初めて住み替えを生む。<em>緑化単独を住み替えの原因と見なすのは、研究の知見と整合しない</em>。
             </div>
@@ -872,8 +891,23 @@
         </div>
       </div>
 
+      <div class="dd-callout">
+        <div class="dd-callout-tag">On the cited paper · 引用される Nature Communications 論文を、正確に読む</div>
+        <div class="dd-callout-h">「緑化は不平等を悪化させる」とされる代表的論文は、実はこう述べている</div>
+        <div class="dd-callout-b">
+          この文脈でよく引かれるのが、Anguelovski らの <strong>Nature Communications (2022, 28都市の国際比較)</strong>である。たしかに重要な研究だが、その中身を正確に読むと、むしろ増田の設計を後押しする。
+          <ul class="dd-callout-list">
+            <li>対象は<strong>北米・欧州の28都市(9か国)だけで、日本やアジアは含まれない</strong>。住宅が値上がりし立ち退きが容易という、前述の米国型市場が前提になっている。</li>
+            <li>緑化と住み替えの相関が出たのは<strong>28都市中17都市</strong>。裏を返せば<strong>11都市では、緑化しても住み替えは起きていない</strong>。論文自身が「不可避ではない」ことを示している。</li>
+            <li>著者ら(BCNUEJ)は同時に<strong>住み替えを防ぐ政策ツール集</strong>も公表している。結論は「緑化をやめよ」ではなく「<strong>公平に設計せよ</strong>」である。</li>
+            <li>同じ系統の研究(3-30-300ルール、2024)は、<strong>裕福な地区ほど緑が多い</strong>=緑はもともと偏在していると示す。だから<em>緑の乏しい地区を緑化することは、不平等の是正に向かう</em>。杉並は樹冠被覆率が23区ワースト(▲39.5%)の緑の不足地区であり、ここを緑化するのは公平性を高める側にある。</li>
+          </ul>
+          <div class="dd-callout-kicker">引用された論文は、増田の「公平性ファースト・分散・参加型」という設計を、否定するどころか裏付けている。</div>
+        </div>
+      </div>
+
       <div class="dd-cite">
-        <strong>References ·</strong> Gould &amp; Lewis (2017) <em>Green Gentrification</em>／Anguelovski, Connolly et al. (2019, 2024)／Curran &amp; Hamilton (2012; 2017) <em>Just Green Enough</em>／“Improvement, not displacement: A framework for urban green gentrification research and practice” (2022)／Rigolon &amp; Németh (2020)／BCNUEJ「Policy and Planning Tools for Urban Green Justice」／借地借家法第28条／Brookings (2021)・ADBI (2016) 日本の住宅市場分析。
+        <strong>References ·</strong> Gould &amp; Lewis (2017) <em>Green Gentrification</em>／Anguelovski, Connolly et al. (2019, 2022 <em>Nature Communications</em> 13:3816, 2024)／Curran &amp; Hamilton (2012; 2017) <em>Just Green Enough</em>／“Improvement, not displacement” (2022)／Rigolon &amp; Németh (2020)／3-30-300 rule study (<em>Nature Communications</em>, 2024)／BCNUEJ「Policy and Planning Tools for Urban Green Justice」／借地借家法第28条／Brookings (2021)・ADBI (2016) 日本の住宅市場分析。
       </div>
     </div>
 
@@ -897,6 +931,34 @@
       <div class="rebut-q"><span class="qmark">Q</span>地価が上がっても、高い賃料を払う需要が追いつかないのでは?</div>
       <div class="rebut-a">
         これはもっともな懸念だろう。杉並では既に基準地価が前年比+8〜16%と堅調な一方、<strong>価格上昇が賃料上昇を上回る利回り低下の傾向</strong>も出ている。ただ「緑で稼ぐ」の本質は地価の最大化ではなく、<strong>4つの経路(不動産・法人雇用・消費・コスト抑制)への分散</strong>にある。なかでも<em>コスト抑制は高所得者の流入に一切依存しない</em>。単一の不動産価値だけに賭ける戦略ではないため、需要サイドの変動にも崩れにくい。
+      </div>
+    </div>
+
+    <div class="rebut">
+      <div class="rebut-q"><span class="qmark">Q</span>地価が上がれば、結局は富裕層や海外資本しか買えない街になるのでは?</div>
+      <div class="rebut-a">
+        データを見ると、この不安はかなり誇張されている。国土交通省の初調査(2025年1〜6月)では、<strong>東京23区の新築マンションで海外居住者の取得は3.5%、都心6区でも7.5%、東京都全体では約3%</strong>にとどまる。政府自身が「海外勢は価格高騰の主因ではない」とし、主因は<strong>資材高・人件費・用地不足という供給コストと国内の底堅い需要</strong>だと説明している。そもそも杉並は投資マネーが集まる都心の高額マンション市場ではなく、住宅地である。加えて国内実証が示す緑化の効果は<em>緑+10%で住宅+2〜2.5%</em>という穏やかな水準で、街を「買えない街」に変える暴騰とは桁が違う。海外資本の流入を心配すべき相手は、区の街路樹ではなく金融政策と為替である。
+      </div>
+    </div>
+
+    <div class="rebut">
+      <div class="rebut-q"><span class="qmark">Q</span>中低所得者への視線が乏しい。「稼ぐ力」は強者の論理では?</div>
+      <div class="rebut-a">
+        順番がむしろ逆である。稼ぐ力は、弱い立場の人を切り捨てるためではなく、<strong>支えるための原資</strong>になる。介護・保育・学童・家賃補助は、いずれも区の財源があって初めて続けられる。人口減で税基盤が細れば、最初に削られるのは支援を必要とする人への予算である。<em>財政の体力を失った自治体ほど、困っている人を支えられなくなる</em>。緑で街の稼ぐ力を取り戻すことは、福祉を諦めないための土台づくりであり、低所得層を遠ざける話ではない。
+      </div>
+    </div>
+
+    <div class="rebut">
+      <div class="rebut-q"><span class="qmark">Q</span>「緑では稼げない」。名目GDPや為替も分からずマクロ経済を持ち出すのは筋違いでは?</div>
+      <div class="rebut-a">
+        ここは論点を分けたい。増田の主張は<strong>マクロ経済(GDP・為替・国際競争)ではなく、ミクロで局所の話</strong>である。緑という地域のアメニティが、近隣の不動産・賃料価値、来街者の消費、猛暑や水害の被害コストに効く。その単位はあくまで「街」である。「緑→年収」は標語にすぎず、厳密には<strong>「アメニティ→資産・賃料価値」という都市経済学で確立したヘドニックの関係</strong>を指す。そして証拠は手元にある。黒田ら(2023)・国交省研究会、メルボルンやNYの実証、Endreny(2017)、そして批判で引かれる Nature Communications(2022)まで。「どこのエビデンスか」への答えは、これらの査読研究と公的調査である。
+      </div>
+    </div>
+
+    <div class="rebut">
+      <div class="rebut-q"><span class="qmark">Q</span>そもそも緑化は、区ではなく都や国がやるべきでは?</div>
+      <div class="rebut-a">
+        街路樹・公園・みどりの管理は、基礎自治体そのものの仕事である。<strong>都市緑地法は市区町村に「緑の基本計画」の策定を位置づけ</strong>ており、杉並区にも既に緑の基本計画がある。どの道路に何を植え、どの公園をどう活かし、民有地の緑をどう誘導するか。この解像度で動けるのは、住民生活に最も近い区である。<em>区だからこそ、分散型で参加型の「ちょうどよい緑」を設計できる</em>。
       </div>
     </div>
 
@@ -966,8 +1028,10 @@
       Endreny et al. (2017, Ecological Modelling) · megacity urban forest value +85% potential / ~$505M/yr (SUNY-ESF, i-Tree Cool Air)<br>
       City of Melbourne · Urban Forest Strategy (22%→40% by 2040, A$30M, ~3,000 trees/yr)<br>
       NYC (30% by 2040) / Paris (30% by 2030) 公表目標<br>
-      グリーン・ジェントリフィケーション研究: Gould &amp; Lewis (2017) / Anguelovski, Connolly et al. (2019, 2024) / Curran &amp; Hamilton「Just Green Enough」(2012, 2017) / 「Improvement, not displacement」(2022) / Rigolon &amp; Németh (2020) / BCNUEJ「Policy and Planning Tools for Urban Green Justice」<br>
-      日本の住宅市場・借家人保護: 借地借家法第28条(正当事由) / Brookings (2021) / ADBI Working Paper (2016) — 急速な住宅減価・高空室率・人口減<br>
+      グリーン・ジェントリフィケーション研究: Anguelovski, Connolly et al.「Green gentrification in European and North American cities」(<em>Nature Communications</em> 13:3816, 2022, 28都市/9か国・うち17都市で相関) / Gould &amp; Lewis (2017) / Curran &amp; Hamilton「Just Green Enough」(2012, 2017) / 「Improvement, not displacement」(2022) / Rigolon &amp; Németh (2020) / 3-30-300ルール研究 (<em>Nature Communications</em>, 2024) / BCNUEJ「Policy and Planning Tools for Urban Green Justice」<br>
+      日本の住宅市場・借家人保護: 借地借家法第28条(正当事由) / Brookings (2021) / ADBI Working Paper (2016)：急速な住宅減価・高空室率・人口減<br>
+      外国人による不動産取得: 国土交通省「新築マンション取得者属性調査」(2025)：東京23区の海外居住者取得 約3.5%(都心6区7.5%、都全体約3%)、政府「価格高騰の主因ではない」<br>
+      区の権限: 都市緑地法(市区町村による「緑の基本計画」) / 杉並区みどりの基本計画<br>
       東京大学 寺田研究室：23区樹冠被覆率研究 / 日本経済新聞「チャートは語る」(2026-05-24)<br>
       特別区長会調査研究機構：特別区将来人口推計(2035年ピーク) / 国立社会保障・人口問題研究所
     </div>
